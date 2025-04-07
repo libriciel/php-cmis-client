@@ -1,0 +1,30 @@
+stages:
+  - build
+  - test
+
+variables:
+  CONTAINER_IMAGE: "${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}"
+
+build:
+  stage: build
+  tags:
+    - docker-build
+  script:
+    - docker login -u "gitlab-ci-token" -p "$CI_JOB_TOKEN" $CI_REGISTRY
+    - docker build --pull -t ${CONTAINER_IMAGE} .
+    - docker login -u "gitlab-ci-token" -p "$CI_JOB_TOKEN" $CI_REGISTRY
+    - docker push ${CONTAINER_IMAGE}
+
+unit_test:
+  stage: test
+  image : "$CONTAINER_IMAGE"
+  variables:
+    XDEBUG_MODE: coverage
+  script:
+    - cd /app
+    - vendor/bin/phpunit --coverage-text --colors=never --coverage-clover coverage/coverage.xml --log-junit coverage/logfile.xml
+  coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+  artifacts:
+    paths:
+      - coverage
+    expire_in: 1h
