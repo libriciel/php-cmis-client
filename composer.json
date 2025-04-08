@@ -32,6 +32,11 @@
             "Dkd\\PhpCmis\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Dkd\\PhpCmis\\Test\\": "tests/"
+        }
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "2.x-dev"
