@@ -30,10 +30,11 @@ use Dkd\PhpCmis\Enum\IncludeRelationships;
 use Dkd\PhpCmis\Enum\UnfileObject;
 use Dkd\PhpCmis\Enum\VersioningState;
 use Dkd\PhpCmis\SessionParameter;
+use GuzzleHttp\Psr7\LimitStream;
 use GuzzleHttp\Psr7\Response;
-use GuzzleHttp\Stream\StreamInterface;
 use League\Url\Url;
 use PHPUnit_Framework_MockObject_MockObject;
+use Psr\Http\Message\StreamInterface;
 
 /**
  * Class ObjectServiceTest
@@ -262,14 +263,14 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         $property = new PropertyString('cmis:name', 'name.jpg');
         $properties = new Properties();
         $properties->addProperty($property);
-        $streamWithFileExtension = $this->getMockBuilder('\\GuzzleHttp\\Stream\\StreamInterface')->setMethods(
+        $streamWithFileExtension = $this->getMockBuilder(StreamInterface::class)->setMethods(
             ['getMetadata']
         )->getMockForAbstractClass();
         $streamWithFileExtension->expects($this->any())->method('getMetadata')->with('uri')->willReturn(
             '/foo/bar/baz.jpg'
         );
 
-        $streamWithoutFileExtension = $this->getMockBuilder('\\GuzzleHttp\\Stream\\StreamInterface')->setMethods(
+        $streamWithoutFileExtension = $this->getMockBuilder(StreamInterface::class)->setMethods(
             ['getMetadata']
         )->getMockForAbstractClass();
         $streamWithoutFileExtension->expects($this->any())->method('getMetadata')->with('uri')->willReturn(
@@ -608,11 +609,11 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
             $objectId
         )->willReturn(Url::createFromUrl(self::BROWSER_URL_TEST));
         $objectService->expects($this->atLeastOnce())->method('post')->with(
-              $expectedUrl,
-              [
-                  'cmisaction' => 'delete',
-                  'allVersions' => $allVersions ? 'true' : 'false'
-              ]
+            $expectedUrl,
+            [
+                'cmisaction' => 'delete',
+                'allVersions' => $allVersions ? 'true' : 'false'
+            ]
         )->willReturn($responseMock);
 
         $objectService->deleteObject(
@@ -1787,7 +1788,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         );
 
         if ($offset !== null) {
-            $this->assertInstanceOf('\\GuzzleHttp\\Stream\\LimitStream', $responseContentStream);
+            $this->assertInstanceOf(LimitStream::class, $responseContentStream);
         } else {
             $this->assertSame($contentStream, $responseContentStream);
         }

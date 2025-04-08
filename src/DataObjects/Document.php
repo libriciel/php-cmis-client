@@ -26,7 +26,7 @@ use Dkd\PhpCmis\Exception\CmisRuntimeException;
 use Dkd\PhpCmis\Exception\CmisVersioningException;
 use Dkd\PhpCmis\OperationContextInterface;
 use Dkd\PhpCmis\PropertyIds;
-use GuzzleHttp\Stream\StreamInterface;
+use Psr\Http\Message\StreamInterface;
 
 /**
  * Cmis document implementation
@@ -381,12 +381,12 @@ class Document extends AbstractFileableCmisObject implements DocumentInterface
                 $document = $objectFactory->convertObject($objectData, $context);
                 if (!($document instanceof DocumentInterface)) {
                     throw new CmisVersioningException(
-						sprintf(
-							'Repository yielded non-Document %s as version of Document %s - unsupported repository response',
-							$document->getId(),
-							$this->getId()
-						)
-					);
+                        sprintf(
+                            'Repository yielded non-Document %s as version of Document %s - unsupported repository response',
+                            $document->getId(),
+                            $this->getId()
+                        )
+                    );
                 }
                 $result[] = $document;
             }
