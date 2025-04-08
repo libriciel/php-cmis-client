@@ -34,9 +34,9 @@ use Dkd\PhpCmis\SessionParameter;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Response;
-use GuzzleHttp\Stream\StreamInterface;
 use League\Url\Url;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\StreamInterface;
 use function basename;
 use function is_array;
 use function is_object;
@@ -597,9 +597,9 @@ abstract class AbstractBrowserBindingService implements LinkAccessInterface
             // CMIS expects a timestamp in milliseconds
             $value = $value->getTimestamp() * 1000;
         } elseif (is_bool($value)) {
-			// Booleans must be represented in string form since request will fail if cast to integer
-			$value = $value ? 'true' : 'false';
-		}
+            // Booleans must be represented in string form since request will fail if cast to integer
+            $value = $value ? 'true' : 'false';
+        }
 
         return $value;
     }

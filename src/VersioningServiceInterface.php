@@ -15,7 +15,7 @@ use Dkd\PhpCmis\Data\ExtensionDataInterface;
 use Dkd\PhpCmis\Data\ObjectDataInterface;
 use Dkd\PhpCmis\Data\PropertiesInterface;
 use Dkd\PhpCmis\Enum\IncludeRelationships;
-use GuzzleHttp\Stream\StreamInterface;
+use Psr\Http\Message\StreamInterface;
 
 /**
  * Versioning Service interface.
@@ -51,7 +51,7 @@ interface VersioningServiceInterface
      * @param AclInterface|null $addAces a list of ACEs that must be added to the newly created document object
      * @param AclInterface|null $removeAces a list of ACEs that must be removed from the newly created document object
      * @param ExtensionDataInterface|null $extension
-	 * @return string|null Versioned object ID of original source if succesful, null otherwise
+     * @return string|null Versioned object ID of original source if succesful, null otherwise
      */
     public function checkIn(
         $repositoryId,
@@ -75,7 +75,7 @@ interface VersioningServiceInterface
      * @param ExtensionDataInterface|null $extension
      * @param boolean|null $contentCopied output: indicator if the content of the original
      *      document has been copied to the PWC
-	 * @return string|null Versioned object ID of PWC if succesful, null otherwise
+     * @return string|null Versioned object ID of PWC if succesful, null otherwise
      */
     public function checkOut(
         $repositoryId,

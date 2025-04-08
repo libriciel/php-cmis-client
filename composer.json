@@ -18,7 +18,7 @@
         "dkd/enumeration": "~0.1",
         "dkd/php-populate": "^1",
         "guzzlehttp/guzzle": "^6",
-        "guzzlehttp/streams": "^3",
+        "guzzlehttp/psr7": "^1.9",
         "doctrine/cache": "^1",
         "league/url": "^2|^3"
     },

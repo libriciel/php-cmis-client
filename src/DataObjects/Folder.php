@@ -28,7 +28,7 @@ use Dkd\PhpCmis\Exception\CmisRuntimeException;
 use Dkd\PhpCmis\OperationContextInterface;
 use Dkd\PhpCmis\PropertyIds;
 use Dkd\PhpCmis\TreeInterface;
-use GuzzleHttp\Stream\StreamInterface;
+use Psr\Http\Message\StreamInterface;
 
 /**
  * Cmis folder implementation

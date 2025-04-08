@@ -26,9 +26,8 @@ use Dkd\PhpCmis\Exception\CmisInvalidArgumentException;
 use Dkd\PhpCmis\ObjectServiceInterface;
 use Dkd\PhpCmis\PropertyIds;
 use Dkd\PhpCmis\SessionParameter;
-use Guzzle\Http\Message\Response;
-use GuzzleHttp\Stream\LimitStream;
-use GuzzleHttp\Stream\StreamInterface;
+use GuzzleHttp\Psr7\LimitStream;
+use Psr\Http\Message\StreamInterface;
 
 /**
  * Object Service Browser Binding client.
@@ -479,9 +478,9 @@ class ObjectService extends AbstractBrowserBindingService implements ObjectServi
     ) {
         $url = $this->getObjectUrl($repositoryId, $objectId);
         $content = [
-           Constants::CONTROL_CMISACTION => Constants::CMISACTION_DELETE,
-           Constants::PARAM_ALL_VERSIONS => $allVersions ? 'true' : 'false',
-           ];
+            Constants::CONTROL_CMISACTION => Constants::CMISACTION_DELETE,
+            Constants::PARAM_ALL_VERSIONS => $allVersions ? 'true' : 'false',
+        ];
 
         $this->post($url, $content);
         $this->flushCached();
@@ -573,7 +572,6 @@ class ObjectService extends AbstractBrowserBindingService implements ObjectServi
             $url->getQuery()->modify([Constants::PARAM_STREAM_ID => $streamId]);
         }
 
-        /** @var Response $response */
         $response = $this->getHttpInvoker()->get((string) $url);
 
         $contentStream = $response->getBody();
@@ -1029,7 +1027,7 @@ class ObjectService extends AbstractBrowserBindingService implements ObjectServi
         return $this->objectCache[$identifier[0]][$identifier[1]] ?? null;
     }
 
-	/**
+    /**
      * Gets the cached object with cache key $identifier.
      *
      * @param string $identifier
@@ -1042,26 +1040,26 @@ class ObjectService extends AbstractBrowserBindingService implements ObjectServi
         return $object;
     }
 
-	/**
-	 * Flushes all cached entries. This is implemented as a flush-all with
-	 * no way to flush individual entries due to the way CMIS object data
-	 * gets returned from CMIS. Two widely different object data sets may
-	 * contain a reference to the same item and even with extensive cross
-	 * referencing it would be technically unfeasible to selectively clear
-	 * or reload an object by identifier. Such flushing would be inevitably
-	 * flawed with edge cases of incomplete flushing or become so complex
-	 * that it defeats the purpose of caching in the first place.
-	 *
-	 * Note that cache flushing only happens when modifying the repository
-	 * contents - which should limit the negative impact. The cache is also
-	 * not persistent and will only affect the current request. As such, it
-	 * is implemented to optimise requests where the same object, type,
-	 * policy etc. gets accessed multiple times.
-	 *
-	 * @return void
-	 */
-	protected function flushCached()
-	{
-		$this->objectCache = [];
-	}
+    /**
+     * Flushes all cached entries. This is implemented as a flush-all with
+     * no way to flush individual entries due to the way CMIS object data
+     * gets returned from CMIS. Two widely different object data sets may
+     * contain a reference to the same item and even with extensive cross
+     * referencing it would be technically unfeasible to selectively clear
+     * or reload an object by identifier. Such flushing would be inevitably
+     * flawed with edge cases of incomplete flushing or become so complex
+     * that it defeats the purpose of caching in the first place.
+     *
+     * Note that cache flushing only happens when modifying the repository
+     * contents - which should limit the negative impact. The cache is also
+     * not persistent and will only affect the current request. As such, it
+     * is implemented to optimise requests where the same object, type,
+     * policy etc. gets accessed multiple times.
+     *
+     * @return void
+     */
+    protected function flushCached()
+    {
+        $this->objectCache = [];
+    }
 }

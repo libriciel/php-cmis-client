@@ -15,6 +15,7 @@ use Dkd\PhpCmis\DataObjects\ObjectId;
 use Dkd\PhpCmis\DataObjects\Rendition;
 use Dkd\PhpCmis\SessionInterface;
 use PHPUnit_Framework_MockObject_MockObject;
+use Psr\Http\Message\StreamInterface;
 
 /**
  * Class RenditionTest
@@ -118,7 +119,7 @@ class RenditionTest extends \PHPUnit_Framework_TestCase
         )->setMethods(['getId'])->getMockForAbstractClass();
         $repositoryInfoMock->expects($this->any())->method('getId')->willReturn('repositoryId');
 
-        $streamMock = $this->getMockBuilder('\\GuzzleHttp\\Stream\\StreamInterface')->getMockForAbstractClass();
+        $streamMock = $this->getMockBuilder(StreamInterface::class)->getMockForAbstractClass();
 
         $objectServiceMock = $this->getMockBuilder(
             '\\Dkd\\PhpCmis\\Bindings\\Browser\\ObjectService'
