@@ -40,9 +40,12 @@ class ChoiceTest extends \PHPUnit_Framework_TestCase
 
     public function testSetChoiceThrowsExceptionIfChoiceListContainsInvalidValue()
     {
-        /** @var ChoiceInterface $choice */
         $choice = $this->getMockForAbstractClass(self::CLASS_TO_TEST);
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException', '', 1413440336);
+        $this->setExpectedException(
+            '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
+            'Argument of type "stdClass" given but argument of type "Dkd\PhpCmis\Definitions\ChoiceInterface" was expected.',
+            1413440336
+        );
         $this->choice->setChoices([$choice, new \stdClass()]);
     }
 

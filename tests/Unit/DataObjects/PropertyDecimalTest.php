@@ -44,7 +44,11 @@ class PropertyDecimalTest extends \PHPUnit_Framework_TestCase
 
     public function testSetValuesThrowsExceptionIfInvalidValuesGiven()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException', '', 1413440336);
+        $this->setExpectedException(
+            '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
+            'Argument of type "string" given but argument of type "double" was expected.',
+            1413440336
+        );
         $this->propertyDecimal->setValues(['']);
     }
 
@@ -56,7 +60,11 @@ class PropertyDecimalTest extends \PHPUnit_Framework_TestCase
 
     public function testSetValueThrowsExceptionIfInvalidValueGiven()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException', '', 1413440336);
+        $this->setExpectedException(
+            '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
+            'Argument of type "array" given but argument of type "double" was expected.',
+            1413440336
+        );
         $this->propertyDecimal->setValue(['']);
     }
 }

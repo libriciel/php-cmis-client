@@ -41,7 +41,11 @@ class PropertyBooleanTest extends \PHPUnit_Framework_TestCase
             $expected = $value;
         }
         if (!is_bool($value) && $value !== null) {
-            $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException', '', 1413440336);
+            $this->setExpectedException(
+                '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
+                'Argument of type "' . \gettype($value) . '" given but argument of type "boolean" was expected.',
+                1413440336
+            );
         }
         $values = [true, $value];
         $this->propertyBoolean->setValues($values);
@@ -59,7 +63,11 @@ class PropertyBooleanTest extends \PHPUnit_Framework_TestCase
             $expected = $value;
         }
         if (!is_bool($value) && $value !== null) {
-            $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException', '', 1413440336);
+            $this->setExpectedException(
+                '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
+                'Argument of type "' . \gettype($value) . '" given but argument of type "boolean" was expected.',
+                1413440336
+            );
         }
         $this->propertyBoolean->setValue($value);
         $this->assertAttributeSame([$expected], 'values', $this->propertyBoolean);

@@ -1769,7 +1769,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         $objectService = $this->getMockBuilder(self::CLASS_TO_TEST)->setConstructorArgs(
             [$this->getSessionMock(), $cmisBindingsHelperMock]
         )->setMethods(
-            ['getObjectUrl']
+            ['getObjectUrl', 'read']
         )->getMock();
 
         $objectService->expects($this->any())->method('getObjectUrl')->with(
@@ -1859,7 +1859,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         )->getMock();
 
         /** @var  ObjectData|PHPUnit_Framework_MockObject_MockObject $dummyObjectData */
-        $dummyFailedToDeleteData = $this->getMock(FailedToDeleteData::class);
+        $dummyFailedToDeleteData = $this->createMock(FailedToDeleteData::class);
 
         $jsonConverterMock->expects($this->atLeastOnce())->method(
             'convertFailedToDelete'

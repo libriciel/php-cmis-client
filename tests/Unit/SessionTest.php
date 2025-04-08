@@ -73,7 +73,7 @@ class SessionTest extends \PHPUnit_Framework_TestCase
     public function testObjectFactoryIsSetToObjectFactoryInstanceGivenAsMethodParameter()
     {
         /** @var ObjectFactoryInterface $dummyObjectFactory */
-        $dummyObjectFactory = $this->getMock('\\Dkd\\PhpCmis\\ObjectFactoryInterface');
+        $dummyObjectFactory = $this->createMock('\\Dkd\\PhpCmis\\ObjectFactoryInterface');
         $session = new Session(
             [SessionParameter::REPOSITORY_ID => 'foo'],
             $dummyObjectFactory,
@@ -88,7 +88,7 @@ class SessionTest extends \PHPUnit_Framework_TestCase
 
     public function testObjectFactoryIsSetToObjectFactoryDefinedInParametersArray()
     {
-        $objectFactory = $this->getMock('\\Dkd\\PhpCmis\\ObjectFactory');
+        $objectFactory = $this->createMock('\\Dkd\\PhpCmis\\ObjectFactory');
         $session = new Session(
             [
                 SessionParameter::REPOSITORY_ID => 'foo',
@@ -108,11 +108,13 @@ class SessionTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException(
             '\\RuntimeException',
-            '',
+            null,
             1408354120
         );
+        $this->expectExceptionMessageRegExp('/Unable to create object factory: RuntimeException:(.*)/');
 
-        $object = $this->getMock('\\stdClass');
+
+        $object = $this->createMock('\\stdClass');
         new Session(
             [SessionParameter::OBJECT_FACTORY_CLASS => get_class($object)]
         );
@@ -121,7 +123,7 @@ class SessionTest extends \PHPUnit_Framework_TestCase
     public function testCreatedObjectFactoryInstanceWillBeInitialized()
     {
         // dummy object factory with a spy on initialize
-        $objectFactory = $this->getMock('\\Dkd\\PhpCmis\\ObjectFactory');
+        $objectFactory = $this->createMock('\\Dkd\\PhpCmis\\ObjectFactory');
         $objectFactory->expects($this->once())->method('initialize');
 
         $sessionClassName = '\\Dkd\\PhpCmis\\Session';
@@ -218,11 +220,13 @@ class SessionTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException(
             '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
-            '',
+            null,
             1408354123
         );
 
-        $object = $this->getMock('\\stdClass');
+        $this->expectExceptionMessageRegExp('/Unable to create cache: RuntimeException:(.*)/');
+
+        $object = $this->createMock('\\stdClass');
         new Session(
             [SessionParameter::CACHE_CLASS => get_class($object)]
         );

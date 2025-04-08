@@ -42,7 +42,11 @@ class PropertyIntegerTest extends \PHPUnit_Framework_TestCase
         }
 
         if (!is_integer($value) && $value !== null && !(PHP_INT_SIZE == 4 && is_double($value))) {
-            $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException', '', 1413440336);
+            $this->setExpectedException(
+                '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
+                'Argument of type "' . \gettype($value) . '" given but argument of type "integer" was expected.',
+                1413440336
+            );
         }
 
         $this->propertyInteger->setValues([$value]);
@@ -61,7 +65,11 @@ class PropertyIntegerTest extends \PHPUnit_Framework_TestCase
         }
 
         if (!is_integer($value) && $value !== null && !(PHP_INT_SIZE == 4 && is_double($value))) {
-            $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException', '', 1413440336);
+            $this->setExpectedException(
+                '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
+                'Argument of type "' . \gettype($value) . '" given but argument of type "integer" was expected.',
+                1413440336
+            );
         }
 
         $this->propertyInteger->setValue($value);

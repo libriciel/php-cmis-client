@@ -265,7 +265,7 @@ class CmisBindingsHelperTest extends \PHPUnit_Framework_TestCase
             ['get']
         )->getMockForAbstractClass();
 
-        $httpInvokerFixture = $this->getMock('\\GuzzleHttp\\ClientInterface');
+        $httpInvokerFixture = $this->createMock('\\GuzzleHttp\\ClientInterface');
 
         $sessionMock->expects($this->once())->method('get')->with(SessionParameter::HTTP_INVOKER_OBJECT)->willReturn(
             $httpInvokerFixture
@@ -280,15 +280,19 @@ class CmisBindingsHelperTest extends \PHPUnit_Framework_TestCase
             ['get']
         )->getMockForAbstractClass();
 
-        $httpInvokerFixture = $this->getMock('\\stdClass');
+        $httpInvokerFixture = $this->createMock('\\stdClass');
 
         $sessionMock->expects($this->once())->method('get')->with(SessionParameter::HTTP_INVOKER_OBJECT)->willReturn(
             $httpInvokerFixture
         );
 
+        $message = sprintf(
+            "Invalid HTTP invoker given. The given instance \"%s\" does not implement GuzzleHttp\\ClientInterface!",
+            \get_class($httpInvokerFixture)
+        );
         $this->setExpectedException(
             '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
-            '',
+            $message,
             1415281262
         );
         $this->assertSame($httpInvokerFixture, $this->cmisBindingsHelper->getHttpInvoker($sessionMock));
@@ -396,7 +400,7 @@ class CmisBindingsHelperTest extends \PHPUnit_Framework_TestCase
             ['get']
         )->getMockForAbstractClass();
 
-        $jsonConverterFixture = $this->getMock('\\stdClass');
+        $jsonConverterFixture = $this->createMock('\\stdClass');
 
         $sessionMock->expects($this->once())->method('get')->with(SessionParameter::JSON_CONVERTER)->willReturn(
             $jsonConverterFixture

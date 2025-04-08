@@ -95,7 +95,7 @@ class TypeHelperTraitTest extends \PHPUnit_Framework_TestCase
                 function (TypeHelperTraitTest $parent) {
                     $parent->setExpectedException(
                         '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
-                        '',
+                        'Argument of type "integer" given but argument of type "string" was expected.',
                         1413440336
                     );
                 }
@@ -106,7 +106,7 @@ class TypeHelperTraitTest extends \PHPUnit_Framework_TestCase
                 function (TypeHelperTraitTest $parent) {
                     $parent->setExpectedException(
                         '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
-                        '',
+                        'Argument of type "string" given but argument of type "integer" was expected.',
                         1413440336
                     );
                 }
@@ -117,7 +117,7 @@ class TypeHelperTraitTest extends \PHPUnit_Framework_TestCase
                 function (TypeHelperTraitTest $parent) {
                     $parent->setExpectedException(
                         '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
-                        '',
+                        'Argument of type "integer" given but argument of type "double" was expected.',
                         1413440336
                     );
                 }
@@ -138,7 +138,7 @@ class TypeHelperTraitTest extends \PHPUnit_Framework_TestCase
                 function (TypeHelperTraitTest $parent) {
                     $parent->setExpectedException(
                         '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
-                        '',
+                        'Argument of type "string" given but argument of type "\DateTime" was expected.',
                         1413440336
                     );
                 }

@@ -807,14 +807,14 @@ class JsonConverterTest extends \PHPUnit_Framework_TestCase
 
     public function testConvertDateTimeValueThrowsExceptionIfInvalidStringGiven()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisRuntimeException', '', 1416296900);
+        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisRuntimeException', 'Invalid property value: foo', 1416296900);
         $method = $this->getMethod($this->jsonConverter, 'convertDateTimeValue');
         $method->invoke($this->jsonConverter, 'foo');
     }
 
     public function testConvertDateTimeValueThrowsExceptionIfInvalidValueGiven()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisRuntimeException', '', 1416296901);
+        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisRuntimeException', 'Invalid property value: array', 1416296901);
         $method = $this->getMethod($this->jsonConverter, 'convertDateTimeValue');
         $method->invoke($this->jsonConverter, []);
     }

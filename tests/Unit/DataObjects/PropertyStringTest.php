@@ -43,7 +43,11 @@ class PropertyStringTest extends \PHPUnit_Framework_TestCase
 
         $values = ['foo', $value, null];
         if (!is_string($value) && $value !== null) {
-            $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException', '', 1413440336);
+            $this->setExpectedException(
+                '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
+                'Argument of type "' . \gettype($value) . '" given but argument of type "string" was expected.',
+                1413440336
+            );
         }
         $this->subjectUnderTest->setValues($values);
         $this->assertAttributeSame(['foo', $expected, null], 'values', $this->subjectUnderTest);
@@ -61,7 +65,11 @@ class PropertyStringTest extends \PHPUnit_Framework_TestCase
         }
 
         if (!is_string($value) && $value !== null) {
-            $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException', '', 1413440336);
+            $this->setExpectedException(
+                '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
+                'Argument of type "' . \gettype($value) . '" given but argument of type "string" was expected.',
+                1413440336
+            );
         }
         $this->subjectUnderTest->setValue($value);
         $this->assertAttributeSame([$expected], 'values', $this->subjectUnderTest);

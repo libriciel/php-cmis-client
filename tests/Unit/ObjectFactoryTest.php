@@ -100,9 +100,14 @@ class ObjectFactoryTest extends \PHPUnit_Framework_TestCase
 
     public function testConvertTypeDefinitionThrowsExceptionIfUnknownTypeDefinitionIsGiven()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisRuntimeException', '', 1422028427);
+        $class = $this->getMockForAbstractClass('\\Dkd\\PhpCmis\\Definitions\\TypeDefinitionInterface');
+        $this->setExpectedException(
+            '\\Dkd\\PhpCmis\\Exception\\CmisRuntimeException',
+            'Unknown base type! Received "'. \get_class($class).'"',
+            1422028427
+        );
         $this->getObjectFactory()->convertTypeDefinition(
-            $this->getMockForAbstractClass('\\Dkd\\PhpCmis\\Definitions\\TypeDefinitionInterface')
+            $class
         );
     }
 
@@ -159,7 +164,11 @@ class ObjectFactoryTest extends \PHPUnit_Framework_TestCase
 
     public function testConvertPropertiesThrowsExceptionIfSecondaryTypesPropertyIsSetButNotAnArray()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException', '', 1425473414);
+        $this->setExpectedException(
+            '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
+            'The property "cmis:secondaryObjectTypeIds" must be of type array or undefined but is of type "string"',
+            1425473414
+        );
         $this->getObjectFactory()->convertProperties(
             [
                 PropertyIds::OBJECT_TYPE_ID => 'type-id',
