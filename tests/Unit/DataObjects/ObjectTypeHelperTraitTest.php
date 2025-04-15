@@ -43,9 +43,7 @@ class ObjectTypeHelperTraitTest extends \PHPUnit\Framework\TestCase
         $this->sessionMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\SessionInterface')->setMethods(
             ['getTypeDefinition']
         )->getMockForAbstractClass();
-        $this->objectTypeDefinitionMock = $this->getMockBuilder(
-            '\\Dkd\\PhpCmis\\Data\\ObjectTypeInterface'
-        )->getMockForAbstractClass();
+        $this->objectTypeDefinitionMock = $this->createMock(ObjectTypeInterface::class);
         $this->sessionMock->expects($this->any())->method('getTypeDefinition')->willReturn(
             $this->objectTypeDefinitionMock
         );

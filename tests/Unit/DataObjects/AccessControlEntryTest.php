@@ -38,7 +38,7 @@ class AccessControlEntryTest extends \PHPUnit\Framework\TestCase
 
     public function setUp()
     {
-        $this->dummyPrincipal = $this->getMockBuilder('\\Dkd\\PhpCmis\\PrincipalInterface')->getMockForAbstractClass();
+        $this->dummyPrincipal = $this->createMock(PrincipalInterface::class);
         $this->ace = new AccessControlEntry(
             $this->dummyPrincipal,
             $this->dummyPermissions
@@ -60,7 +60,7 @@ class AccessControlEntryTest extends \PHPUnit\Framework\TestCase
 
     public function testSetPrincipalSetsPrincipal()
     {
-        $principal = $this->getMockBuilder('\\Dkd\\PhpCmis\\PrincipalInterface')->getMockForAbstractClass();
+        $principal = $this->createMock(PrincipalInterface::class);
         $this->ace->setPrincipal($principal);
         $this->assertAttributeSame($principal, 'principal', $this->ace);
     }
