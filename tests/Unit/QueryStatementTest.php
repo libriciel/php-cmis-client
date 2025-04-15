@@ -199,7 +199,6 @@ class QueryStatementTest extends \PHPUnit\Framework\TestCase
         $this->expectException(
             '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException'
         );
-        $this->expectExceptionMessage(null);
         $this->expectExceptionCode($expectedExceptionCode);
         $p1 = $this->getMockBuilder('\\Dkd\\PhpCmis\\SessionInterface')->getMockForAbstractClass();
         list ($p2, $p3, $p4, $p5, $p6) = $arguments;

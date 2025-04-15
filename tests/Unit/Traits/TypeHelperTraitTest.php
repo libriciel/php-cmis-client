@@ -12,6 +12,7 @@ namespace Dkd\PhpCmis\Test\Unit\DataObjects;
 
 use Dkd\PhpCmis\Test\Unit\ReflectionHelperTrait;
 use Dkd\PhpCmis\Traits\TypeHelperTrait;
+use PHPUnit\Framework\Error\Notice;
 
 /**
  * Class TypeHelperTraitTest
@@ -182,7 +183,7 @@ class TypeHelperTraitTest extends \PHPUnit\Framework\TestCase
         }
 
         if ($errorNoticeMessageExpected) {
-            $this->expectException('\\PHPUnit_Framework_Error_Notice');
+            $this->expectException(Notice::class);
         }
         $method = $this->getMethod(self::CLASS_TO_TEST, 'castValueToSimpleType');
         $result = $method->invokeArgs($this->typeHelperTrait, [$expectedType, $value]);

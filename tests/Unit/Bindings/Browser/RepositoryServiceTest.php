@@ -130,7 +130,7 @@ class RepositoryServiceTest extends AbstractBrowserBindingServiceTestCase
         )->getMock();
 
         /** @var AbstractTypeDefinition|\PHPUnit\Framework\MockObject\MockObject $dummyTypeDefinition */
-        $dummyTypeDefinition = $this->createMock('\\Dkd\\PhpCmis\\ObjectData\\AbstractTypeDefinition');
+        $dummyTypeDefinition = $this->createMock(AbstractTypeDefinition::class);
         $jsonConverterMock->expects($this->atLeastOnce())->method('convertTypeDefinition')->with(
             $responseData
         )->willReturn($dummyTypeDefinition);
@@ -265,7 +265,7 @@ class RepositoryServiceTest extends AbstractBrowserBindingServiceTestCase
         )->getMock();
 
         /** @var AbstractTypeDefinition|\PHPUnit\Framework\MockObject\MockObject $dummyTypeDefinition */
-        $dummyTypeDefinition = $this->createMock('\\Dkd\\PhpCmis\\ObjectData\\AbstractTypeDefinition');
+        $dummyTypeDefinition = $this->createMock(AbstractTypeDefinition::class);
         $jsonConverterMock->expects($this->atLeastOnce())->method('convertTypeDefinition')->with(
             $responseData
         )->willReturn($dummyTypeDefinition);

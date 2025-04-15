@@ -12,6 +12,7 @@ namespace Dkd\PhpCmis\Test\Unit\DataObjects;
 
 use Dkd\PhpCmis\Data\ObjectDataInterface;
 use Dkd\PhpCmis\DataObjects\ObjectList;
+use PHPUnit\Framework\Error\Notice;
 
 /**
  * Class ObjectListTest
@@ -64,7 +65,7 @@ class ObjectListTest extends \PHPUnit\Framework\TestCase
 
     public function testSetHasMoreItemsCastsValueToBoolean()
     {
-        $this->expectException('\\PHPUnit_Framework_Error_Notice');
+        $this->expectException(Notice::class);
         $this->objectList->setHasMoreItems(1);
         $this->assertAttributeSame(true, 'hasMoreItems', $this->objectList);
     }

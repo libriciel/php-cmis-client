@@ -109,7 +109,6 @@ class SessionTest extends \PHPUnit\Framework\TestCase
         $this->expectException(
             '\\RuntimeException'
         );
-        $this->expectExceptionMessage(null);
         $this->expectExceptionCode(1408354120);
         $this->expectExceptionMessageRegExp('/Unable to create object factory: RuntimeException:(.*)/');
 
@@ -221,7 +220,6 @@ class SessionTest extends \PHPUnit\Framework\TestCase
         $this->expectException(
             '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException'
         );
-        $this->expectExceptionMessage(null);
         $this->expectExceptionCode(1408354123);
 
         $this->expectExceptionMessageRegExp('/Unable to create cache: RuntimeException:(.*)/');

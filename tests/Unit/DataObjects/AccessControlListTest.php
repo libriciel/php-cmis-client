@@ -12,6 +12,7 @@ namespace Dkd\PhpCmis\Test\Unit\DataObjects;
 
 use Dkd\PhpCmis\DataObjects\AccessControlEntry;
 use Dkd\PhpCmis\DataObjects\AccessControlList;
+use PHPUnit\Framework\Error\Notice;
 
 /**
  * Class AccessControlListTest
@@ -77,7 +78,7 @@ class AccessControlListTest extends \PHPUnit\Framework\TestCase
 
     public function testSetIsExactCastsValueToBoolean()
     {
-        $this->expectException('\\PHPUnit_Framework_Error_Notice');
+        $this->expectException(Notice::class);
         $this->acl->setIsExact(1);
         $this->assertAttributeSame(true, 'isExact', $this->acl);
     }

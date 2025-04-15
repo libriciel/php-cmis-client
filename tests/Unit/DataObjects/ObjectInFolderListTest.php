@@ -12,6 +12,7 @@ namespace Dkd\PhpCmis\Test\Unit\DataObjects;
 
 use Dkd\PhpCmis\DataObjects\ObjectInFolderData;
 use Dkd\PhpCmis\DataObjects\ObjectInFolderList;
+use PHPUnit\Framework\Error\Notice;
 
 /**
  * Class ObjectInFolderListTest
@@ -70,7 +71,7 @@ class ObjectInFolderListTest extends \PHPUnit\Framework\TestCase
 
     public function testSetHasMoreItemsCastsValueToBoolean()
     {
-        $this->expectException('\\PHPUnit_Framework_Error_Notice');
+        $this->expectException(Notice::class);
         $this->objectInFolderList->setHasMoreItems(1);
         $this->assertAttributeSame(true, 'hasMoreItems', $this->objectInFolderList);
     }

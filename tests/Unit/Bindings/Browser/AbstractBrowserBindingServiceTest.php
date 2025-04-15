@@ -804,7 +804,6 @@ class AbstractBrowserBindingServiceTest extends AbstractBrowserBindingServiceTes
         $binding->expects($this->any())->method('read')->willReturn($responseMock);
 
         $this->expectException(CmisConnectionException::class);
-        $this->expectExceptionMessage(null);
         $this->expectExceptionCode(1416343166);
         $this->getMethod(self::CLASS_TO_TEST, 'getRepositoriesInternal')->invoke($binding);
     }
@@ -834,7 +833,6 @@ class AbstractBrowserBindingServiceTest extends AbstractBrowserBindingServiceTes
         $binding->expects($this->any())->method('read')->willReturn($responseMock);
 
         $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisConnectionException');
-        $this->expectExceptionMessage(null);
         $this->expectExceptionCode(1415187764);
         $this->getMethod(self::CLASS_TO_TEST, 'getRepositoriesInternal')->invoke($binding);
     }
@@ -881,7 +879,6 @@ class AbstractBrowserBindingServiceTest extends AbstractBrowserBindingServiceTes
         $binding->expects($this->any())->method('read')->willReturn($responseMock);
 
         $this->expectException(CmisConnectionException::class);
-        $this->expectExceptionMessage(null);
         $this->expectExceptionCode(1415187765);
         $this->getMethod(self::CLASS_TO_TEST, 'getRepositoriesInternal')->invoke($binding);
     }

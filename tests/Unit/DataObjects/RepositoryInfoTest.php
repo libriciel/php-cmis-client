@@ -170,13 +170,14 @@ class RepositoryInfoTest extends \PHPUnit\Framework\TestCase
                 $this->expectException(
                     '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException'
                 );
-                $this->expectExceptionMessage(null);
                 $this->expectExceptionCode(1413440336);
                 $this->repositoryInfo->$setterName($invalidValue);
             } else {
                 @$this->repositoryInfo->$setterName($invalidValue);
                 $this->assertAttributeInternalType($validType, $propertyName, $this->repositoryInfo);
             }
+        } else {
+            $this->markTestIncomplete('This test does not have any assertions yet.');
         }
     }
 

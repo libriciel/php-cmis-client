@@ -47,6 +47,8 @@ class CmisExtensionElementTest extends \PHPUnit\Framework\TestCase
         if (!empty($value)) {
             $cmisExtensionElement = new CmisExtensionElement('namespace', $value, [], 'value');
             $this->assertAttributeSame($expected, 'name', $cmisExtensionElement);
+        } else {
+            $this->markTestIncomplete('This test does not have any assertions yet.');
         }
     }
 
@@ -79,6 +81,8 @@ class CmisExtensionElementTest extends \PHPUnit\Framework\TestCase
             $cmisExtensionElement = new CmisExtensionElement('namespace', 'name', [], $value);
             $this->assertAttributeSame($expected, 'value', $cmisExtensionElement);
             $this->assertAttributeSame([], 'children', $cmisExtensionElement);
+        } else {
+            $this->markTestIncomplete('This test does not have any assertions yet.');
         }
     }
 
