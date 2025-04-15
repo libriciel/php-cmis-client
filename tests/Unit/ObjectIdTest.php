@@ -15,7 +15,7 @@ use Dkd\PhpCmis\DataObjects\ObjectId;
 /**
  * Class ObjectIdTest
  */
-class ObjectIdTest extends \PHPUnit_Framework_TestCase
+class ObjectIdTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @dataProvider invalidIdValuesDataProvider
@@ -23,7 +23,8 @@ class ObjectIdTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorThrowsExceptionIfNoStringAsIdGiven($idValue)
     {
-        $this->setExpectedException('\\InvalidArgumentException', 'Id must not be empty!');
+        $this->expectException('\\InvalidArgumentException');
+        $this->expectExceptionMessage('Id must not be empty!');
         new ObjectId($idValue);
     }
 

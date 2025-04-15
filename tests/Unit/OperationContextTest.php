@@ -17,7 +17,7 @@ use Dkd\PhpCmis\OperationContext;
 /**
  * Class OperationContextTest
  */
-class OperationContextTest extends \PHPUnit_Framework_TestCase
+class OperationContextTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var OperationContext
@@ -31,8 +31,7 @@ class OperationContextTest extends \PHPUnit_Framework_TestCase
 
     public function testConstructorCallsSetRenditionFilterToInitalizeIt()
     {
-        $operationContextMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\OperationContext')->disableOriginalConstructor(
-        )->getMock();
+        $operationContextMock = $this->createMock('\\Dkd\\PhpCmis\\OperationContext');
         $operationContextMock->expects($this->once())->method('setRenditionFilter')->with([]);
 
         // now call the constructor
@@ -98,7 +97,8 @@ class OperationContextTest extends \PHPUnit_Framework_TestCase
 
     public function testSetFilterThrowsExceptionIfFilterContainsComma()
     {
-        $this->setExpectedException('\\InvalidArgumentException', 'Filter must not contain a comma!');
+        $this->expectException('\\InvalidArgumentException');
+        $this->expectExceptionMessage('Filter must not contain a comma!');
         $this->operationContext->setFilter(['foo', 'bar,baz']);
     }
 
@@ -112,7 +112,8 @@ class OperationContextTest extends \PHPUnit_Framework_TestCase
 
     public function testSetRenditionFilterThrowsExceptionIfFilterContainsComma()
     {
-        $this->setExpectedException('\\InvalidArgumentException', 'Rendition must not contain a comma!');
+        $this->expectException('\\InvalidArgumentException');
+        $this->expectExceptionMessage('Rendition must not contain a comma!');
         $this->operationContext->setRenditionFilter(['foo', 'bar,baz']);
     }
 
@@ -146,7 +147,7 @@ class OperationContextTest extends \PHPUnit_Framework_TestCase
 
     public function testSetMaxItemsPerPageThrowsExceptionIfInvalidValueIsGiven()
     {
-        $this->setExpectedException('\\InvalidArgumentException');
+        $this->expectException('\\InvalidArgumentException');
         $this->operationContext->setMaxItemsPerPage(0);
     }
 

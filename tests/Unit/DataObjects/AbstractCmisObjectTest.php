@@ -23,12 +23,12 @@ use PHPUnit_Framework_TestCase;
 /**
  * Unit Tests for AbstractExtensionData
  */
-class AbstractCmisObjectTest extends PHPUnit_Framework_TestCase
+class AbstractCmisObjectTest extends \PHPUnit\Framework\TestCase
 {
     use ReflectionHelperTrait;
 
     /**
-     * @var PHPUnit_Framework_MockObject_MockObject|AbstractCmisObject
+     * @var \PHPUnit\Framework\MockObject\MockObject|AbstractCmisObject
      */
     protected $abstractCmisObject;
 

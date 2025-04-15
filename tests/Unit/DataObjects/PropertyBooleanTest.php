@@ -16,7 +16,7 @@ use Dkd\PhpCmis\Test\Unit\DataProviderCollectionTrait;
 /**
  * Class PropertyBooleanTest
  */
-class PropertyBooleanTest extends \PHPUnit_Framework_TestCase
+class PropertyBooleanTest extends \PHPUnit\Framework\TestCase
 {
     use DataProviderCollectionTrait;
 
@@ -41,11 +41,11 @@ class PropertyBooleanTest extends \PHPUnit_Framework_TestCase
             $expected = $value;
         }
         if (!is_bool($value) && $value !== null) {
-            $this->setExpectedException(
-                '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
-                'Argument of type "' . \gettype($value) . '" given but argument of type "boolean" was expected.',
-                1413440336
+            $this->expectException(
+                '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException'
             );
+            $this->expectExceptionMessage('Argument of type "' . \gettype($value) . '" given but argument of type "boolean" was expected.');
+            $this->expectExceptionCode(1413440336);
         }
         $values = [true, $value];
         $this->propertyBoolean->setValues($values);
@@ -63,11 +63,11 @@ class PropertyBooleanTest extends \PHPUnit_Framework_TestCase
             $expected = $value;
         }
         if (!is_bool($value) && $value !== null) {
-            $this->setExpectedException(
-                '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
-                'Argument of type "' . \gettype($value) . '" given but argument of type "boolean" was expected.',
-                1413440336
+            $this->expectException(
+                '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException'
             );
+            $this->expectExceptionMessage('Argument of type "' . \gettype($value) . '" given but argument of type "boolean" was expected.');
+            $this->expectExceptionCode(1413440336);
         }
         $this->propertyBoolean->setValue($value);
         $this->assertAttributeSame([$expected], 'values', $this->propertyBoolean);

@@ -17,12 +17,12 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class SecondaryTypeTest
  */
-class SecondaryTypeTest extends \PHPUnit_Framework_TestCase
+class SecondaryTypeTest extends \PHPUnit\Framework\TestCase
 {
     public function testConstructorSetsSession()
     {
         /**
-         * @var \Dkd\PhpCmis\SessionInterface|PHPUnit_Framework_MockObject_MockObject $sessionMock
+         * @var \Dkd\PhpCmis\SessionInterface|\PHPUnit\Framework\MockObject\MockObject $sessionMock
          */
         $sessionMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\SessionInterface')->getMockForAbstractClass();
 
@@ -37,14 +37,14 @@ class SecondaryTypeTest extends \PHPUnit_Framework_TestCase
     public function testConstructorCallsPopulateMethod()
     {
         /**
-         * @var \Dkd\PhpCmis\SessionInterface|PHPUnit_Framework_MockObject_MockObject $sessionMock
+         * @var \Dkd\PhpCmis\SessionInterface|\PHPUnit\Framework\MockObject\MockObject $sessionMock
          */
         $sessionMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\SessionInterface')->getMockForAbstractClass();
 
         $secondaryTypeDefinition = new SecondaryTypeDefinition('typeId');
 
         /**
-         * @var SecondaryType|PHPUnit_Framework_MockObject_MockObject $secondaryType
+         * @var SecondaryType|\PHPUnit\Framework\MockObject\MockObject $secondaryType
          */
         $secondaryType = $this->getMockBuilder('\\Dkd\\PhpCmis\\DataObjects\\SecondaryType')->setMethods(
             ['populate']

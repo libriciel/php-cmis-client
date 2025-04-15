@@ -16,7 +16,7 @@ use Dkd\PhpCmis\Test\Unit\DataProviderCollectionTrait;
 /**
  * Class PropertyStringDefinitionTest
  */
-class PropertyStringDefinitionTest extends \PHPUnit_Framework_TestCase
+class PropertyStringDefinitionTest extends \PHPUnit\Framework\TestCase
 {
     use DataProviderCollectionTrait;
 

@@ -16,7 +16,7 @@ use Dkd\PhpCmis\Enum\PropertyType;
 /**
  * Class CreatablePropertyTypesTest
  */
-class CreatablePropertyTypesTest extends \PHPUnit_Framework_TestCase
+class CreatablePropertyTypesTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var CreatablePropertyTypes
@@ -45,7 +45,8 @@ class CreatablePropertyTypesTest extends \PHPUnit_Framework_TestCase
         $propertyTypes,
         $expectedExceptionText
     ) {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException', $expectedExceptionText);
+        $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
+        $this->expectExceptionMessage($expectedExceptionText);
         $this->creatablePropertyTypes->setCanCreate([$propertyTypes]);
     }
 

@@ -17,12 +17,12 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class FolderTypeTest
  */
-class FolderTypeTest extends \PHPUnit_Framework_TestCase
+class FolderTypeTest extends \PHPUnit\Framework\TestCase
 {
     public function testConstructorSetsSession()
     {
         /**
-         * @var \Dkd\PhpCmis\SessionInterface|PHPUnit_Framework_MockObject_MockObject $sessionMock
+         * @var \Dkd\PhpCmis\SessionInterface|\PHPUnit\Framework\MockObject\MockObject $sessionMock
          */
         $sessionMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\SessionInterface')->getMockForAbstractClass();
 
@@ -37,14 +37,14 @@ class FolderTypeTest extends \PHPUnit_Framework_TestCase
     public function testConstructorCallsPopulateMethod()
     {
         /**
-         * @var \Dkd\PhpCmis\SessionInterface|PHPUnit_Framework_MockObject_MockObject $sessionMock
+         * @var \Dkd\PhpCmis\SessionInterface|\PHPUnit\Framework\MockObject\MockObject $sessionMock
          */
         $sessionMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\SessionInterface')->getMockForAbstractClass();
 
         $folderTypeDefinition = new FolderTypeDefinition('typeId');
 
         /**
-         * @var FolderType|PHPUnit_Framework_MockObject_MockObject $folderType
+         * @var FolderType|\PHPUnit\Framework\MockObject\MockObject $folderType
          */
         $folderType = $this->getMockBuilder('\\Dkd\\PhpCmis\\DataObjects\\FolderType')->setMethods(
             ['populate']

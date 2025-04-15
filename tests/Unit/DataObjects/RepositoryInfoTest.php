@@ -17,7 +17,7 @@ use Dkd\PhpCmis\Enum\CmisVersion;
 /**
  * Class RepositoryInfoTest
  */
-class RepositoryInfoTest extends \PHPUnit_Framework_TestCase
+class RepositoryInfoTest extends \PHPUnit\Framework\TestCase
 {
     const DO_NOT_TEST_INVALID_TYPE_VALUE = 'doNotTestInvalidType';
 
@@ -167,11 +167,11 @@ class RepositoryInfoTest extends \PHPUnit_Framework_TestCase
             $validType = gettype($validValue);
             if ($validType === 'object' || $validType === 'array') {
                 //FIXME : get message
-                $this->setExpectedException(
-                    '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
-                    null,
-                    1413440336
+                $this->expectException(
+                    '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException'
                 );
+                $this->expectExceptionMessage(null);
+                $this->expectExceptionCode(1413440336);
                 $this->repositoryInfo->$setterName($invalidValue);
             } else {
                 @$this->repositoryInfo->$setterName($invalidValue);

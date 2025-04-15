@@ -29,7 +29,7 @@ class RepositoryServiceTest extends AbstractBrowserBindingServiceTestCase
 
     public function testGetRepositoryInfoReturnsRepositoryInfoObjectForGivenRepositoryId()
     {
-        /** @var RepositoryService|PHPUnit_Framework_MockObject_MockObject $repositoryService */
+        /** @var RepositoryService|\PHPUnit\Framework\MockObject\MockObject $repositoryService */
         $repositoryService = $this->getMockBuilder(
             '\\Dkd\\PhpCmis\\Bindings\\Browser\\RepositoryService'
         )->setMethods(['getRepositoriesInternal'])->setConstructorArgs([$this->getSessionMock()])->getMock();
@@ -51,7 +51,7 @@ class RepositoryServiceTest extends AbstractBrowserBindingServiceTestCase
 
     public function testGetRepositoryInfoThrowsExceptionIfNoRepositoryInfoCouldBeFetched()
     {
-        /** @var RepositoryService|PHPUnit_Framework_MockObject_MockObject $repositoryService */
+        /** @var RepositoryService|\PHPUnit\Framework\MockObject\MockObject $repositoryService */
         $repositoryService = $this->getMockBuilder(
             '\\Dkd\\PhpCmis\\Bindings\\Browser\\RepositoryService'
         )->setMethods(['getRepositoriesInternal'])->setConstructorArgs([$this->getSessionMock()])->getMock();
@@ -63,13 +63,13 @@ class RepositoryServiceTest extends AbstractBrowserBindingServiceTestCase
             [$repositoryInfo1]
         );
 
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisObjectNotFoundException');
+        $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisObjectNotFoundException');
         $repositoryService->getRepositoryInfo('invalid-id');
     }
 
     public function testGetRepositoryInfosReturnsArrayWithRepositoryInternals()
     {
-        /** @var RepositoryService|PHPUnit_Framework_MockObject_MockObject $repositoryService */
+        /** @var RepositoryService|\PHPUnit\Framework\MockObject\MockObject $repositoryService */
         $repositoryService = $this->getMockBuilder(
             '\\Dkd\\PhpCmis\\Bindings\\Browser\\RepositoryService'
         )->setMethods(['getRepositoriesInternal'])->setConstructorArgs([$this->getSessionMock()])->getMock();
@@ -89,7 +89,7 @@ class RepositoryServiceTest extends AbstractBrowserBindingServiceTestCase
 
     public function testGetTypeDefinitionReturnsTypeDefinitionObjectForGivenTypeId()
     {
-        /** @var RepositoryService|PHPUnit_Framework_MockObject_MockObject $repositoryService */
+        /** @var RepositoryService|\PHPUnit\Framework\MockObject\MockObject $repositoryService */
         $repositoryService = $this->getMockBuilder(
             '\\Dkd\\PhpCmis\\Bindings\\Browser\\RepositoryService'
         )->setMethods(['getTypeDefinitionInternal'])->setConstructorArgs(
@@ -129,8 +129,8 @@ class RepositoryServiceTest extends AbstractBrowserBindingServiceTestCase
             ['convertFromTypeDefinition','convertTypeDefinition']
         )->getMock();
 
-        /** @var  AbstractTypeDefinition|PHPUnit_Framework_MockObject_MockObject $dummyTypeDefinition */
-        $dummyTypeDefinition = $this->getMockBuilder('\\Dkd\\PhpCmis\\ObjectData\\AbstractTypeDefinition')->getMock();
+        /** @var AbstractTypeDefinition|\PHPUnit\Framework\MockObject\MockObject $dummyTypeDefinition */
+        $dummyTypeDefinition = $this->createMock('\\Dkd\\PhpCmis\\ObjectData\\AbstractTypeDefinition');
         $jsonConverterMock->expects($this->atLeastOnce())->method('convertTypeDefinition')->with(
             $responseData
         )->willReturn($dummyTypeDefinition);
@@ -145,7 +145,7 @@ class RepositoryServiceTest extends AbstractBrowserBindingServiceTestCase
             'getJsonConverter'
         )->willReturn($jsonConverterMock);
 
-        /** @var RepositoryService|PHPUnit_Framework_MockObject_MockObject $repositoryService */
+        /** @var RepositoryService|\PHPUnit\Framework\MockObject\MockObject $repositoryService */
         $repositoryService = $this->getMockBuilder(self::CLASS_TO_TEST)->setConstructorArgs(
             [$this->getSessionMock(), $cmisBindingsHelperMock]
         )->setMethods(
@@ -199,11 +199,11 @@ class RepositoryServiceTest extends AbstractBrowserBindingServiceTestCase
         $repositoryId,
         $typeId
     ) {
-        $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor()->getMock();
+        $responseMock = $this->createMock(Response::class);
 
-        $cmisBindingsHelperMock = $this->getMockBuilder(CmisBindingsHelper::class)->getMock();
+        $cmisBindingsHelperMock = $this->createMock(CmisBindingsHelper::class);
 
-        /** @var RepositoryService|PHPUnit_Framework_MockObject_MockObject $repositoryService */
+        /** @var RepositoryService|\PHPUnit\Framework\MockObject\MockObject $repositoryService */
         $repositoryService = $this->getMockBuilder(self::CLASS_TO_TEST)->setConstructorArgs(
             [$this->getSessionMock(), $cmisBindingsHelperMock]
         )->setMethods(
@@ -264,8 +264,8 @@ class RepositoryServiceTest extends AbstractBrowserBindingServiceTestCase
             ['convertFromTypeDefinition','convertTypeDefinition']
         )->getMock();
 
-        /** @var  AbstractTypeDefinition|PHPUnit_Framework_MockObject_MockObject $dummyTypeDefinition */
-        $dummyTypeDefinition = $this->getMockBuilder('\\Dkd\\PhpCmis\\ObjectData\\AbstractTypeDefinition')->getMock();
+        /** @var AbstractTypeDefinition|\PHPUnit\Framework\MockObject\MockObject $dummyTypeDefinition */
+        $dummyTypeDefinition = $this->createMock('\\Dkd\\PhpCmis\\ObjectData\\AbstractTypeDefinition');
         $jsonConverterMock->expects($this->atLeastOnce())->method('convertTypeDefinition')->with(
             $responseData
         )->willReturn($dummyTypeDefinition);
@@ -280,7 +280,7 @@ class RepositoryServiceTest extends AbstractBrowserBindingServiceTestCase
             'getJsonConverter'
         )->willReturn($jsonConverterMock);
 
-        /** @var RepositoryService|PHPUnit_Framework_MockObject_MockObject $repositoryService */
+        /** @var RepositoryService|\PHPUnit\Framework\MockObject\MockObject $repositoryService */
         $repositoryService = $this->getMockBuilder(self::CLASS_TO_TEST)->setConstructorArgs(
             [$this->getSessionMock(), $cmisBindingsHelperMock]
         )->setMethods(

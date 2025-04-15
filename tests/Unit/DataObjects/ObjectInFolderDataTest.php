@@ -15,7 +15,7 @@ use Dkd\PhpCmis\DataObjects\ObjectInFolderData;
 /**
  * Class ObjectInFolderDataTest
  */
-class ObjectInFolderDataTest extends \PHPUnit_Framework_TestCase
+class ObjectInFolderDataTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var ObjectInFolderData

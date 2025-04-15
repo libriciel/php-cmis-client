@@ -17,12 +17,12 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class AbstractPropertyDataTest
  */
-class AbstractPropertyDataTest extends \PHPUnit_Framework_TestCase
+class AbstractPropertyDataTest extends \PHPUnit\Framework\TestCase
 {
     use DataProviderCollectionTrait;
 
     /**
-     * @var PHPUnit_Framework_MockObject_MockObject|AbstractPropertyData
+     * @var \PHPUnit\Framework\MockObject\MockObject|AbstractPropertyData
      */
     protected $propertyDataMock;
 

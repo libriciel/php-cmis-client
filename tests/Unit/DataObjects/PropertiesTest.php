@@ -16,7 +16,7 @@ use Dkd\PhpCmis\DataObjects\PropertyString;
 /**
  * Class PropertiesTest
  */
-class PropertiesTest extends \PHPUnit_Framework_TestCase
+class PropertiesTest extends \PHPUnit\Framework\TestCase
 {
     public function testAddPropertyAddsProperty()
     {

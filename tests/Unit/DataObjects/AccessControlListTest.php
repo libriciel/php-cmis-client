@@ -16,7 +16,7 @@ use Dkd\PhpCmis\DataObjects\AccessControlList;
 /**
  * Class AccessControlListTest
  */
-class AccessControlListTest extends \PHPUnit_Framework_TestCase
+class AccessControlListTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var AccessControlList
@@ -46,7 +46,7 @@ class AccessControlListTest extends \PHPUnit_Framework_TestCase
 
     public function testSetAcesThrowsExceptionIfAGivenAceItemIsNotOfTypeAceInterface()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
+        $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
         $this->acl->setAces([new \stdClass()]);
     }
 
@@ -77,7 +77,7 @@ class AccessControlListTest extends \PHPUnit_Framework_TestCase
 
     public function testSetIsExactCastsValueToBoolean()
     {
-        $this->setExpectedException('\\PHPUnit_Framework_Error_Notice');
+        $this->expectException('\\PHPUnit_Framework_Error_Notice');
         $this->acl->setIsExact(1);
         $this->assertAttributeSame(true, 'isExact', $this->acl);
     }

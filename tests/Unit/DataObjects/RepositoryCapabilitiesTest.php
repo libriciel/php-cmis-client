@@ -25,7 +25,7 @@ use Dkd\PhpCmis\Test\Unit\DataProviderCollectionTrait;
 /**
  * Class RepositoryCapabilitiesTest
  */
-class RepositoryCapabilitiesTest extends \PHPUnit_Framework_TestCase
+class RepositoryCapabilitiesTest extends \PHPUnit\Framework\TestCase
 {
     use DataProviderCollectionTrait;
 

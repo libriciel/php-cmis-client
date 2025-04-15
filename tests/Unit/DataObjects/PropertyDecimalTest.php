@@ -16,7 +16,7 @@ use Dkd\PhpCmis\Test\Unit\DataProviderCollectionTrait;
 /**
  * Class PropertyDecimalTest
  */
-class PropertyDecimalTest extends \PHPUnit_Framework_TestCase
+class PropertyDecimalTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var PropertyDecimal
@@ -44,11 +44,11 @@ class PropertyDecimalTest extends \PHPUnit_Framework_TestCase
 
     public function testSetValuesThrowsExceptionIfInvalidValuesGiven()
     {
-        $this->setExpectedException(
-            '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
-            'Argument of type "string" given but argument of type "double" was expected.',
-            1413440336
+        $this->expectException(
+            '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException'
         );
+        $this->expectExceptionMessage('Argument of type "string" given but argument of type "double" was expected.');
+        $this->expectExceptionCode(1413440336);
         $this->propertyDecimal->setValues(['']);
     }
 
@@ -60,11 +60,11 @@ class PropertyDecimalTest extends \PHPUnit_Framework_TestCase
 
     public function testSetValueThrowsExceptionIfInvalidValueGiven()
     {
-        $this->setExpectedException(
-            '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
-            'Argument of type "array" given but argument of type "double" was expected.',
-            1413440336
+        $this->expectException(
+            '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException'
         );
+        $this->expectExceptionMessage('Argument of type "array" given but argument of type "double" was expected.');
+        $this->expectExceptionCode(1413440336);
         $this->propertyDecimal->setValue(['']);
     }
 }

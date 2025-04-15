@@ -16,7 +16,7 @@ use Dkd\PhpCmis\Enum\DateTimeResolution;
 /**
  * Class PropertyDateTimeDefinitionTest
  */
-class PropertyDateTimeDefinitionTest extends \PHPUnit_Framework_TestCase
+class PropertyDateTimeDefinitionTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var PropertyDateTimeDefinition

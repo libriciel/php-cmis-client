@@ -16,14 +16,14 @@ use Dkd\PhpCmis\Traits\TypeHelperTrait;
 /**
  * Class TypeHelperTraitTest
  */
-class TypeHelperTraitTest extends \PHPUnit_Framework_TestCase
+class TypeHelperTraitTest extends \PHPUnit\Framework\TestCase
 {
     use ReflectionHelperTrait;
 
     const CLASS_TO_TEST = 'DkdPhpCmisTypeHelperMockTrait';
 
     /**
-     * @var TypeHelperTrait|\PHPUnit_Framework_MockObject_MockObject
+     * @var TypeHelperTrait|\PHPUnit\Framework\MockObject\MockObject
      */
     protected $typeHelperTrait;
 
@@ -93,33 +93,33 @@ class TypeHelperTraitTest extends \PHPUnit_Framework_TestCase
                 'string',
                 1,
                 function (TypeHelperTraitTest $parent) {
-                    $parent->setExpectedException(
-                        '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
-                        'Argument of type "integer" given but argument of type "string" was expected.',
-                        1413440336
+                    $parent->expectException(
+                        '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException'
                     );
+                    $parent->expectExceptionMessage('Argument of type "integer" given but argument of type "string" was expected.');
+                    $parent->expectExceptionCode(1413440336);
                 }
             ],
             [
                 'integer',
                 '1',
                 function (TypeHelperTraitTest $parent) {
-                    $parent->setExpectedException(
-                        '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
-                        'Argument of type "string" given but argument of type "integer" was expected.',
-                        1413440336
+                    $parent->expectException(
+                        '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException'
                     );
+                    $parent->expectExceptionMessage('Argument of type "string" given but argument of type "integer" was expected.');
+                    $parent->expectExceptionCode(1413440336);
                 }
             ],
             [
                 'double',
                 1,
                 function (TypeHelperTraitTest $parent) {
-                    $parent->setExpectedException(
-                        '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
-                        'Argument of type "integer" given but argument of type "double" was expected.',
-                        1413440336
+                    $parent->expectException(
+                        '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException'
                     );
+                    $parent->expectExceptionMessage('Argument of type "integer" given but argument of type "double" was expected.');
+                    $parent->expectExceptionCode(1413440336);
                 }
             ],
             [
@@ -136,11 +136,11 @@ class TypeHelperTraitTest extends \PHPUnit_Framework_TestCase
                 '\\DateTime',
                 'now',
                 function (TypeHelperTraitTest $parent) {
-                    $parent->setExpectedException(
-                        '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
-                        'Argument of type "string" given but argument of type "\DateTime" was expected.',
-                        1413440336
+                    $parent->expectException(
+                        '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException'
                     );
+                    $parent->expectExceptionMessage('Argument of type "string" given but argument of type "\DateTime" was expected.');
+                    $parent->expectExceptionCode(1413440336);
                 }
             ]
         ];
@@ -182,7 +182,7 @@ class TypeHelperTraitTest extends \PHPUnit_Framework_TestCase
         }
 
         if ($errorNoticeMessageExpected) {
-            $this->setExpectedException('\\PHPUnit_Framework_Error_Notice');
+            $this->expectException('\\PHPUnit_Framework_Error_Notice');
         }
         $method = $this->getMethod(self::CLASS_TO_TEST, 'castValueToSimpleType');
         $result = $method->invokeArgs($this->typeHelperTrait, [$expectedType, $value]);

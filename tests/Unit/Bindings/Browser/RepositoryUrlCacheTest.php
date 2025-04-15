@@ -17,7 +17,7 @@ use League\Url\Url;
 /**
  * Class RepositoryUrlCacheTest
  */
-class RepositoryUrlCacheTest extends \PHPUnit_Framework_TestCase
+class RepositoryUrlCacheTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var RepositoryUrlCache
@@ -53,7 +53,7 @@ class RepositoryUrlCacheTest extends \PHPUnit_Framework_TestCase
      */
     public function testAddRepositoryThrowsExceptionIfEmptyParameterGiven($repositoryId, $repositoryUrl, $rootUrl)
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
+        $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
         $this->repositoryUrlCache->addRepository($repositoryId, $repositoryUrl, $rootUrl);
     }
 

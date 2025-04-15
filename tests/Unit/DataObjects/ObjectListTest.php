@@ -16,7 +16,7 @@ use Dkd\PhpCmis\DataObjects\ObjectList;
 /**
  * Class ObjectListTest
  */
-class ObjectListTest extends \PHPUnit_Framework_TestCase
+class ObjectListTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var ObjectList
@@ -37,7 +37,7 @@ class ObjectListTest extends \PHPUnit_Framework_TestCase
 
     public function testSetObjectsThrowsExceptionIfAGivenObjectIsNotOfTypeObjectDataInterface()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
+        $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
         $this->objectList->setObjects([new \stdClass()]);
     }
 
@@ -64,7 +64,7 @@ class ObjectListTest extends \PHPUnit_Framework_TestCase
 
     public function testSetHasMoreItemsCastsValueToBoolean()
     {
-        $this->setExpectedException('\\PHPUnit_Framework_Error_Notice');
+        $this->expectException('\\PHPUnit_Framework_Error_Notice');
         $this->objectList->setHasMoreItems(1);
         $this->assertAttributeSame(true, 'hasMoreItems', $this->objectList);
     }
@@ -100,7 +100,7 @@ class ObjectListTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|ObjectDataInterface
+     * @return \PHPUnit\Framework\MockObject\MockObject|ObjectDataInterface
      */
     protected function getObjectDataMock()
     {

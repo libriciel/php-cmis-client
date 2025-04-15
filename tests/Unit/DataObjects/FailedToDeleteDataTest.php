@@ -15,7 +15,7 @@ use Dkd\PhpCmis\DataObjects\FailedToDeleteData;
 /**
  * Class FailedToDeleteDataTest
  */
-class FailedToDeleteDataTest extends \PHPUnit_Framework_TestCase
+class FailedToDeleteDataTest extends \PHPUnit\Framework\TestCase
 {
     public function testSetIdsSetsIdsPropertyToGivenValue()
     {

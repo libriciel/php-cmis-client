@@ -19,7 +19,7 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class AbstractBrowserBindingServiceTestCase
  */
-abstract class AbstractBrowserBindingServiceTestCase extends \PHPUnit_Framework_TestCase
+abstract class AbstractBrowserBindingServiceTestCase extends \PHPUnit\Framework\TestCase
 {
     use ReflectionHelperTrait;
     use FixtureHelperTrait;
@@ -31,7 +31,7 @@ abstract class AbstractBrowserBindingServiceTestCase extends \PHPUnit_Framework_
      * Returns a mock of a BindingSessionInterface
      *
      * @param array $sessionParameterMap
-     * @return BindingSessionInterface|PHPUnit_Framework_MockObject_MockObject
+     * @return BindingSessionInterface|\PHPUnit\Framework\MockObject\MockObject
      */
     protected function getSessionMock($sessionParameterMap = [])
     {

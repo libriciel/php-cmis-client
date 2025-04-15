@@ -15,7 +15,7 @@ use Dkd\PhpCmis\Bindings\Browser\CmisBrowserBinding;
 /**
  * Class CmisBrowserBindingTest
  */
-class CmisBrowserBindingTest extends \PHPUnit_Framework_TestCase
+class CmisBrowserBindingTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var CmisBrowserBinding

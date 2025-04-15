@@ -20,12 +20,12 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class RelationshipTypeTest
  */
-class RelationshipTypeTest extends \PHPUnit_Framework_TestCase
+class RelationshipTypeTest extends \PHPUnit\Framework\TestCase
 {
     use ReflectionHelperTrait;
 
     /**
-     * @var SessionInterface|PHPUnit_Framework_MockObject_MockObject
+     * @var SessionInterface|\PHPUnit\Framework\MockObject\MockObject
      */
     protected $sessionMock;
 
@@ -72,7 +72,7 @@ class RelationshipTypeTest extends \PHPUnit_Framework_TestCase
         $relationshipTypeDefinition = new RelationshipTypeDefinition('typeId');
 
         /**
-         * @var RelationshipType|PHPUnit_Framework_MockObject_MockObject $relationshipType
+         * @var RelationshipType|\PHPUnit\Framework\MockObject\MockObject $relationshipType
          */
         $relationshipType = $this->getMockBuilder('\\Dkd\\PhpCmis\\DataObjects\\RelationshipType')->setMethods(
             ['populate']

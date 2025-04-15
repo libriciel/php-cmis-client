@@ -16,22 +16,23 @@ use Dkd\PhpCmis\Test\Unit\DataProviderCollectionTrait;
 /**
  * Class CmisExtensionElementTest
  */
-class CmisExtensionElementTest extends \PHPUnit_Framework_TestCase
+class CmisExtensionElementTest extends \PHPUnit\Framework\TestCase
 {
     use DataProviderCollectionTrait;
 
     public function testConstructorThrowsExceptionIfNameIsEmpty()
     {
-        $this->setExpectedException('\\InvalidArgumentException', 'Name must be given!');
+        $this->expectException('\\InvalidArgumentException');
+        $this->expectExceptionMessage('Name must be given!');
         new CmisExtensionElement('namespace', '');
     }
 
     public function testConstructorThrowsExceptionIfValueAndChildrenIsGiven()
     {
-        $this->setExpectedException(
-            '\\InvalidArgumentException',
-            'Value and children given! Only one of them is allowed.'
+        $this->expectException(
+            '\\InvalidArgumentException'
         );
+        $this->expectExceptionMessage('Value and children given! Only one of them is allowed.');
         new CmisExtensionElement('namespace', 'name', [], 'value', ['children']);
     }
 

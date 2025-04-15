@@ -18,17 +18,17 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class DocumentTypeTest
  */
-class DocumentTypeTest extends \PHPUnit_Framework_TestCase
+class DocumentTypeTest extends \PHPUnit\Framework\TestCase
 {
     public function testConstructorSetsSession()
     {
         /**
-         * @var \Dkd\PhpCmis\SessionInterface|PHPUnit_Framework_MockObject_MockObject $sessionMock
+         * @var \Dkd\PhpCmis\SessionInterface|\PHPUnit\Framework\MockObject\MockObject $sessionMock
          */
         $sessionMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\SessionInterface')->getMockForAbstractClass();
 
         /**
-         * @var DocumentTypeDefinitionInterface|PHPUnit_Framework_MockObject_MockObject $documentTypeDefinition
+         * @var DocumentTypeDefinitionInterface|\PHPUnit\Framework\MockObject\MockObject $documentTypeDefinition
          */
         $documentTypeDefinition = new DocumentTypeDefinition('typeId');
         $errorReportingLevel = error_reporting(E_ALL & ~E_USER_NOTICE);
@@ -41,14 +41,14 @@ class DocumentTypeTest extends \PHPUnit_Framework_TestCase
     public function testConstructorCallsPopulateMethod()
     {
         /**
-         * @var \Dkd\PhpCmis\SessionInterface|PHPUnit_Framework_MockObject_MockObject $sessionMock
+         * @var \Dkd\PhpCmis\SessionInterface|\PHPUnit\Framework\MockObject\MockObject $sessionMock
          */
         $sessionMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\SessionInterface')->getMockForAbstractClass();
 
         $documentTypeDefinition = new DocumentTypeDefinition('typeId');
 
         /**
-         * @var DocumentType|PHPUnit_Framework_MockObject_MockObject $documentType
+         * @var DocumentType|\PHPUnit\Framework\MockObject\MockObject $documentType
          */
         $documentType = $this->getMockBuilder('\\Dkd\\PhpCmis\\DataObjects\\DocumentType')->setMethods(
             ['populate']

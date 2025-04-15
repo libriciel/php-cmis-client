@@ -53,14 +53,14 @@ class DiscoveryServiceTest extends AbstractBrowserBindingServiceTestCase
             ->setMethods(['getBody'])->getMock();
         $responseMock->expects($this->once())->method('getbody')->willReturn('{}');
 
-        $jsonConverterMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\Converter\\JsonConverter')->getMock();
+        $jsonConverterMock = $this->createMock('\\Dkd\\PhpCmis\\Converter\\JsonConverter');
 
         $cmisBindingsHelperMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\Bindings\\CmisBindingsHelper')->setMethods(
             ['getJsonConverter']
         )->getMock();
         $cmisBindingsHelperMock->expects($this->once())->method('getJsonConverter')->willReturn($jsonConverterMock);
 
-        /** @var DiscoveryService|PHPUnit_Framework_MockObject_MockObject $discoveryService */
+        /** @var DiscoveryService|\PHPUnit\Framework\MockObject\MockObject $discoveryService */
         $discoveryService = $this->getMockBuilder(self::CLASS_TO_TEST)->setConstructorArgs(
             [$this->getSessionMock(), $cmisBindingsHelperMock]
         )->setMethods(
@@ -128,7 +128,7 @@ class DiscoveryServiceTest extends AbstractBrowserBindingServiceTestCase
         )->getMock();
         $cmisBindingsHelperMock->expects($this->once())->method('getJsonConverter')->willReturn($jsonConverterMock);
 
-        /** @var DiscoveryService|PHPUnit_Framework_MockObject_MockObject $discoveryService */
+        /** @var DiscoveryService|\PHPUnit\Framework\MockObject\MockObject $discoveryService */
         $discoveryService = $this->getMockBuilder(self::CLASS_TO_TEST)->setConstructorArgs(
             [$this->getSessionMock(), $cmisBindingsHelperMock]
         )->setMethods(
@@ -196,7 +196,7 @@ class DiscoveryServiceTest extends AbstractBrowserBindingServiceTestCase
         )->getMock();
         $cmisBindingsHelperMock->expects($this->once())->method('getJsonConverter')->willReturn($jsonConverterMock);
 
-        /** @var DiscoveryService|PHPUnit_Framework_MockObject_MockObject $discoveryService */
+        /** @var DiscoveryService|\PHPUnit\Framework\MockObject\MockObject $discoveryService */
         $discoveryService = $this->getMockBuilder(self::CLASS_TO_TEST)->setConstructorArgs(
             [$this->getSessionMock(), $cmisBindingsHelperMock]
         )->setMethods(
@@ -321,7 +321,7 @@ class DiscoveryServiceTest extends AbstractBrowserBindingServiceTestCase
         )->getMock();
         $cmisBindingsHelperMock->expects($this->once())->method('getJsonConverter')->willReturn($jsonConverterMock);
 
-        /** @var DiscoveryService|PHPUnit_Framework_MockObject_MockObject $discoveryService */
+        /** @var DiscoveryService|\PHPUnit\Framework\MockObject\MockObject $discoveryService */
         $discoveryService = $this->getMockBuilder(self::CLASS_TO_TEST)->setConstructorArgs(
             [$this->getSessionMock(), $cmisBindingsHelperMock]
         )->setMethods(
@@ -385,7 +385,7 @@ class DiscoveryServiceTest extends AbstractBrowserBindingServiceTestCase
         )->getMock();
         $cmisBindingsHelperMock->expects($this->once())->method('getJsonConverter')->willReturn($jsonConverterMock);
 
-        /** @var DiscoveryService|PHPUnit_Framework_MockObject_MockObject $discoveryService */
+        /** @var DiscoveryService|\PHPUnit\Framework\MockObject\MockObject $discoveryService */
         $discoveryService = $this->getMockBuilder(self::CLASS_TO_TEST)->setConstructorArgs(
             [$this->getSessionMock(), $cmisBindingsHelperMock]
         )->setMethods(

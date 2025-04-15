@@ -16,7 +16,7 @@ use Dkd\PhpCmis\Test\Unit\DataProviderCollectionTrait;
 /**
  * Class PermissionMappingTest
  */
-class PermissionMappingTest extends \PHPUnit_Framework_TestCase
+class PermissionMappingTest extends \PHPUnit\Framework\TestCase
 {
     use DataProviderCollectionTrait;
 

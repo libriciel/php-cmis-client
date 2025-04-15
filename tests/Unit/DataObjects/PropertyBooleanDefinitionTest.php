@@ -15,7 +15,7 @@ use Dkd\PhpCmis\DataObjects\PropertyBooleanDefinition;
 /**
  * Class PropertyBooleanDefinitionTest
  */
-class PropertyBooleanDefinitionTest extends \PHPUnit_Framework_TestCase
+class PropertyBooleanDefinitionTest extends \PHPUnit\Framework\TestCase
 {
     public function testAssertIsInstanceOfAbstractPropertyDefinition()
     {

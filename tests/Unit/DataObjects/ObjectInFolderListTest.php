@@ -16,7 +16,7 @@ use Dkd\PhpCmis\DataObjects\ObjectInFolderList;
 /**
  * Class ObjectInFolderListTest
  */
-class ObjectInFolderListTest extends \PHPUnit_Framework_TestCase
+class ObjectInFolderListTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var ObjectInFolderList
@@ -46,7 +46,7 @@ class ObjectInFolderListTest extends \PHPUnit_Framework_TestCase
 
     public function testSetObjectsThrowsExceptionIfAGivenObjectIsNotOfTypeObjectInFolderDataInterface()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
+        $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
         $this->objectInFolderList->setObjects([new \stdClass()]);
     }
 
@@ -70,7 +70,7 @@ class ObjectInFolderListTest extends \PHPUnit_Framework_TestCase
 
     public function testSetHasMoreItemsCastsValueToBoolean()
     {
-        $this->setExpectedException('\\PHPUnit_Framework_Error_Notice');
+        $this->expectException('\\PHPUnit_Framework_Error_Notice');
         $this->objectInFolderList->setHasMoreItems(1);
         $this->assertAttributeSame(true, 'hasMoreItems', $this->objectInFolderList);
     }

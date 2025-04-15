@@ -16,7 +16,7 @@ use Dkd\PhpCmis\Test\Unit\DataProviderCollectionTrait;
 /**
  * Class RenditionDataTest
  */
-class RenditionDataTest extends \PHPUnit_Framework_TestCase
+class RenditionDataTest extends \PHPUnit\Framework\TestCase
 {
     use DataProviderCollectionTrait;
 

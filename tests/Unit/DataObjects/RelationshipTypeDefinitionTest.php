@@ -15,7 +15,7 @@ use Dkd\PhpCmis\DataObjects\RelationshipTypeDefinition;
 /**
  * Class RelationshipTypeDefinitionTest
  */
-class RelationshipTypeDefinitionTest extends \PHPUnit_Framework_TestCase
+class RelationshipTypeDefinitionTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var RelationshipTypeDefinition

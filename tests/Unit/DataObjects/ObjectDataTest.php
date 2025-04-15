@@ -19,7 +19,7 @@ use Dkd\PhpCmis\PropertyIds;
 /**
  * Class ObjectDataTest
  */
-class ObjectDataTest extends \PHPUnit_Framework_TestCase
+class ObjectDataTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var ObjectData

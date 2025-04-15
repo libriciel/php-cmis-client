@@ -16,7 +16,7 @@ use Dkd\PhpCmis\Enum\Action;
 /**
  * Class AllowableActionsTest
  */
-class AllowableActionsTest extends \PHPUnit_Framework_TestCase
+class AllowableActionsTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var AllowableActions
@@ -30,7 +30,7 @@ class AllowableActionsTest extends \PHPUnit_Framework_TestCase
 
     public function testSetAllowableActionsThrowsExceptionIfGivenListContainsInvalidValue()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
+        $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
         $this->allowableActions->setAllowableActions(['foo']);
     }
 

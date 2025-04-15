@@ -17,7 +17,7 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class AccessControlEntryTest
  */
-class AccessControlEntryTest extends \PHPUnit_Framework_TestCase
+class AccessControlEntryTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
@@ -31,7 +31,7 @@ class AccessControlEntryTest extends \PHPUnit_Framework_TestCase
     protected $dummyPermissions = ['foo', 'bar'];
 
     /**
-     * @var PrincipalInterface|PHPUnit_Framework_MockObject_MockObject
+     * @var PrincipalInterface|\PHPUnit\Framework\MockObject\MockObject
      */
     protected $dummyPrincipal;
 
@@ -53,7 +53,7 @@ class AccessControlEntryTest extends \PHPUnit_Framework_TestCase
 
     public function testSetPermissionsThrowsExceptionIfPermissionItemIsNotOfTypeString()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
+        $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
         $this->ace->setPermissions([new \stdClass()]);
     }
 
@@ -100,7 +100,7 @@ class AccessControlEntryTest extends \PHPUnit_Framework_TestCase
 
     public function testSetIsDirectCastsValueToBoolean()
     {
-        $this->setExpectedException('\\PHPUnit_Framework_Error_Notice');
+        $this->expectException('\\PHPUnit_Framework_Error_Notice');
         $this->ace->setIsDirect(1);
         $this->assertAttributeSame(true, 'isDirect', $this->ace);
     }

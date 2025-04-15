@@ -533,7 +533,7 @@ class NavigationServiceTest extends AbstractBrowserBindingServiceTestCase
      * @param string $expectedUrl
      * @param string $convertFunctionName
      * @param array $getObjectUrlParams
-     * @return NavigationService|PHPUnit_Framework_MockObject_MockObject
+     * @return NavigationService|\PHPUnit\Framework\MockObject\MockObject
      */
     protected function getNavigationServiceMockForParameterizedQueryTest(
         $expectedUrl,
@@ -559,7 +559,7 @@ class NavigationServiceTest extends AbstractBrowserBindingServiceTestCase
         )->getMock();
         $cmisBindingsHelperMock->expects($this->any())->method('getJsonConverter')->willReturn($jsonConverterMock);
 
-        /** @var NavigationService|PHPUnit_Framework_MockObject_MockObject $navigationService */
+        /** @var NavigationService|\PHPUnit\Framework\MockObject\MockObject $navigationService */
         $navigationService = $this->getMockBuilder(self::CLASS_TO_TEST)->setConstructorArgs(
             [$this->getSessionMock(), $cmisBindingsHelperMock]
         )->setMethods(

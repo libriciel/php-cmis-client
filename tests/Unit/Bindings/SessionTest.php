@@ -16,7 +16,7 @@ use Dkd\PhpCmis\Bindings\Session;
 /**
  * Class SessionTest
  */
-class SessionTest extends \PHPUnit_Framework_TestCase
+class SessionTest extends \PHPUnit\Framework\TestCase
 {
     public function testConstructorCreatesUniqueSessionId()
     {

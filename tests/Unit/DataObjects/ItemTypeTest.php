@@ -17,12 +17,12 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class ItemTypeTest
  */
-class ItemTypeTest extends \PHPUnit_Framework_TestCase
+class ItemTypeTest extends \PHPUnit\Framework\TestCase
 {
     public function testConstructorSetsSession()
     {
         /**
-         * @var \Dkd\PhpCmis\SessionInterface|PHPUnit_Framework_MockObject_MockObject $sessionMock
+         * @var \Dkd\PhpCmis\SessionInterface|\PHPUnit\Framework\MockObject\MockObject $sessionMock
          */
         $sessionMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\SessionInterface')->getMockForAbstractClass();
 
@@ -37,14 +37,14 @@ class ItemTypeTest extends \PHPUnit_Framework_TestCase
     public function testConstructorCallsPopulateMethod()
     {
         /**
-         * @var \Dkd\PhpCmis\SessionInterface|PHPUnit_Framework_MockObject_MockObject $sessionMock
+         * @var \Dkd\PhpCmis\SessionInterface|\PHPUnit\Framework\MockObject\MockObject $sessionMock
          */
         $sessionMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\SessionInterface')->getMockForAbstractClass();
 
         $itemTypeDefinition = new ItemTypeDefinition('typeId');
 
         /**
-         * @var ItemType|PHPUnit_Framework_MockObject_MockObject $itemType
+         * @var ItemType|\PHPUnit\Framework\MockObject\MockObject $itemType
          */
         $itemType = $this->getMockBuilder('\\Dkd\\PhpCmis\\DataObjects\\ItemType')->setMethods(
             ['populate']

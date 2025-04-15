@@ -26,7 +26,7 @@ use Dkd\PhpCmis\Definitions\PropertyDefinitionInterface;
 /**
  * Class BindingsObjectFactoryTest
  */
-class BindingsObjectFactoryTest extends \PHPUnit_Framework_TestCase
+class BindingsObjectFactoryTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var BindingsObjectFactory
@@ -88,10 +88,10 @@ class BindingsObjectFactoryTest extends \PHPUnit_Framework_TestCase
         $invalidPropertyDefinition = $this->getMockBuilder(
             '\\Dkd\\PhpCmis\\Definitions\\PropertyDefinitionInterface'
         )->setMockClassName('InvalidPropertyDefinition')->getMockForAbstractClass();
-        $this->setExpectedException(
-            '\\Dkd\\PhpCmis\\Exception\\CmisRuntimeException',
-            'Unknown property definition: InvalidPropertyDefinition'
+        $this->expectException(
+            '\\Dkd\\PhpCmis\\Exception\\CmisRuntimeException'
         );
+        $this->expectExceptionMessage('Unknown property definition: InvalidPropertyDefinition');
         $this->bindingsObjectFactory->createPropertyData($invalidPropertyDefinition, []);
     }
 

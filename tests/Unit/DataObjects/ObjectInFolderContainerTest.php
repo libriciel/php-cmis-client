@@ -17,7 +17,7 @@ use Dkd\PhpCmis\DataObjects\ObjectInFolderContainer;
 /**
  * Class ObjectInFolderContainerTest
  */
-class ObjectInFolderContainerTest extends \PHPUnit_Framework_TestCase
+class ObjectInFolderContainerTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var ObjectInFolderContainer
@@ -56,7 +56,7 @@ class ObjectInFolderContainerTest extends \PHPUnit_Framework_TestCase
 
     public function testSetChildrenThrowsExceptionIfAGivenObjectIsNotOfTypeObjectInFolderContainerInterface()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
+        $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
         $this->objectInFolderContainer->setChildren([new \stdClass()]);
     }
 
@@ -79,7 +79,7 @@ class ObjectInFolderContainerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|ObjectInFolderContainerInterface
+     * @return \PHPUnit\Framework\MockObject\MockObject|ObjectInFolderContainerInterface
      */
     protected function getObjectInFolderContainerMock()
     {

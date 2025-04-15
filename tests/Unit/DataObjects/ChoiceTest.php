@@ -16,7 +16,7 @@ use Dkd\PhpCmis\Definitions\ChoiceInterface;
 /**
  * Class ChoiceTest
  */
-class ChoiceTest extends \PHPUnit_Framework_TestCase
+class ChoiceTest extends \PHPUnit\Framework\TestCase
 {
     const CLASS_TO_TEST = '\\Dkd\\PhpCmis\\DataObjects\\Choice';
 
@@ -41,11 +41,11 @@ class ChoiceTest extends \PHPUnit_Framework_TestCase
     public function testSetChoiceThrowsExceptionIfChoiceListContainsInvalidValue()
     {
         $choice = $this->getMockForAbstractClass(self::CLASS_TO_TEST);
-        $this->setExpectedException(
-            '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
-            'Argument of type "stdClass" given but argument of type "Dkd\PhpCmis\Definitions\ChoiceInterface" was expected.',
-            1413440336
+        $this->expectException(
+            '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException'
         );
+        $this->expectExceptionMessage('Argument of type "stdClass" given but argument of type "Dkd\PhpCmis\Definitions\ChoiceInterface" was expected.');
+        $this->expectExceptionCode(1413440336);
         $this->choice->setChoices([$choice, new \stdClass()]);
     }
 

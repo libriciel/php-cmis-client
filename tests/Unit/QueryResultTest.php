@@ -23,7 +23,7 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class QueryResultTest
  */
-class QueryResultTest extends \PHPUnit_Framework_TestCase
+class QueryResultTest extends \PHPUnit\Framework\TestCase
 {
     use ReflectionHelperTrait;
 
@@ -103,28 +103,20 @@ class QueryResultTest extends \PHPUnit_Framework_TestCase
             ['getObjectFactory', 'getDefaultContext']
         )->getMockForAbstractClass();
 
-        /** @var ObjectFactory|PHPUnit_Framework_MockObject_MockObject $objectFactoryMock */
+        /** @var ObjectFactory|\PHPUnit\Framework\MockObject\MockObject $objectFactoryMock */
         $objectFactoryMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\ObjectFactory')->setMethods(
             ['convertObject']
         )->getMock();
         $objectFactoryMock->initialize($sessionMock);
         $operationContext = new OperationContext();
 
-        $relationshipObjectData1 = $documentTypeMock = $this->getMockBuilder(
-            '\\Dkd\\PhpCmis\\DataObjects\\ObjectData'
-        )->disableOriginalConstructor()->getMock();
+        $relationshipObjectData1 = $documentTypeMock = $this->createMock('\\Dkd\\PhpCmis\\DataObjects\\ObjectData');
 
-        $relationshipObjectData2 = $documentTypeMock = $this->getMockBuilder(
-            '\\Dkd\\PhpCmis\\DataObjects\\ObjectData'
-        )->disableOriginalConstructor()->getMock();
+        $relationshipObjectData2 = $documentTypeMock = $this->createMock('\\Dkd\\PhpCmis\\DataObjects\\ObjectData');
 
-        $expectedRelationship1 = $documentTypeMock = $this->getMockBuilder(
-            '\\Dkd\\PhpCmis\\DataObjects\\Relationship'
-        )->disableOriginalConstructor()->getMock();
+        $expectedRelationship1 = $documentTypeMock = $this->createMock('\\Dkd\\PhpCmis\\DataObjects\\Relationship');
 
-        $expectedRelationship2 = $documentTypeMock = $this->getMockBuilder(
-            '\\Dkd\\PhpCmis\\DataObjects\\Relationship'
-        )->disableOriginalConstructor()->getMock();
+        $expectedRelationship2 = $documentTypeMock = $this->createMock('\\Dkd\\PhpCmis\\DataObjects\\Relationship');
 
         $expectedRelationships = [$expectedRelationship1, $expectedRelationship2];
 
@@ -154,28 +146,20 @@ class QueryResultTest extends \PHPUnit_Framework_TestCase
             ['getObjectFactory', 'getDefaultContext']
         )->getMockForAbstractClass();
 
-        /** @var ObjectFactory|PHPUnit_Framework_MockObject_MockObject $objectFactoryMock */
+        /** @var ObjectFactory|\PHPUnit\Framework\MockObject\MockObject $objectFactoryMock */
         $objectFactoryMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\ObjectFactory')->setMethods(
             ['convertRendition']
         )->getMock();
         $objectFactoryMock->initialize($sessionMock);
         $operationContext = new OperationContext();
 
-        $renditionData1 = $documentTypeMock = $this->getMockBuilder(
-            '\\Dkd\\PhpCmis\\DataObjects\\RenditionData'
-        )->disableOriginalConstructor()->getMock();
+        $renditionData1 = $documentTypeMock = $this->createMock('\\Dkd\\PhpCmis\\DataObjects\\RenditionData');
 
-        $renditionData2 = $documentTypeMock = $this->getMockBuilder(
-            '\\Dkd\\PhpCmis\\DataObjects\\RenditionData'
-        )->disableOriginalConstructor()->getMock();
+        $renditionData2 = $documentTypeMock = $this->createMock('\\Dkd\\PhpCmis\\DataObjects\\RenditionData');
 
-        $expectedRendition1 = $documentTypeMock = $this->getMockBuilder(
-            '\\Dkd\\PhpCmis\\DataObjects\\Rendition'
-        )->disableOriginalConstructor()->getMock();
+        $expectedRendition1 = $documentTypeMock = $this->createMock('\\Dkd\\PhpCmis\\DataObjects\\Rendition');
 
-        $expectedRendition2 = $documentTypeMock = $this->getMockBuilder(
-            '\\Dkd\\PhpCmis\\DataObjects\\Rendition'
-        )->disableOriginalConstructor()->getMock();
+        $expectedRendition2 = $documentTypeMock = $this->createMock('\\Dkd\\PhpCmis\\DataObjects\\Rendition');
 
         $expectedRenditions = [$expectedRendition1, $expectedRendition2];
 
@@ -479,28 +463,20 @@ class QueryResultTest extends \PHPUnit_Framework_TestCase
             ['getObjectFactory', 'getDefaultContext']
         )->getMockForAbstractClass();
 
-        /** @var ObjectFactory|PHPUnit_Framework_MockObject_MockObject $objectFactoryMock */
+        /** @var ObjectFactory|\PHPUnit\Framework\MockObject\MockObject $objectFactoryMock */
         $objectFactoryMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\ObjectFactory')->setMethods(
             ['convertObject']
         )->getMock();
         $objectFactoryMock->initialize($sessionMock);
         $operationContext = new OperationContext();
 
-        $relationshipObjectData1 = $documentTypeMock = $this->getMockBuilder(
-            '\\Dkd\\PhpCmis\\DataObjects\\ObjectData'
-        )->disableOriginalConstructor()->getMock();
+        $relationshipObjectData1 = $documentTypeMock = $this->createMock('\\Dkd\\PhpCmis\\DataObjects\\ObjectData');
 
-        $relationshipObjectData2 = $documentTypeMock = $this->getMockBuilder(
-            '\\Dkd\\PhpCmis\\DataObjects\\ObjectData'
-        )->disableOriginalConstructor()->getMock();
+        $relationshipObjectData2 = $documentTypeMock = $this->createMock('\\Dkd\\PhpCmis\\DataObjects\\ObjectData');
 
-        $expectedRelationship1 = $documentTypeMock = $this->getMockBuilder(
-            '\\Dkd\\PhpCmis\\DataObjects\\Relationship'
-        )->disableOriginalConstructor()->getMock();
+        $expectedRelationship1 = $documentTypeMock = $this->createMock('\\Dkd\\PhpCmis\\DataObjects\\Relationship');
 
-        $expectedRelationship2 = $documentTypeMock = $this->getMockBuilder(
-            '\\Dkd\\PhpCmis\\DataObjects\\Relationship'
-        )->disableOriginalConstructor()->getMock();
+        $expectedRelationship2 = $documentTypeMock = $this->createMock('\\Dkd\\PhpCmis\\DataObjects\\Relationship');
 
         $expectedRelationships = [$expectedRelationship1, $expectedRelationship2];
 
@@ -530,28 +506,20 @@ class QueryResultTest extends \PHPUnit_Framework_TestCase
             ['getObjectFactory', 'getDefaultContext']
         )->getMockForAbstractClass();
 
-        /** @var ObjectFactory|PHPUnit_Framework_MockObject_MockObject $objectFactoryMock */
+        /** @var ObjectFactory|\PHPUnit\Framework\MockObject\MockObject $objectFactoryMock */
         $objectFactoryMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\ObjectFactory')->setMethods(
             ['convertRendition']
         )->getMock();
         $objectFactoryMock->initialize($sessionMock);
         $operationContext = new OperationContext();
 
-        $renditionData1 = $documentTypeMock = $this->getMockBuilder(
-            '\\Dkd\\PhpCmis\\DataObjects\\RenditionData'
-        )->disableOriginalConstructor()->getMock();
+        $renditionData1 = $documentTypeMock = $this->createMock('\\Dkd\\PhpCmis\\DataObjects\\RenditionData');
 
-        $renditionData2 = $documentTypeMock = $this->getMockBuilder(
-            '\\Dkd\\PhpCmis\\DataObjects\\RenditionData'
-        )->disableOriginalConstructor()->getMock();
+        $renditionData2 = $documentTypeMock = $this->createMock('\\Dkd\\PhpCmis\\DataObjects\\RenditionData');
 
-        $expectedRendition1 = $documentTypeMock = $this->getMockBuilder(
-            '\\Dkd\\PhpCmis\\DataObjects\\Rendition'
-        )->disableOriginalConstructor()->getMock();
+        $expectedRendition1 = $documentTypeMock = $this->createMock('\\Dkd\\PhpCmis\\DataObjects\\Rendition');
 
-        $expectedRendition2 = $documentTypeMock = $this->getMockBuilder(
-            '\\Dkd\\PhpCmis\\DataObjects\\Rendition'
-        )->disableOriginalConstructor()->getMock();
+        $expectedRendition2 = $documentTypeMock = $this->createMock('\\Dkd\\PhpCmis\\DataObjects\\Rendition');
 
         $expectedRenditions = [$expectedRendition1, $expectedRendition2];
 
