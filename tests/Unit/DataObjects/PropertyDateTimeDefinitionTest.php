@@ -23,7 +23,7 @@ class PropertyDateTimeDefinitionTest extends \PHPUnit\Framework\TestCase
      */
     protected $propertyDateTimeDefinition;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->propertyDateTimeDefinition = new PropertyDateTimeDefinition('testId');
     }

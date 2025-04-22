@@ -94,7 +94,7 @@ class JsonConverterTest extends \PHPUnit\Framework\TestCase
      */
     protected $cmisExtensionsDummy;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->jsonConverter = new JsonConverter();
         $this->cmisExtensionsDummy = [new CmisExtensionElement(null, 'myCustomKey', [], 'myCustomValue')];

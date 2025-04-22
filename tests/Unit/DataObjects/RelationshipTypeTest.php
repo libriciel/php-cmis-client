@@ -42,7 +42,7 @@ class RelationshipTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * @covers \Dkd\PhpCmis\DataObjects\RelationshipType::__construct
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->sessionMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\SessionInterface')->setMethods(
             ['getTypeDefinition']

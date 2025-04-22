@@ -26,7 +26,7 @@ class ObjectDataTest extends \PHPUnit\Framework\TestCase
      */
     protected $objectData;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->objectData = new ObjectData();
     }

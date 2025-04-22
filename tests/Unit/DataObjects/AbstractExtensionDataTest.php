@@ -29,7 +29,7 @@ class AbstractExtensionDataTest extends \PHPUnit\Framework\TestCase
 
     const CLASS_TO_TEST = '\\Dkd\\PhpCmis\\DataObjects\\AbstractExtensionData';
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->abstractExtensionData = $this->getMockBuilder(self::CLASS_TO_TEST)->enableProxyingToOriginalMethods(
         )->getMockForAbstractClass();

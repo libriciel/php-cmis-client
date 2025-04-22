@@ -25,7 +25,7 @@ class RenditionDataTest extends \PHPUnit\Framework\TestCase
      */
     protected $renditionData;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->renditionData = new RenditionData();
     }

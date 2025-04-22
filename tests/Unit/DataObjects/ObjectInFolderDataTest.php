@@ -22,7 +22,7 @@ class ObjectInFolderDataTest extends \PHPUnit\Framework\TestCase
      */
     protected $objectInFolderData;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->objectInFolderData = new ObjectInFolderData();
     }

@@ -26,7 +26,7 @@ class PermissionDefinitionTest extends \PHPUnit\Framework\TestCase
      */
     protected $permissionDefinition;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->permissionDefinition = new PermissionDefinition();
     }

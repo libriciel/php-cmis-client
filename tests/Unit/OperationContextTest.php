@@ -24,7 +24,7 @@ class OperationContextTest extends \PHPUnit\Framework\TestCase
      */
     protected $operationContext;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->operationContext = new OperationContext();
     }

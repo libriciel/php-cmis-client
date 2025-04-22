@@ -36,7 +36,7 @@ class AccessControlEntryTest extends \PHPUnit\Framework\TestCase
      */
     protected $dummyPrincipal;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->dummyPrincipal = $this->createMock(PrincipalInterface::class);
         $this->ace = new AccessControlEntry(

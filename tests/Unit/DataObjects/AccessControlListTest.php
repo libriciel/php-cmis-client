@@ -29,7 +29,7 @@ class AccessControlListTest extends \PHPUnit\Framework\TestCase
      */
     protected $aceMock;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->aceMock = $this->getMockBuilder(
             '\\Dkd\\PhpCmis\\Data\\AceInterface'

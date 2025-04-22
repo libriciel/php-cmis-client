@@ -25,7 +25,7 @@ class PropertyStringDefinitionTest extends \PHPUnit\Framework\TestCase
      */
     protected $propertyStringDefinition;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->propertyStringDefinition = new PropertyStringDefinition('testId');
     }

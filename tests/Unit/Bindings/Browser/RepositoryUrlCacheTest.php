@@ -40,7 +40,7 @@ class RepositoryUrlCacheTest extends \PHPUnit\Framework\TestCase
         ],
     ];
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->repositoryUrlCache = new RepositoryUrlCache();
     }

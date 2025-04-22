@@ -25,7 +25,7 @@ class ExtensionFeatureTest extends \PHPUnit\Framework\TestCase
      */
     protected $extensionFeature;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->extensionFeature = new ExtensionFeature();
     }

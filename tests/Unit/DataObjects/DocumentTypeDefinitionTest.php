@@ -27,7 +27,7 @@ class DocumentTypeDefinitionTest extends \PHPUnit\Framework\TestCase
      */
     protected $documentTypeDefinition;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->documentTypeDefinition = new DocumentTypeDefinition('typeId');
     }

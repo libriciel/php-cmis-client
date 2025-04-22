@@ -29,7 +29,7 @@ class ObjectInFolderListTest extends \PHPUnit\Framework\TestCase
      */
     protected $objectInFolderData;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->objectInFolderData = $this->getMockBuilder(
             '\\Dkd\\PhpCmis\\Data\\ObjectInFolderDataInterface'

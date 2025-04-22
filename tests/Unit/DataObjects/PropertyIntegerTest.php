@@ -25,7 +25,7 @@ class PropertyIntegerTest extends \PHPUnit\Framework\TestCase
      */
     protected $propertyInteger;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->propertyInteger = new PropertyInteger('testId');
     }

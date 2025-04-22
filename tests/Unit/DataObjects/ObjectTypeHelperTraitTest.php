@@ -38,7 +38,7 @@ class ObjectTypeHelperTraitTest extends \PHPUnit\Framework\TestCase
      */
     protected $objectTypeDefinitionMock;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->sessionMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\SessionInterface')->setMethods(
             ['getTypeDefinition']

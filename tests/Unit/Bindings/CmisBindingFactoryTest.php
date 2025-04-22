@@ -31,7 +31,7 @@ class CmisBindingFactoryTest extends \PHPUnit\Framework\TestCase
      */
     const CLASS_TO_TEST = '\\Dkd\\PhpCmis\\Bindings\\CmisBindingFactory';
 
-    public function setUp()
+    protected function setUp(): void
     {
         $className = self::CLASS_TO_TEST;
         $this->cmisBindingFactory = new $className();

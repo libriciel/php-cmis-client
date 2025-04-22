@@ -22,7 +22,7 @@ class ObjectParentDataTest extends \PHPUnit\Framework\TestCase
      */
     protected $objectParentData;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->objectParentData = new ObjectParentData();
     }

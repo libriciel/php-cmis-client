@@ -23,7 +23,7 @@ class AllowableActionsTest extends \PHPUnit\Framework\TestCase
      */
     protected $allowableActions;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->allowableActions = new AllowableActions();
     }

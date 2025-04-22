@@ -34,7 +34,7 @@ class RepositoryCapabilitiesTest extends \PHPUnit\Framework\TestCase
      */
     protected $repositoryCapabilities;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->repositoryCapabilities = new RepositoryCapabilities();
     }

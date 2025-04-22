@@ -25,7 +25,7 @@ class ChoiceTest extends \PHPUnit\Framework\TestCase
      */
     protected $choice;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->choice = new Choice();
     }

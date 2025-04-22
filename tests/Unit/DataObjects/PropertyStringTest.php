@@ -25,7 +25,7 @@ class PropertyStringTest extends \PHPUnit\Framework\TestCase
      */
     protected $subjectUnderTest;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->subjectUnderTest = new PropertyString('testId');
     }

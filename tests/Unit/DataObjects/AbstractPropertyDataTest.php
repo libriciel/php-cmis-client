@@ -26,7 +26,7 @@ class AbstractPropertyDataTest extends \PHPUnit\Framework\TestCase
      */
     protected $propertyDataMock;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->propertyDataMock = $this->getMockBuilder(
             '\\Dkd\\PhpCmis\\DataObjects\\AbstractPropertyData'

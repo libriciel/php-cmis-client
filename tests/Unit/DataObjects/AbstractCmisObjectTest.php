@@ -34,7 +34,7 @@ class AbstractCmisObjectTest extends \PHPUnit\Framework\TestCase
 
     const CLASS_TO_TEST = '\\Dkd\\PhpCmis\\DataObjects\\AbstractCmisObject';
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->abstractCmisObject = $this->getMockBuilder(self::CLASS_TO_TEST)->enableProxyingToOriginalMethods(
         )->getMockForAbstractClass();

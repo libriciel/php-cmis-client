@@ -22,7 +22,7 @@ class CmisBrowserBindingTest extends \PHPUnit\Framework\TestCase
      */
     protected $cmisBrowserBinding;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $sessionMock = $this->getMockBuilder(
             '\\Dkd\\PhpCmis\\Bindings\\BindingSessionInterface'

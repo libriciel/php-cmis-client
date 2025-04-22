@@ -26,7 +26,7 @@ class PropertyDecimalDefinitionTest extends \PHPUnit\Framework\TestCase
      */
     protected $propertyDecimalDefinition;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->propertyDecimalDefinition = new PropertyDecimalDefinition('testId');
     }

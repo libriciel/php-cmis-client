@@ -25,7 +25,7 @@ class CmisBindingsHelperTest extends \PHPUnit\Framework\TestCase
      */
     protected $cmisBindingsHelper;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->cmisBindingsHelper = new CmisBindingsHelper();
     }

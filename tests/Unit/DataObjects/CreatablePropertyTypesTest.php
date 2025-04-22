@@ -23,7 +23,7 @@ class CreatablePropertyTypesTest extends \PHPUnit\Framework\TestCase
      */
     protected $creatablePropertyTypes;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->creatablePropertyTypes = new CreatablePropertyTypes();
     }

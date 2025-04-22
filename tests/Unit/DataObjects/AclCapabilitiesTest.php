@@ -25,7 +25,7 @@ class AclCapabilitiesTest extends \PHPUnit\Framework\TestCase
      */
     protected $aclCapabilities;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->aclCapabilities = new AclCapabilities();
     }

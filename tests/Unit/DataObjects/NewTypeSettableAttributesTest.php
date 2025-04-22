@@ -22,7 +22,7 @@ class NewTypeSettableAttributesTest extends \PHPUnit\Framework\TestCase
      */
     protected $newTypeSettableAttributes;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->newTypeSettableAttributes = new NewTypeSettableAttributes();
     }

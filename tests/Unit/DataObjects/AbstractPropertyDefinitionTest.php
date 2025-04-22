@@ -45,7 +45,7 @@ class AbstractPropertyDefinitionTest extends \PHPUnit\Framework\TestCase
         'isOpenChoice',
     ];
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->abstractPropertyDefinition = $this->getMockBuilder(
             '\\Dkd\\PhpCmis\\DataObjects\\AbstractPropertyDefinition'

@@ -24,7 +24,7 @@ class ObjectListTest extends \PHPUnit\Framework\TestCase
      */
     protected $objectList;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->objectList = new ObjectList([$this->getObjectDataMock()]);
     }

@@ -22,7 +22,7 @@ class RelationshipTypeDefinitionTest extends \PHPUnit\Framework\TestCase
      */
     protected $relationshipTypeDefinition;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->relationshipTypeDefinition = new RelationshipTypeDefinition('typeId');
     }

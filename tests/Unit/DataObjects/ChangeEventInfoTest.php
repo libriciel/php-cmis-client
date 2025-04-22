@@ -23,7 +23,7 @@ class ChangeEventInfoTest extends \PHPUnit\Framework\TestCase
      */
     protected $changeEventInfo;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->changeEventInfo = new ChangeEventInfo();
     }

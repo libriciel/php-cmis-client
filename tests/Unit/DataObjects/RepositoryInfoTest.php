@@ -26,7 +26,7 @@ class RepositoryInfoTest extends \PHPUnit\Framework\TestCase
      */
     protected $repositoryInfo;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->repositoryInfo = new RepositoryInfo();
     }

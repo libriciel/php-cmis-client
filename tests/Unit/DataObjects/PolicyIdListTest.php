@@ -23,7 +23,7 @@ class PolicyIdListTest extends \PHPUnit\Framework\TestCase
      */
     protected $policyIdList;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->policyIdList = new PolicyIdList();
     }

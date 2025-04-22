@@ -29,7 +29,7 @@ class RenditionTest extends \PHPUnit\Framework\TestCase
      */
     protected $sessionMock;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->sessionMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\SessionInterface')->getMockForAbstractClass();
     }

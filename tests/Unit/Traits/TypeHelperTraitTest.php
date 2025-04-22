@@ -28,7 +28,7 @@ class TypeHelperTraitTest extends \PHPUnit\Framework\TestCase
      */
     protected $typeHelperTrait;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->typeHelperTrait = $this->getMockBuilder(
             '\\Dkd\\PhpCmis\\Traits\\TypeHelperTrait'

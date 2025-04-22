@@ -25,7 +25,7 @@ class PermissionMappingTest extends \PHPUnit\Framework\TestCase
      */
     protected $permissionMapping;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->permissionMapping = new PermissionMapping();
     }

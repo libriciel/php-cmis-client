@@ -52,7 +52,7 @@ class AbstractTypeDefinitionTest extends \PHPUnit\Framework\TestCase
         'typeMutability'
     ];
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->abstractTypeDefinition = $this->getMockBuilder(
             '\\Dkd\\PhpCmis\\DataObjects\\AbstractTypeDefinition'

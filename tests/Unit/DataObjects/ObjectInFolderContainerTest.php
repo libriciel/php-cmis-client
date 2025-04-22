@@ -24,7 +24,7 @@ class ObjectInFolderContainerTest extends \PHPUnit\Framework\TestCase
      */
     protected $objectInFolderContainer;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->objectInFolderContainer = new ObjectInFolderContainer(new ObjectInFolderData());
     }
@@ -83,8 +83,6 @@ class ObjectInFolderContainerTest extends \PHPUnit\Framework\TestCase
      */
     protected function getObjectInFolderContainerMock()
     {
-        return $this->getMockBuilder(
-            '\\Dkd\\PhpCmis\\Data\\ObjectInFolderContainerInterface'
-        )->disableOriginalConstructor()->getMockForAbstractClass();
+        return $this->createMock(ObjectInFolderContainerInterface::class);
     }
 }

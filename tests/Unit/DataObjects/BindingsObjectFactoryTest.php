@@ -33,7 +33,7 @@ class BindingsObjectFactoryTest extends \PHPUnit\Framework\TestCase
      */
     protected $bindingsObjectFactory;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->bindingsObjectFactory = new BindingsObjectFactory();
     }
