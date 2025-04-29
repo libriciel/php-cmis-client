@@ -18,7 +18,7 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class AccessControlEntryTest
  */
-class AccessControlEntryTest extends \PHPUnit\Framework\TestCase
+class AccessControlEntryTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
 
     /**

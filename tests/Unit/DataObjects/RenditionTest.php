@@ -20,7 +20,7 @@ use Psr\Http\Message\StreamInterface;
 /**
  * Class RenditionTest
  */
-class RenditionTest extends \PHPUnit\Framework\TestCase
+class RenditionTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use ReflectionHelperTrait;
 

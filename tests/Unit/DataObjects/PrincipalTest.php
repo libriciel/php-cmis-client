@@ -15,7 +15,7 @@ use Dkd\PhpCmis\DataObjects\Principal;
 /**
  * Class PrincipalTest
  */
-class PrincipalTest extends \PHPUnit\Framework\TestCase
+class PrincipalTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     public function testConstructorSetsId()
     {

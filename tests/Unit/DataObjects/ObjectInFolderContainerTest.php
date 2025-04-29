@@ -17,7 +17,7 @@ use Dkd\PhpCmis\DataObjects\ObjectInFolderContainer;
 /**
  * Class ObjectInFolderContainerTest
  */
-class ObjectInFolderContainerTest extends \PHPUnit\Framework\TestCase
+class ObjectInFolderContainerTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     /**
      * @var ObjectInFolderContainer

@@ -17,7 +17,7 @@ use PHPUnit_Framework_TestCase;
 /**
  * Class PermissionDefinitionTest
  */
-class PermissionDefinitionTest extends \PHPUnit\Framework\TestCase
+class PermissionDefinitionTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use DataProviderCollectionTrait;
 

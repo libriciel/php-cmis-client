@@ -17,7 +17,7 @@ use Dkd\PhpCmis\OperationContext;
 /**
  * Class OperationContextTest
  */
-class OperationContextTest extends \PHPUnit\Framework\TestCase
+class OperationContextTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     /**
      * @var OperationContext

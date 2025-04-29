@@ -18,7 +18,7 @@ use PHPUnit_Framework_TestCase;
 /**
  * Unit Tests for AbstractExtensionData
  */
-class AbstractExtensionDataTest extends \PHPUnit\Framework\TestCase
+class AbstractExtensionDataTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use ReflectionHelperTrait;
 

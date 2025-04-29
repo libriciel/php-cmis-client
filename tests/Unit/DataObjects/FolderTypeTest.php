@@ -17,7 +17,7 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class FolderTypeTest
  */
-class FolderTypeTest extends \PHPUnit\Framework\TestCase
+class FolderTypeTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     public function testConstructorSetsSession()
     {

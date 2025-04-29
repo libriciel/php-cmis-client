@@ -17,7 +17,7 @@ use Dkd\PhpCmis\SessionParameter;
 /**
  * Class CmisBindingsHelperTest
  */
-class CmisBindingsHelperTest extends \PHPUnit\Framework\TestCase
+class CmisBindingsHelperTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
 
     /**

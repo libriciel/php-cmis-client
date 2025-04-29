@@ -20,7 +20,7 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class SessionTest
  */
-class SessionTest extends \PHPUnit\Framework\TestCase
+class SessionTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     public function testConstructorThrowsExceptionIfNoParametersGiven()
     {
@@ -110,7 +110,7 @@ class SessionTest extends \PHPUnit\Framework\TestCase
             '\\RuntimeException'
         );
         $this->expectExceptionCode(1408354120);
-        $this->expectExceptionMessageRegExp('/Unable to create object factory: RuntimeException:(.*)/');
+        $this->expectExceptionMessageMatches('/Unable to create object factory: RuntimeException:(.*)/');
 
 
         $object = $this->createMock('\\stdClass');
@@ -222,7 +222,7 @@ class SessionTest extends \PHPUnit\Framework\TestCase
         );
         $this->expectExceptionCode(1408354123);
 
-        $this->expectExceptionMessageRegExp('/Unable to create cache: RuntimeException:(.*)/');
+        $this->expectExceptionMessageMatches('/Unable to create cache: RuntimeException:(.*)/');
 
         $object = $this->createMock('\\stdClass');
         new Session(
@@ -249,10 +249,7 @@ class SessionTest extends \PHPUnit\Framework\TestCase
             ->setMethods(['getId'])
             ->getMock();
         $repositoryInfo->expects($this->once())->method('getId');
-        $objectType = $this->getMockBuilder('\\Dkd\\PhpCmis\\Data\\ObjectTypeInterface')
-            ->setMethods(['getId', '__toString'])
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
+        $objectType = $this->createMock(PhpCmis\Data\ObjectTypeInterface::class);
         $property = new \ReflectionProperty($session, 'repositoryInfo');
         $property->setAccessible(true);
         $property->setValue($session, $repositoryInfo);

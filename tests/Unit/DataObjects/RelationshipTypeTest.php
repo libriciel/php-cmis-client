@@ -20,7 +20,7 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class RelationshipTypeTest
  */
-class RelationshipTypeTest extends \PHPUnit\Framework\TestCase
+class RelationshipTypeTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use ReflectionHelperTrait;
 

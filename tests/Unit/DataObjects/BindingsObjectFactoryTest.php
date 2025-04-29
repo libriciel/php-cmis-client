@@ -26,7 +26,7 @@ use Dkd\PhpCmis\Definitions\PropertyDefinitionInterface;
 /**
  * Class BindingsObjectFactoryTest
  */
-class BindingsObjectFactoryTest extends \PHPUnit\Framework\TestCase
+class BindingsObjectFactoryTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     /**
      * @var BindingsObjectFactory

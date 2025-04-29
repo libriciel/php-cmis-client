@@ -15,7 +15,7 @@ use Dkd\PhpCmis\DataObjects\ObjectParentData;
 /**
  * Class ObjectParentDataTest
  */
-class ObjectParentDataTest extends \PHPUnit\Framework\TestCase
+class ObjectParentDataTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     /**
      * @var ObjectParentData

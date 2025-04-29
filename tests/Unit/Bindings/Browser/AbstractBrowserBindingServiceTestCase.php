@@ -19,7 +19,7 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class AbstractBrowserBindingServiceTestCase
  */
-abstract class AbstractBrowserBindingServiceTestCase extends \PHPUnit\Framework\TestCase
+abstract class AbstractBrowserBindingServiceTestCase extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use ReflectionHelperTrait;
     use FixtureHelperTrait;

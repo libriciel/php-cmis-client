@@ -16,7 +16,7 @@ use Dkd\PhpCmis\Enum\Action;
 /**
  * Class AllowableActionsTest
  */
-class AllowableActionsTest extends \PHPUnit\Framework\TestCase
+class AllowableActionsTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     /**
      * @var AllowableActions

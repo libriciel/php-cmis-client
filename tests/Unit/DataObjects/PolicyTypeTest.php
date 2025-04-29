@@ -18,7 +18,7 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class PolicyTypeTest
  */
-class PolicyTypeTest extends \PHPUnit\Framework\TestCase
+class PolicyTypeTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     public function testConstructorSetsSession()
     {

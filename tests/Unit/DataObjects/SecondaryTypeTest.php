@@ -17,7 +17,7 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class SecondaryTypeTest
  */
-class SecondaryTypeTest extends \PHPUnit\Framework\TestCase
+class SecondaryTypeTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     public function testConstructorSetsSession()
     {

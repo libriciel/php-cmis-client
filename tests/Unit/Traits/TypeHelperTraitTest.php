@@ -17,7 +17,7 @@ use PHPUnit\Framework\Error\Notice;
 /**
  * Class TypeHelperTraitTest
  */
-class TypeHelperTraitTest extends \PHPUnit\Framework\TestCase
+class TypeHelperTraitTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use ReflectionHelperTrait;
 

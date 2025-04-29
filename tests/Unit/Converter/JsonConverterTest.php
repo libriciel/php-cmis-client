@@ -77,7 +77,7 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class JsonConverterTest
  */
-class JsonConverterTest extends \PHPUnit\Framework\TestCase
+class JsonConverterTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use ReflectionHelperTrait;
     use FixtureHelperTrait;

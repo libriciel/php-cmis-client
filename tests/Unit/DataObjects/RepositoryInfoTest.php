@@ -17,7 +17,7 @@ use Dkd\PhpCmis\Enum\CmisVersion;
 /**
  * Class RepositoryInfoTest
  */
-class RepositoryInfoTest extends \PHPUnit\Framework\TestCase
+class RepositoryInfoTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     const DO_NOT_TEST_INVALID_TYPE_VALUE = 'doNotTestInvalidType';
 

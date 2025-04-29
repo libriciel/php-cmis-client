@@ -18,7 +18,7 @@ use Dkd\PhpCmis\Test\Unit\DataProviderCollectionTrait;
 /**
  * Class DocumentTypeDefinitionTest
  */
-class DocumentTypeDefinitionTest extends \PHPUnit\Framework\TestCase
+class DocumentTypeDefinitionTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use DataProviderCollectionTrait;
 

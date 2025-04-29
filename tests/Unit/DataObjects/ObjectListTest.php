@@ -17,7 +17,7 @@ use PHPUnit\Framework\Error\Notice;
 /**
  * Class ObjectListTest
  */
-class ObjectListTest extends \PHPUnit\Framework\TestCase
+class ObjectListTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     /**
      * @var ObjectList

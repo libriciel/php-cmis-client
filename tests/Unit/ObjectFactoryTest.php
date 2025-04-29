@@ -19,7 +19,7 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class ObjectFactoryTest
  */
-class ObjectFactoryTest extends \PHPUnit\Framework\TestCase
+class ObjectFactoryTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use ReflectionHelperTrait;
 

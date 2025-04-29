@@ -17,7 +17,7 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class AbstractPropertyDataTest
  */
-class AbstractPropertyDataTest extends \PHPUnit\Framework\TestCase
+class AbstractPropertyDataTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use DataProviderCollectionTrait;
 

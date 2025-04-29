@@ -19,7 +19,7 @@ use Dkd\PhpCmis\Test\Unit\DataProviderCollectionTrait;
 /**
  * Class AbstractPropertyDefinitionTest
  */
-class AbstractPropertyDefinitionTest extends \PHPUnit\Framework\TestCase
+class AbstractPropertyDefinitionTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use DataProviderCollectionTrait;
 

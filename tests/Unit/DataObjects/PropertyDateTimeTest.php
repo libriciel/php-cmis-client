@@ -16,7 +16,7 @@ use Dkd\PhpCmis\Test\Unit\DataProviderCollectionTrait;
 /**
  * Class PropertyDateTimeTest
  */
-class PropertyDateTimeTest extends \PHPUnit\Framework\TestCase
+class PropertyDateTimeTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use DataProviderCollectionTrait;
 

@@ -17,7 +17,7 @@ use PHPUnit\Framework\Error\Notice;
 /**
  * Class AccessControlListTest
  */
-class AccessControlListTest extends \PHPUnit\Framework\TestCase
+class AccessControlListTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     /**
      * @var AccessControlList

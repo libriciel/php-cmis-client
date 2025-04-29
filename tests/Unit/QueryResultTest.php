@@ -23,7 +23,7 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class QueryResultTest
  */
-class QueryResultTest extends \PHPUnit\Framework\TestCase
+class QueryResultTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use ReflectionHelperTrait;
 

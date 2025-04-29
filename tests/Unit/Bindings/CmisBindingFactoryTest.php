@@ -17,7 +17,7 @@ use Dkd\PhpCmis\Test\Unit\ReflectionHelperTrait;
 /**
  * Class CmisBindingFactoryTest
  */
-class CmisBindingFactoryTest extends \PHPUnit\Framework\TestCase
+class CmisBindingFactoryTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use ReflectionHelperTrait;
 

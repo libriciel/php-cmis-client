@@ -20,7 +20,7 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class CmisBindingTest
  */
-class CmisBindingTest extends \PHPUnit\Framework\TestCase
+class CmisBindingTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
 
     public function testConstructorThrowsExceptionIfNoSessionParametersGiven()

@@ -17,7 +17,7 @@ use PHPUnit\Framework\Error\Notice;
 /**
  * Class ObjectInFolderListTest
  */
-class ObjectInFolderListTest extends \PHPUnit\Framework\TestCase
+class ObjectInFolderListTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     /**
      * @var ObjectInFolderList

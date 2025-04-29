@@ -15,7 +15,7 @@ use Dkd\PhpCmis\DataObjects\ObjectId;
 /**
  * Class ObjectIdTest
  */
-class ObjectIdTest extends \PHPUnit\Framework\TestCase
+class ObjectIdTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     /**
      * @dataProvider invalidIdValuesDataProvider

@@ -16,7 +16,7 @@ use Dkd\PhpCmis\Enum\ChangeType;
 /**
  * Class ChangeEventInfoTest
  */
-class ChangeEventInfoTest extends \PHPUnit\Framework\TestCase
+class ChangeEventInfoTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     /**
      * @var ChangeEventInfo

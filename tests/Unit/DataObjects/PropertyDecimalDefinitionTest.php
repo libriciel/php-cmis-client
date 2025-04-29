@@ -17,7 +17,7 @@ use Dkd\PhpCmis\Test\Unit\DataProviderCollectionTrait;
 /**
  * Class PropertyDecimalDefinitionTest
  */
-class PropertyDecimalDefinitionTest extends \PHPUnit\Framework\TestCase
+class PropertyDecimalDefinitionTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use DataProviderCollectionTrait;
 

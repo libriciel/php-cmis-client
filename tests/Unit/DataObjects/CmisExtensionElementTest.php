@@ -16,7 +16,7 @@ use Dkd\PhpCmis\Test\Unit\DataProviderCollectionTrait;
 /**
  * Class CmisExtensionElementTest
  */
-class CmisExtensionElementTest extends \PHPUnit\Framework\TestCase
+class CmisExtensionElementTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use DataProviderCollectionTrait;
 

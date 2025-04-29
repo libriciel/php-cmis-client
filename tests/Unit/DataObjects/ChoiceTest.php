@@ -16,7 +16,7 @@ use Dkd\PhpCmis\Definitions\ChoiceInterface;
 /**
  * Class ChoiceTest
  */
-class ChoiceTest extends \PHPUnit\Framework\TestCase
+class ChoiceTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     const CLASS_TO_TEST = '\\Dkd\\PhpCmis\\DataObjects\\Choice';
 

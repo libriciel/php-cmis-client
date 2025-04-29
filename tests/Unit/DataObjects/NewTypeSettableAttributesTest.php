@@ -15,7 +15,7 @@ use Dkd\PhpCmis\DataObjects\NewTypeSettableAttributes;
 /**
  * Class NewTypeSettableAttributesTest
  */
-class NewTypeSettableAttributesTest extends \PHPUnit\Framework\TestCase
+class NewTypeSettableAttributesTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     /**
      * @var NewTypeSettableAttributes

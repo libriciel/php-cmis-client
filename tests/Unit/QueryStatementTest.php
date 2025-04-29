@@ -27,7 +27,7 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class QueryStatementTest
  */
-class QueryStatementTest extends \PHPUnit\Framework\TestCase
+class QueryStatementTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use ReflectionHelperTrait;
     use DataProviderCollectionTrait;

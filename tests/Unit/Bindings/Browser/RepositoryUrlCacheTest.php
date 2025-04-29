@@ -17,7 +17,7 @@ use League\Url\Url;
 /**
  * Class RepositoryUrlCacheTest
  */
-class RepositoryUrlCacheTest extends \PHPUnit\Framework\TestCase
+class RepositoryUrlCacheTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     /**
      * @var RepositoryUrlCache

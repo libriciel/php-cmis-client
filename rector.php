@@ -9,5 +9,5 @@ return RectorConfig::configure()
         __DIR__ . '/tests',
     ])
     ->withSets([
-        PHPUnitSetList::PHPUNIT_60,
+        PHPUnitSetList::PHPUNIT_90,
     ]);

@@ -17,7 +17,7 @@ use Dkd\PhpCmis\Enum\SupportedPermissions;
 /**
  * Class AclCapabilitiesTest
  */
-class AclCapabilitiesTest extends \PHPUnit\Framework\TestCase
+class AclCapabilitiesTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
 
     /**

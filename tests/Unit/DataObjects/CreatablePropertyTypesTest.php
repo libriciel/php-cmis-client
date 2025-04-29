@@ -16,7 +16,7 @@ use Dkd\PhpCmis\Enum\PropertyType;
 /**
  * Class CreatablePropertyTypesTest
  */
-class CreatablePropertyTypesTest extends \PHPUnit\Framework\TestCase
+class CreatablePropertyTypesTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     /**
      * @var CreatablePropertyTypes
