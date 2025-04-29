@@ -15,14 +15,14 @@ use Dkd\PhpCmis\DataObjects\ObjectInFolderData;
 /**
  * Class ObjectInFolderDataTest
  */
-class ObjectInFolderDataTest extends \PHPUnit_Framework_TestCase
+class ObjectInFolderDataTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     /**
      * @var ObjectInFolderData
      */
     protected $objectInFolderData;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->objectInFolderData = new ObjectInFolderData();
     }

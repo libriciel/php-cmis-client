@@ -25,7 +25,7 @@ use Dkd\PhpCmis\Test\Unit\DataProviderCollectionTrait;
 /**
  * Class RepositoryCapabilitiesTest
  */
-class RepositoryCapabilitiesTest extends \PHPUnit_Framework_TestCase
+class RepositoryCapabilitiesTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use DataProviderCollectionTrait;
 
@@ -34,7 +34,7 @@ class RepositoryCapabilitiesTest extends \PHPUnit_Framework_TestCase
      */
     protected $repositoryCapabilities;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->repositoryCapabilities = new RepositoryCapabilities();
     }

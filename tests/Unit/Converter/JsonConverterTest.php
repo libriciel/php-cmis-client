@@ -77,7 +77,7 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class JsonConverterTest
  */
-class JsonConverterTest extends \PHPUnit_Framework_TestCase
+class JsonConverterTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use ReflectionHelperTrait;
     use FixtureHelperTrait;
@@ -94,7 +94,7 @@ class JsonConverterTest extends \PHPUnit_Framework_TestCase
      */
     protected $cmisExtensionsDummy;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->jsonConverter = new JsonConverter();
         $this->cmisExtensionsDummy = [new CmisExtensionElement(null, 'myCustomKey', [], 'myCustomValue')];
@@ -391,13 +391,13 @@ class JsonConverterTest extends \PHPUnit_Framework_TestCase
 
     public function testConvertTypeDefinitionThrowsExceptionIfDataDoesNotContainTypeId()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
+        $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
         $this->assertNull($this->jsonConverter->convertTypeDefinition(['foo' => 'bar']));
     }
 
     public function testConvertTypeDefinitionThrowsExceptionIfDataDoesNotContainValidBaseTypeId()
     {
-        $this->setExpectedException('\\Dkd\\Enumeration\\Exception\\InvalidEnumerationValueException');
+        $this->expectException('\\Dkd\\Enumeration\\Exception\\InvalidEnumerationValueException');
         $this->assertNull($this->jsonConverter->convertTypeDefinition([JSONConstants::JSON_TYPE_ID => 'bar']));
     }
 
@@ -549,13 +549,13 @@ class JsonConverterTest extends \PHPUnit_Framework_TestCase
 
     public function testConvertPropertiesThrowsExceptionIfPropertyWithoutIdAndQueryNameGiven()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisRuntimeException');
+        $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisRuntimeException');
         $this->jsonConverter->convertProperties(['foo' => []]);
     }
 
     public function testConvertPropertiesThrowsExceptionIfPropertyWithInvalidTypeGiven()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisRuntimeException');
+        $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisRuntimeException');
         $this->jsonConverter->convertProperties(['foo' => ['id' => 'id', 'type' => 'invalidType']]);
     }
 
@@ -807,14 +807,18 @@ class JsonConverterTest extends \PHPUnit_Framework_TestCase
 
     public function testConvertDateTimeValueThrowsExceptionIfInvalidStringGiven()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisRuntimeException', '', 1416296900);
+        $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisRuntimeException');
+        $this->expectExceptionMessage('Invalid property value: foo');
+        $this->expectExceptionCode(1416296900);
         $method = $this->getMethod($this->jsonConverter, 'convertDateTimeValue');
         $method->invoke($this->jsonConverter, 'foo');
     }
 
     public function testConvertDateTimeValueThrowsExceptionIfInvalidValueGiven()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisRuntimeException', '', 1416296901);
+        $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisRuntimeException');
+        $this->expectExceptionMessage('Invalid property value: array');
+        $this->expectExceptionCode(1416296901);
         $method = $this->getMethod($this->jsonConverter, 'convertDateTimeValue');
         $method->invoke($this->jsonConverter, []);
     }
@@ -869,7 +873,7 @@ class JsonConverterTest extends \PHPUnit_Framework_TestCase
 
     public function testConvertObjectInFolderConvertsArrayToObjectInFolderData()
     {
-        /** @var  PHPUnit_Framework_MockObject_MockObject|JsonConverter $jsonConverterMock */
+        /** @var \PHPUnit\Framework\MockObject\MockObject|JsonConverter $jsonConverterMock */
         $jsonConverterMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\Converter\\JsonConverter')->setMethods(
             ['convertObject']
         )->getMock();
@@ -892,7 +896,7 @@ class JsonConverterTest extends \PHPUnit_Framework_TestCase
 
     public function testConvertObjectInFolderListConvertsArrayToObjectInFolderList()
     {
-        /** @var  PHPUnit_Framework_MockObject_MockObject|JsonConverter $jsonConverterMock */
+        /** @var \PHPUnit\Framework\MockObject\MockObject|JsonConverter $jsonConverterMock */
         $jsonConverterMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\Converter\\JsonConverter')->setMethods(
             ['convertObjectInFolder']
         )->getMock();
@@ -918,7 +922,7 @@ class JsonConverterTest extends \PHPUnit_Framework_TestCase
 
     public function testConvertObjectParentsConvertsArrayToObjectParentDataArray()
     {
-        /** @var  PHPUnit_Framework_MockObject_MockObject|JsonConverter $jsonConverterMock */
+        /** @var \PHPUnit\Framework\MockObject\MockObject|JsonConverter $jsonConverterMock */
         $jsonConverterMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\Converter\\JsonConverter')->setMethods(
             ['convertObjectParentData']
         )->getMock();
@@ -939,7 +943,7 @@ class JsonConverterTest extends \PHPUnit_Framework_TestCase
 
     public function testConvertObjectParentDataConvertsArrayToObjectParentData()
     {
-        /** @var  PHPUnit_Framework_MockObject_MockObject|JsonConverter $jsonConverterMock */
+        /** @var \PHPUnit\Framework\MockObject\MockObject|JsonConverter $jsonConverterMock */
         $jsonConverterMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\Converter\\JsonConverter')->setMethods(
             ['convertObject']
         )->getMock();
@@ -962,7 +966,7 @@ class JsonConverterTest extends \PHPUnit_Framework_TestCase
 
     public function testConvertObjectListConvertsArrayToObjectList()
     {
-        /** @var  PHPUnit_Framework_MockObject_MockObject|JsonConverter $jsonConverterMock */
+        /** @var \PHPUnit\Framework\MockObject\MockObject|JsonConverter $jsonConverterMock */
         $jsonConverterMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\Converter\\JsonConverter')->setMethods(
             ['convertObject']
         )->getMock();
@@ -986,7 +990,7 @@ class JsonConverterTest extends \PHPUnit_Framework_TestCase
 
     public function testConvertQueryResultListConvertsArrayToObjectList()
     {
-        /** @var  PHPUnit_Framework_MockObject_MockObject|JsonConverter $jsonConverterMock */
+        /** @var \PHPUnit\Framework\MockObject\MockObject|JsonConverter $jsonConverterMock */
         $jsonConverterMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\Converter\\JsonConverter')->setMethods(
             ['convertObject']
         )->getMock();
@@ -1010,7 +1014,7 @@ class JsonConverterTest extends \PHPUnit_Framework_TestCase
 
     public function testConvertDescendantsConvertsArrayToObjectInFolderContainerArray()
     {
-        /** @var  PHPUnit_Framework_MockObject_MockObject|JsonConverter $jsonConverterMock */
+        /** @var \PHPUnit\Framework\MockObject\MockObject|JsonConverter $jsonConverterMock */
         $jsonConverterMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\Converter\\JsonConverter')->setMethods(
             ['convertDescendant']
         )->getMock();
@@ -1037,7 +1041,7 @@ class JsonConverterTest extends \PHPUnit_Framework_TestCase
 
     public function testConvertDescendantConvertsArrayToObjectInFolderContainer()
     {
-        /** @var  PHPUnit_Framework_MockObject_MockObject|JsonConverter $jsonConverterMock */
+        /** @var \PHPUnit\Framework\MockObject\MockObject|JsonConverter $jsonConverterMock */
         $jsonConverterMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\Converter\\JsonConverter')->setMethods(
             ['convertObject']
         )->getMock();

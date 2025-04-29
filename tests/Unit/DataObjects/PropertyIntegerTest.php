@@ -16,7 +16,7 @@ use Dkd\PhpCmis\Test\Unit\DataProviderCollectionTrait;
 /**
  * Class PropertyIntegerTest
  */
-class PropertyIntegerTest extends \PHPUnit_Framework_TestCase
+class PropertyIntegerTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use DataProviderCollectionTrait;
 
@@ -25,7 +25,7 @@ class PropertyIntegerTest extends \PHPUnit_Framework_TestCase
      */
     protected $propertyInteger;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->propertyInteger = new PropertyInteger('testId');
     }
@@ -42,7 +42,11 @@ class PropertyIntegerTest extends \PHPUnit_Framework_TestCase
         }
 
         if (!is_integer($value) && $value !== null && !(PHP_INT_SIZE == 4 && is_double($value))) {
-            $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException', '', 1413440336);
+            $this->expectException(
+                '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException'
+            );
+            $this->expectExceptionMessage('Argument of type "' . \gettype($value) . '" given but argument of type "integer" was expected.');
+            $this->expectExceptionCode(1413440336);
         }
 
         $this->propertyInteger->setValues([$value]);
@@ -61,7 +65,11 @@ class PropertyIntegerTest extends \PHPUnit_Framework_TestCase
         }
 
         if (!is_integer($value) && $value !== null && !(PHP_INT_SIZE == 4 && is_double($value))) {
-            $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException', '', 1413440336);
+            $this->expectException(
+                '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException'
+            );
+            $this->expectExceptionMessage('Argument of type "' . \gettype($value) . '" given but argument of type "integer" was expected.');
+            $this->expectExceptionCode(1413440336);
         }
 
         $this->propertyInteger->setValue($value);

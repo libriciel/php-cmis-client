@@ -23,18 +23,18 @@ use PHPUnit_Framework_TestCase;
 /**
  * Unit Tests for AbstractExtensionData
  */
-class AbstractCmisObjectTest extends PHPUnit_Framework_TestCase
+class AbstractCmisObjectTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use ReflectionHelperTrait;
 
     /**
-     * @var PHPUnit_Framework_MockObject_MockObject|AbstractCmisObject
+     * @var \PHPUnit\Framework\MockObject\MockObject|AbstractCmisObject
      */
     protected $abstractCmisObject;
 
     const CLASS_TO_TEST = '\\Dkd\\PhpCmis\\DataObjects\\AbstractCmisObject';
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->abstractCmisObject = $this->getMockBuilder(self::CLASS_TO_TEST)->enableProxyingToOriginalMethods(
         )->getMockForAbstractClass();

@@ -16,7 +16,7 @@ use Dkd\PhpCmis\Test\Unit\DataProviderCollectionTrait;
 /**
  * Class ExtensionFeatureTest
  */
-class ExtensionFeatureTest extends \PHPUnit_Framework_TestCase
+class ExtensionFeatureTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use DataProviderCollectionTrait;
 
@@ -25,7 +25,7 @@ class ExtensionFeatureTest extends \PHPUnit_Framework_TestCase
      */
     protected $extensionFeature;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->extensionFeature = new ExtensionFeature();
     }

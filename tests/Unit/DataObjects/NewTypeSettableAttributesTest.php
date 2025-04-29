@@ -15,14 +15,14 @@ use Dkd\PhpCmis\DataObjects\NewTypeSettableAttributes;
 /**
  * Class NewTypeSettableAttributesTest
  */
-class NewTypeSettableAttributesTest extends \PHPUnit_Framework_TestCase
+class NewTypeSettableAttributesTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     /**
      * @var NewTypeSettableAttributes
      */
     protected $newTypeSettableAttributes;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->newTypeSettableAttributes = new NewTypeSettableAttributes();
     }
@@ -103,7 +103,7 @@ class NewTypeSettableAttributesTest extends \PHPUnit_Framework_TestCase
         $setterName = 'set' . ucfirst($propertyName);
         try {
             $this->newTypeSettableAttributes->$setterName(1);
-        } catch (\PHPUnit_Framework_Error_Notice $exception) {
+        } catch (\PHPUnit\Framework\Error\Notice $exception) {
         }
         $this->assertAttributeInternalType('boolean', $propertyName, $this->newTypeSettableAttributes);
     }

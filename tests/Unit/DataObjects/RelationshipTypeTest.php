@@ -20,12 +20,12 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class RelationshipTypeTest
  */
-class RelationshipTypeTest extends \PHPUnit_Framework_TestCase
+class RelationshipTypeTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use ReflectionHelperTrait;
 
     /**
-     * @var SessionInterface|PHPUnit_Framework_MockObject_MockObject
+     * @var SessionInterface|\PHPUnit\Framework\MockObject\MockObject
      */
     protected $sessionMock;
 
@@ -42,14 +42,12 @@ class RelationshipTypeTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers \Dkd\PhpCmis\DataObjects\RelationshipType::__construct
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->sessionMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\SessionInterface')->setMethods(
             ['getTypeDefinition']
         )->getMockForAbstractClass();
-        $this->objectTypeDefinitionMock = $this->getMockBuilder(
-            '\\Dkd\\PhpCmis\\Data\\ObjectTypeInterface'
-        )->getMockForAbstractClass();
+        $this->objectTypeDefinitionMock = $this->createMock(ObjectTypeInterface::class);
         $this->sessionMock->expects($this->any())->method('getTypeDefinition')->willReturn(
             $this->objectTypeDefinitionMock
         );
@@ -72,7 +70,7 @@ class RelationshipTypeTest extends \PHPUnit_Framework_TestCase
         $relationshipTypeDefinition = new RelationshipTypeDefinition('typeId');
 
         /**
-         * @var RelationshipType|PHPUnit_Framework_MockObject_MockObject $relationshipType
+         * @var RelationshipType|\PHPUnit\Framework\MockObject\MockObject $relationshipType
          */
         $relationshipType = $this->getMockBuilder('\\Dkd\\PhpCmis\\DataObjects\\RelationshipType')->setMethods(
             ['populate']

@@ -16,22 +16,23 @@ use Dkd\PhpCmis\Test\Unit\DataProviderCollectionTrait;
 /**
  * Class CmisExtensionElementTest
  */
-class CmisExtensionElementTest extends \PHPUnit_Framework_TestCase
+class CmisExtensionElementTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use DataProviderCollectionTrait;
 
     public function testConstructorThrowsExceptionIfNameIsEmpty()
     {
-        $this->setExpectedException('\\InvalidArgumentException', 'Name must be given!');
+        $this->expectException('\\InvalidArgumentException');
+        $this->expectExceptionMessage('Name must be given!');
         new CmisExtensionElement('namespace', '');
     }
 
     public function testConstructorThrowsExceptionIfValueAndChildrenIsGiven()
     {
-        $this->setExpectedException(
-            '\\InvalidArgumentException',
-            'Value and children given! Only one of them is allowed.'
+        $this->expectException(
+            '\\InvalidArgumentException'
         );
+        $this->expectExceptionMessage('Value and children given! Only one of them is allowed.');
         new CmisExtensionElement('namespace', 'name', [], 'value', ['children']);
     }
 
@@ -46,6 +47,8 @@ class CmisExtensionElementTest extends \PHPUnit_Framework_TestCase
         if (!empty($value)) {
             $cmisExtensionElement = new CmisExtensionElement('namespace', $value, [], 'value');
             $this->assertAttributeSame($expected, 'name', $cmisExtensionElement);
+        } else {
+            $this->markTestIncomplete('This test does not have any assertions yet.');
         }
     }
 
@@ -78,6 +81,8 @@ class CmisExtensionElementTest extends \PHPUnit_Framework_TestCase
             $cmisExtensionElement = new CmisExtensionElement('namespace', 'name', [], $value);
             $this->assertAttributeSame($expected, 'value', $cmisExtensionElement);
             $this->assertAttributeSame([], 'children', $cmisExtensionElement);
+        } else {
+            $this->markTestIncomplete('This test does not have any assertions yet.');
         }
     }
 

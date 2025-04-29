@@ -16,7 +16,7 @@ use Dkd\PhpCmis\Test\Unit\DataProviderCollectionTrait;
 /**
  * Class RenditionDataTest
  */
-class RenditionDataTest extends \PHPUnit_Framework_TestCase
+class RenditionDataTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use DataProviderCollectionTrait;
 
@@ -25,7 +25,7 @@ class RenditionDataTest extends \PHPUnit_Framework_TestCase
      */
     protected $renditionData;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->renditionData = new RenditionData();
     }

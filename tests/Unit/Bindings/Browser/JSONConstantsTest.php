@@ -15,7 +15,7 @@ use Dkd\PhpCmis\Bindings\Browser\JSONConstants;
 /**
  * Class JSONConstantsTest
  */
-class JSONConstantsTest extends \PHPUnit_Framework_TestCase
+class JSONConstantsTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
 
     public function testGetRepositoryInfoKeysReturnsContentOfStaticArray()

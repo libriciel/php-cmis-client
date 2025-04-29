@@ -16,7 +16,7 @@ use Dkd\PhpCmis\Test\Unit\DataProviderCollectionTrait;
 /**
  * Class PropertyDateTimeTest
  */
-class PropertyDateTimeTest extends \PHPUnit_Framework_TestCase
+class PropertyDateTimeTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use DataProviderCollectionTrait;
 
@@ -25,7 +25,7 @@ class PropertyDateTimeTest extends \PHPUnit_Framework_TestCase
      */
     protected $propertyDateTime;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->propertyDateTime = new PropertyDateTime('testId');
     }
@@ -39,7 +39,11 @@ class PropertyDateTimeTest extends \PHPUnit_Framework_TestCase
 
     public function testSetValuesThrowsExceptionIfInvalidValuesGiven()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException', '', 1413440336);
+        $this->expectException(
+            '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException'
+        );
+        $this->expectExceptionMessage('Argument of type "string" given but argument of type "DateTime" was expected.');
+        $this->expectExceptionCode(1413440336);
         $this->propertyDateTime->setValues(['now']);
     }
 
@@ -52,7 +56,11 @@ class PropertyDateTimeTest extends \PHPUnit_Framework_TestCase
 
     public function testSetValueThrowsExceptionIfInvalidValueGiven()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException', '', 1413440336);
+        $this->expectException(
+            '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException'
+        );
+        $this->expectExceptionMessage('Argument of type "string" given but argument of type "DateTime" was expected.');
+        $this->expectExceptionCode(1413440336);
         $this->propertyDateTime->setValue('now');
     }
 }

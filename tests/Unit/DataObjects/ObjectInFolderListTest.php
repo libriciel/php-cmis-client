@@ -12,11 +12,12 @@ namespace Dkd\PhpCmis\Test\Unit\DataObjects;
 
 use Dkd\PhpCmis\DataObjects\ObjectInFolderData;
 use Dkd\PhpCmis\DataObjects\ObjectInFolderList;
+use PHPUnit\Framework\Error\Notice;
 
 /**
  * Class ObjectInFolderListTest
  */
-class ObjectInFolderListTest extends \PHPUnit_Framework_TestCase
+class ObjectInFolderListTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     /**
      * @var ObjectInFolderList
@@ -28,7 +29,7 @@ class ObjectInFolderListTest extends \PHPUnit_Framework_TestCase
      */
     protected $objectInFolderData;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->objectInFolderData = $this->getMockBuilder(
             '\\Dkd\\PhpCmis\\Data\\ObjectInFolderDataInterface'
@@ -46,7 +47,7 @@ class ObjectInFolderListTest extends \PHPUnit_Framework_TestCase
 
     public function testSetObjectsThrowsExceptionIfAGivenObjectIsNotOfTypeObjectInFolderDataInterface()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
+        $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
         $this->objectInFolderList->setObjects([new \stdClass()]);
     }
 
@@ -70,7 +71,7 @@ class ObjectInFolderListTest extends \PHPUnit_Framework_TestCase
 
     public function testSetHasMoreItemsCastsValueToBoolean()
     {
-        $this->setExpectedException('\\PHPUnit_Framework_Error_Notice');
+        $this->expectException(Notice::class);
         $this->objectInFolderList->setHasMoreItems(1);
         $this->assertAttributeSame(true, 'hasMoreItems', $this->objectInFolderList);
     }

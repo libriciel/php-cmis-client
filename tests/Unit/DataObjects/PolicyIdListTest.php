@@ -15,7 +15,7 @@ use Dkd\PhpCmis\DataObjects\PolicyIdList;
 /**
  * Class PolicyIdListTest
  */
-class PolicyIdListTest extends \PHPUnit_Framework_TestCase
+class PolicyIdListTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
 
     /**
@@ -23,7 +23,7 @@ class PolicyIdListTest extends \PHPUnit_Framework_TestCase
      */
     protected $policyIdList;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->policyIdList = new PolicyIdList();
     }

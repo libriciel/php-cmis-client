@@ -15,7 +15,7 @@ use Dkd\PhpCmis\DataObjects\PropertyIdDefinition;
 /**
  * Class PropertyIdDefinitionTest
  */
-class PropertyIdDefinitionTest extends \PHPUnit_Framework_TestCase
+class PropertyIdDefinitionTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     public function testAssertIsInstanceOfAbstractPropertyDefinition()
     {

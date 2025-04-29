@@ -17,7 +17,7 @@ use PHPUnit_Framework_TestCase;
 /**
  * Class PermissionDefinitionTest
  */
-class PermissionDefinitionTest extends PHPUnit_Framework_TestCase
+class PermissionDefinitionTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use DataProviderCollectionTrait;
 
@@ -26,7 +26,7 @@ class PermissionDefinitionTest extends PHPUnit_Framework_TestCase
      */
     protected $permissionDefinition;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->permissionDefinition = new PermissionDefinition();
     }

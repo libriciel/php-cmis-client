@@ -20,16 +20,16 @@ use Psr\Http\Message\StreamInterface;
 /**
  * Class RenditionTest
  */
-class RenditionTest extends \PHPUnit_Framework_TestCase
+class RenditionTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use ReflectionHelperTrait;
 
     /**
-     * @var SessionInterface|PHPUnit_Framework_MockObject_MockObject
+     * @var SessionInterface|\PHPUnit\Framework\MockObject\MockObject
      */
     protected $sessionMock;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->sessionMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\SessionInterface')->getMockForAbstractClass();
     }
@@ -113,7 +113,7 @@ class RenditionTest extends \PHPUnit_Framework_TestCase
         $streamId = 'bar';
         $objectId = 'foo';
 
-        /** @var  RepositoryInfoInterface|PHPUnit_Framework_MockObject_MockObject $repositoryInfoMock */
+        /** @var RepositoryInfoInterface|\PHPUnit\Framework\MockObject\MockObject $repositoryInfoMock */
         $repositoryInfoMock = $this->getMockBuilder(
             '\\Dkd\\PhpCmis\\Data\\RepositoryInfoInterface'
         )->setMethods(['getId'])->getMockForAbstractClass();

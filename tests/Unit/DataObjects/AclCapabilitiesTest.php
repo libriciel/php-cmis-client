@@ -17,7 +17,7 @@ use Dkd\PhpCmis\Enum\SupportedPermissions;
 /**
  * Class AclCapabilitiesTest
  */
-class AclCapabilitiesTest extends \PHPUnit_Framework_TestCase
+class AclCapabilitiesTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
 
     /**
@@ -25,7 +25,7 @@ class AclCapabilitiesTest extends \PHPUnit_Framework_TestCase
      */
     protected $aclCapabilities;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->aclCapabilities = new AclCapabilities();
     }
@@ -65,7 +65,8 @@ class AclCapabilitiesTest extends \PHPUnit_Framework_TestCase
         $permissionDefinition,
         $expectedExceptionText
     ) {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException', $expectedExceptionText);
+        $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
+        $this->expectExceptionMessage($expectedExceptionText);
         $this->aclCapabilities->setPermissions([$permissionDefinition]);
     }
 
@@ -125,7 +126,8 @@ class AclCapabilitiesTest extends \PHPUnit_Framework_TestCase
         $permissionDefinition,
         $expectedExceptionText
     ) {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException', $expectedExceptionText);
+        $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
+        $this->expectExceptionMessage($expectedExceptionText);
         $this->aclCapabilities->setPermissions([$permissionDefinition]);
     }
 

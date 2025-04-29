@@ -18,7 +18,7 @@ use Dkd\PhpCmis\Test\Unit\DataProviderCollectionTrait;
 /**
  * Class AbstractTypeDefinitionTest
  */
-class AbstractTypeDefinitionTest extends \PHPUnit_Framework_TestCase
+class AbstractTypeDefinitionTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use DataProviderCollectionTrait;
 
@@ -52,7 +52,7 @@ class AbstractTypeDefinitionTest extends \PHPUnit_Framework_TestCase
         'typeMutability'
     ];
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->abstractTypeDefinition = $this->getMockBuilder(
             '\\Dkd\\PhpCmis\\DataObjects\\AbstractTypeDefinition'
@@ -177,7 +177,7 @@ class AbstractTypeDefinitionTest extends \PHPUnit_Framework_TestCase
 
     public function testAddPropertyDefinitionAddsPropertyDefinitionWithPropertyDefinitionIdAsArrayIndex()
     {
-        /** @var PropertyDefinitionInterface|\PHPUnit_Framework_MockObject_MockObject $propertyDefinition */
+        /** @var PropertyDefinitionInterface|\PHPUnit\Framework\MockObject\MockObject $propertyDefinition */
         $propertyDefinition = $this->getMockBuilder(
             '\\Dkd\\PhpCmis\\Definitions\\PropertyDefinitionInterface'
         )->setMethods(['getId'])->getMockForAbstractClass();
@@ -230,7 +230,7 @@ class AbstractTypeDefinitionTest extends \PHPUnit_Framework_TestCase
 
     public function testPopulateWithClonesMethodCopiesPropertyValuesFromGivenTypeDefinition()
     {
-        /** @var AbstractTypeDefinition|\PHPUnit_Framework_MockObject_MockObject $dummyTypeDefinition */
+        /** @var AbstractTypeDefinition|\PHPUnit\Framework\MockObject\MockObject $dummyTypeDefinition */
         $dummyTypeDefinition = $this->getMockBuilder(
             '\\Dkd\\PhpCmis\\DataObjects\\AbstractTypeDefinition'
         )->setConstructorArgs(['typeId'])->getMockForAbstractClass();

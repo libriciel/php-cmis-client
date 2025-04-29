@@ -12,12 +12,13 @@ namespace Dkd\PhpCmis\Test\Unit\DataObjects;
 
 use Dkd\PhpCmis\DataObjects\AccessControlEntry;
 use Dkd\PhpCmis\PrincipalInterface;
+use PHPUnit\Framework\Error\Notice;
 use PHPUnit_Framework_MockObject_MockObject;
 
 /**
  * Class AccessControlEntryTest
  */
-class AccessControlEntryTest extends \PHPUnit_Framework_TestCase
+class AccessControlEntryTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
 
     /**
@@ -31,13 +32,13 @@ class AccessControlEntryTest extends \PHPUnit_Framework_TestCase
     protected $dummyPermissions = ['foo', 'bar'];
 
     /**
-     * @var PrincipalInterface|PHPUnit_Framework_MockObject_MockObject
+     * @var PrincipalInterface|\PHPUnit\Framework\MockObject\MockObject
      */
     protected $dummyPrincipal;
 
-    public function setUp()
+    protected function setUp(): void
     {
-        $this->dummyPrincipal = $this->getMockBuilder('\\Dkd\\PhpCmis\\PrincipalInterface')->getMockForAbstractClass();
+        $this->dummyPrincipal = $this->createMock(PrincipalInterface::class);
         $this->ace = new AccessControlEntry(
             $this->dummyPrincipal,
             $this->dummyPermissions
@@ -53,13 +54,13 @@ class AccessControlEntryTest extends \PHPUnit_Framework_TestCase
 
     public function testSetPermissionsThrowsExceptionIfPermissionItemIsNotOfTypeString()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
+        $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
         $this->ace->setPermissions([new \stdClass()]);
     }
 
     public function testSetPrincipalSetsPrincipal()
     {
-        $principal = $this->getMockBuilder('\\Dkd\\PhpCmis\\PrincipalInterface')->getMockForAbstractClass();
+        $principal = $this->createMock(PrincipalInterface::class);
         $this->ace->setPrincipal($principal);
         $this->assertAttributeSame($principal, 'principal', $this->ace);
     }
@@ -100,7 +101,7 @@ class AccessControlEntryTest extends \PHPUnit_Framework_TestCase
 
     public function testSetIsDirectCastsValueToBoolean()
     {
-        $this->setExpectedException('\\PHPUnit_Framework_Error_Notice');
+        $this->expectException(Notice::class);
         $this->ace->setIsDirect(1);
         $this->assertAttributeSame(true, 'isDirect', $this->ace);
     }

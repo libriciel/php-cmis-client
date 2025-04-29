@@ -18,18 +18,18 @@ use PHPUnit_Framework_TestCase;
 /**
  * Unit Tests for AbstractExtensionData
  */
-class AbstractExtensionDataTest extends PHPUnit_Framework_TestCase
+class AbstractExtensionDataTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use ReflectionHelperTrait;
 
     /**
-     * @var PHPUnit_Framework_MockObject_MockObject|AbstractExtensionData
+     * @var \PHPUnit\Framework\MockObject\MockObject|AbstractExtensionData
      */
     protected $abstractExtensionData;
 
     const CLASS_TO_TEST = '\\Dkd\\PhpCmis\\DataObjects\\AbstractExtensionData';
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->abstractExtensionData = $this->getMockBuilder(self::CLASS_TO_TEST)->enableProxyingToOriginalMethods(
         )->getMockForAbstractClass();
@@ -50,11 +50,11 @@ class AbstractExtensionDataTest extends PHPUnit_Framework_TestCase
 
     public function testSetExtensionsWithInvalidDataThrowsException()
     {
-        $this->setExpectedException(
-            '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
-            'Argument of type "stdClass" given but argument of type '
-            . '"Dkd\\PhpCmis\\Data\\CmisExtensionElementInterface" was expected.'
+        $this->expectException(
+            '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException'
         );
+        $this->expectExceptionMessage('Argument of type "stdClass" given but argument of type '
+        . '"Dkd\\PhpCmis\\Data\\CmisExtensionElementInterface" was expected.');
         $this->abstractExtensionData->setExtensions([new \stdClass()]);
     }
 }

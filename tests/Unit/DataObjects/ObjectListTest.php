@@ -12,18 +12,19 @@ namespace Dkd\PhpCmis\Test\Unit\DataObjects;
 
 use Dkd\PhpCmis\Data\ObjectDataInterface;
 use Dkd\PhpCmis\DataObjects\ObjectList;
+use PHPUnit\Framework\Error\Notice;
 
 /**
  * Class ObjectListTest
  */
-class ObjectListTest extends \PHPUnit_Framework_TestCase
+class ObjectListTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     /**
      * @var ObjectList
      */
     protected $objectList;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->objectList = new ObjectList([$this->getObjectDataMock()]);
     }
@@ -37,7 +38,7 @@ class ObjectListTest extends \PHPUnit_Framework_TestCase
 
     public function testSetObjectsThrowsExceptionIfAGivenObjectIsNotOfTypeObjectDataInterface()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
+        $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
         $this->objectList->setObjects([new \stdClass()]);
     }
 
@@ -64,7 +65,7 @@ class ObjectListTest extends \PHPUnit_Framework_TestCase
 
     public function testSetHasMoreItemsCastsValueToBoolean()
     {
-        $this->setExpectedException('\\PHPUnit_Framework_Error_Notice');
+        $this->expectException(Notice::class);
         $this->objectList->setHasMoreItems(1);
         $this->assertAttributeSame(true, 'hasMoreItems', $this->objectList);
     }
@@ -100,7 +101,7 @@ class ObjectListTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|ObjectDataInterface
+     * @return \PHPUnit\Framework\MockObject\MockObject|ObjectDataInterface
      */
     protected function getObjectDataMock()
     {

@@ -16,21 +16,21 @@ use Dkd\PhpCmis\Enum\Action;
 /**
  * Class AllowableActionsTest
  */
-class AllowableActionsTest extends \PHPUnit_Framework_TestCase
+class AllowableActionsTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     /**
      * @var AllowableActions
      */
     protected $allowableActions;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->allowableActions = new AllowableActions();
     }
 
     public function testSetAllowableActionsThrowsExceptionIfGivenListContainsInvalidValue()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
+        $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
         $this->allowableActions->setAllowableActions(['foo']);
     }
 

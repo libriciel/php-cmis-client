@@ -15,14 +15,14 @@ use Dkd\PhpCmis\DataObjects\RelationshipTypeDefinition;
 /**
  * Class RelationshipTypeDefinitionTest
  */
-class RelationshipTypeDefinitionTest extends \PHPUnit_Framework_TestCase
+class RelationshipTypeDefinitionTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     /**
      * @var RelationshipTypeDefinition
      */
     protected $relationshipTypeDefinition;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->relationshipTypeDefinition = new RelationshipTypeDefinition('typeId');
     }

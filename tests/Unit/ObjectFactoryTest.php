@@ -19,14 +19,14 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class ObjectFactoryTest
  */
-class ObjectFactoryTest extends \PHPUnit_Framework_TestCase
+class ObjectFactoryTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use ReflectionHelperTrait;
 
     const CLASS_TO_TEST = '\\Dkd\\PhpCmis\\ObjectFactory';
 
     /**
-     * @param SessionInterface|PHPUnit_Framework_MockObject_MockObject $session
+     * @param SessionInterface|\PHPUnit\Framework\MockObject\MockObject $session
      * @return ObjectFactory
      */
     public function getObjectFactory($session = null)
@@ -56,7 +56,7 @@ class ObjectFactoryTest extends \PHPUnit_Framework_TestCase
         )->getMockForAbstractClass();
 
         $bindingMock->expects($this->once())->method('getObjectFactory')->willReturn($bindingObjectFactoryMock);
-        /** @var SessionInterface|PHPUnit_Framework_MockObject_MockObject $sessionMock */
+        /** @var SessionInterface|\PHPUnit\Framework\MockObject\MockObject $sessionMock */
         $sessionMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\SessionInterface')->setMethods(
             ['getBinding']
         )->getMockForAbstractClass();
@@ -88,7 +88,7 @@ class ObjectFactoryTest extends \PHPUnit_Framework_TestCase
             $expectedAcl
         );
         $bindingMock->expects($this->any())->method('getObjectFactory')->willReturn($bindingObjectFactoryMock);
-        /** @var SessionInterface|PHPUnit_Framework_MockObject_MockObject $sessionMock */
+        /** @var SessionInterface|\PHPUnit\Framework\MockObject\MockObject $sessionMock */
         $sessionMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\SessionInterface')->setMethods(
             ['getBinding']
         )->getMockForAbstractClass();
@@ -100,9 +100,14 @@ class ObjectFactoryTest extends \PHPUnit_Framework_TestCase
 
     public function testConvertTypeDefinitionThrowsExceptionIfUnknownTypeDefinitionIsGiven()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisRuntimeException', '', 1422028427);
+        $class = $this->getMockForAbstractClass('\\Dkd\\PhpCmis\\Definitions\\TypeDefinitionInterface');
+        $this->expectException(
+            '\\Dkd\\PhpCmis\\Exception\\CmisRuntimeException'
+        );
+        $this->expectExceptionMessage('Unknown base type! Received "'. \get_class($class).'"');
+        $this->expectExceptionCode(1422028427);
         $this->getObjectFactory()->convertTypeDefinition(
-            $this->getMockForAbstractClass('\\Dkd\\PhpCmis\\Definitions\\TypeDefinitionInterface')
+            $class
         );
     }
 
@@ -159,7 +164,11 @@ class ObjectFactoryTest extends \PHPUnit_Framework_TestCase
 
     public function testConvertPropertiesThrowsExceptionIfSecondaryTypesPropertyIsSetButNotAnArray()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException', '', 1425473414);
+        $this->expectException(
+            '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException'
+        );
+        $this->expectExceptionMessage('The property "cmis:secondaryObjectTypeIds" must be of type array or undefined but is of type "string"');
+        $this->expectExceptionCode(1425473414);
         $this->getObjectFactory()->convertProperties(
             [
                 PropertyIds::OBJECT_TYPE_ID => 'type-id',

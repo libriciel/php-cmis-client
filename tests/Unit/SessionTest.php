@@ -20,20 +20,20 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class SessionTest
  */
-class SessionTest extends \PHPUnit_Framework_TestCase
+class SessionTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     public function testConstructorThrowsExceptionIfNoParametersGiven()
     {
-        $this->setExpectedException(
-            '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
-            'No parameters provided!',
-            1408115280
+        $this->expectException(
+            '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException'
         );
+        $this->expectExceptionMessage('No parameters provided!');
+        $this->expectExceptionCode(1408115280);
         new Session([]);
     }
 
     /**
-     * @return CmisBindingsHelper|PHPUnit_Framework_MockObject_MockObject
+     * @return CmisBindingsHelper|\PHPUnit\Framework\MockObject\MockObject
      */
     protected function getBindingsHelperMock()
     {
@@ -48,7 +48,7 @@ class SessionTest extends \PHPUnit_Framework_TestCase
         )->getMockForAbstractClass();
         $bindingMock->expects($this->any())->method('getRepositoryService')->willReturn($repositoryServiceMock);
         $bindingMock->expects($this->any())->method('getRelationshipService')->willReturn($relationshipServiceMock);
-        /** @var CmisBindingsHelper|PHPUnit_Framework_MockObject_MockObject $bindingsHelperMock */
+        /** @var CmisBindingsHelper|\PHPUnit\Framework\MockObject\MockObject $bindingsHelperMock */
         $bindingsHelperMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\Bindings\\CmisBindingsHelper')->setMethods(
             ['createBinding']
         )->getMockForAbstractClass();
@@ -73,7 +73,7 @@ class SessionTest extends \PHPUnit_Framework_TestCase
     public function testObjectFactoryIsSetToObjectFactoryInstanceGivenAsMethodParameter()
     {
         /** @var ObjectFactoryInterface $dummyObjectFactory */
-        $dummyObjectFactory = $this->getMock('\\Dkd\\PhpCmis\\ObjectFactoryInterface');
+        $dummyObjectFactory = $this->createMock('\\Dkd\\PhpCmis\\ObjectFactoryInterface');
         $session = new Session(
             [SessionParameter::REPOSITORY_ID => 'foo'],
             $dummyObjectFactory,
@@ -88,7 +88,7 @@ class SessionTest extends \PHPUnit_Framework_TestCase
 
     public function testObjectFactoryIsSetToObjectFactoryDefinedInParametersArray()
     {
-        $objectFactory = $this->getMock('\\Dkd\\PhpCmis\\ObjectFactory');
+        $objectFactory = $this->createMock('\\Dkd\\PhpCmis\\ObjectFactory');
         $session = new Session(
             [
                 SessionParameter::REPOSITORY_ID => 'foo',
@@ -106,13 +106,14 @@ class SessionTest extends \PHPUnit_Framework_TestCase
 
     public function testExceptionIsThrownIfConfiguredObjectFactoryDoesNotImplementObjectFactoryInterface()
     {
-        $this->setExpectedException(
-            '\\RuntimeException',
-            '',
-            1408354120
+        $this->expectException(
+            '\\RuntimeException'
         );
+        $this->expectExceptionCode(1408354120);
+        $this->expectExceptionMessageMatches('/Unable to create object factory: RuntimeException:(.*)/');
 
-        $object = $this->getMock('\\stdClass');
+
+        $object = $this->createMock('\\stdClass');
         new Session(
             [SessionParameter::OBJECT_FACTORY_CLASS => get_class($object)]
         );
@@ -121,7 +122,7 @@ class SessionTest extends \PHPUnit_Framework_TestCase
     public function testCreatedObjectFactoryInstanceWillBeInitialized()
     {
         // dummy object factory with a spy on initialize
-        $objectFactory = $this->getMock('\\Dkd\\PhpCmis\\ObjectFactory');
+        $objectFactory = $this->createMock('\\Dkd\\PhpCmis\\ObjectFactory');
         $objectFactory->expects($this->once())->method('initialize');
 
         $sessionClassName = '\\Dkd\\PhpCmis\\Session';
@@ -153,7 +154,7 @@ class SessionTest extends \PHPUnit_Framework_TestCase
 
     public function testCreateQueryStatementThrowsErrorOnEmptyProperties()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
+        $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
         $mock = $this->getMockBuilder('\\Dkd\\PhpCmis\\Session')
             ->setMethods(['dummy'])
             ->disableOriginalConstructor()
@@ -163,7 +164,7 @@ class SessionTest extends \PHPUnit_Framework_TestCase
 
     public function testCreateQueryStatementThrowsErrorOnEmptyTypes()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
+        $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
         $mock = $this->getMockBuilder('\\Dkd\\PhpCmis\\Session')
             ->setMethods(['dummy'])
             ->disableOriginalConstructor()
@@ -216,13 +217,14 @@ class SessionTest extends \PHPUnit_Framework_TestCase
 
     public function testExceptionIsThrownIfConfiguredCacheDoesNotImplementCacheInterface()
     {
-        $this->setExpectedException(
-            '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
-            '',
-            1408354123
+        $this->expectException(
+            '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException'
         );
+        $this->expectExceptionCode(1408354123);
 
-        $object = $this->getMock('\\stdClass');
+        $this->expectExceptionMessageMatches('/Unable to create cache: RuntimeException:(.*)/');
+
+        $object = $this->createMock('\\stdClass');
         new Session(
             [SessionParameter::CACHE_CLASS => get_class($object)]
         );
@@ -247,10 +249,7 @@ class SessionTest extends \PHPUnit_Framework_TestCase
             ->setMethods(['getId'])
             ->getMock();
         $repositoryInfo->expects($this->once())->method('getId');
-        $objectType = $this->getMockBuilder('\\Dkd\\PhpCmis\\Data\\ObjectTypeInterface')
-            ->setMethods(['getId', '__toString'])
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
+        $objectType = $this->createMock(PhpCmis\Data\ObjectTypeInterface::class);
         $property = new \ReflectionProperty($session, 'repositoryInfo');
         $property->setAccessible(true);
         $property->setValue($session, $repositoryInfo);

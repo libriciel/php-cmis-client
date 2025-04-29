@@ -84,7 +84,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         )->getMock();
         $cmisBindingsHelperMock->expects($this->any())->method('getJsonConverter')->willReturn($jsonConverterMock);
 
-        /** @var ObjectService|PHPUnit_Framework_MockObject_MockObject $objectService */
+        /** @var ObjectService|\PHPUnit\Framework\MockObject\MockObject $objectService */
         $objectService = $this->getMockBuilder(self::CLASS_TO_TEST)->setConstructorArgs(
             [$this->getSessionMock(), $cmisBindingsHelperMock]
         )->setMethods(
@@ -203,7 +203,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
             ['getId']
         )->getMock();
 
-        /** @var  ObjectData|PHPUnit_Framework_MockObject_MockObject $dummyObjectData */
+        /** @var ObjectData|\PHPUnit\Framework\MockObject\MockObject $dummyObjectData */
         $dummyObjectData->expects($this->any())->method('getId')->willReturn('foo-id');
         $jsonConverterMock->expects($this->atLeastOnce())->method('convertObject')->with($responseData)->willReturn(
             $dummyObjectData
@@ -216,7 +216,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
             'getJsonConverter'
         )->willReturn($jsonConverterMock);
 
-        /** @var ObjectService|PHPUnit_Framework_MockObject_MockObject $objectService */
+        /** @var ObjectService|\PHPUnit\Framework\MockObject\MockObject $objectService */
         $objectService = $this->getMockBuilder(self::CLASS_TO_TEST)->setConstructorArgs(
             [$this->getSessionMock(), $cmisBindingsHelperMock]
         )->setMethods(
@@ -277,7 +277,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
             '/foo/bar/baz'
         );
 
-        $expectedPostStream = $this->getMockBuilder(StreamInterface::class)->disableOriginalConstructor()->getMock();
+        $expectedPostStream = $this->createMock(StreamInterface::class);
 
         $principal1 = new Principal('principalId1');
         $ace1 = new AccessControlEntry($principal1, ['permissionValue1', 'permissionValue2']);
@@ -431,7 +431,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
             ['convertObject']
         )->getMock();
 
-        /** @var  ObjectData|PHPUnit_Framework_MockObject_MockObject $dummyObjectData */
+        /** @var ObjectData|\PHPUnit\Framework\MockObject\MockObject $dummyObjectData */
         $dummyObjectData = $this->getMockBuilder(ObjectData::class)->setMethods(
             ['getId']
         )->getMock();
@@ -447,7 +447,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
             'getJsonConverter'
         )->willReturn($jsonConverterMock);
 
-        /** @var ObjectService|PHPUnit_Framework_MockObject_MockObject $objectService */
+        /** @var ObjectService|\PHPUnit\Framework\MockObject\MockObject $objectService */
         $objectService = $this->getMockBuilder(self::CLASS_TO_TEST)->setConstructorArgs(
             [$this->getSessionMock(), $cmisBindingsHelperMock]
         )->setMethods(
@@ -591,13 +591,11 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         $objectId,
         $allVersions = true
     ) {
-        $responseMock = $this->getMockBuilder(
-            Response::class
-        )->disableOriginalConstructor()->getMock();
+        $responseMock = $this->createMock(Response::class);
 
-        $cmisBindingsHelperMock = $this->getMockBuilder(CmisBindingsHelper::class)->getMock();
+        $cmisBindingsHelperMock = $this->createMock(CmisBindingsHelper::class);
 
-        /** @var ObjectService|PHPUnit_Framework_MockObject_MockObject $objectService */
+        /** @var ObjectService|\PHPUnit\Framework\MockObject\MockObject $objectService */
         $objectService = $this->getMockBuilder(self::CLASS_TO_TEST)->setConstructorArgs(
             [$this->getSessionMock(), $cmisBindingsHelperMock]
         )->setMethods(
@@ -677,7 +675,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
             ['convertObject']
         )->getMock();
 
-        /** @var  ObjectData|PHPUnit_Framework_MockObject_MockObject $dummyObjectData */
+        /** @var ObjectData|\PHPUnit\Framework\MockObject\MockObject $dummyObjectData */
         $dummyObjectData = $this->getMockBuilder(ObjectData::class)->setMethods(
             ['getId']
         )->getMock();
@@ -693,7 +691,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
             'getJsonConverter'
         )->willReturn($jsonConverterMock);
 
-        /** @var ObjectService|PHPUnit_Framework_MockObject_MockObject $objectService */
+        /** @var ObjectService|\PHPUnit\Framework\MockObject\MockObject $objectService */
         $objectService = $this->getMockBuilder(self::CLASS_TO_TEST)->setConstructorArgs(
             [$this->getSessionMock(), $cmisBindingsHelperMock]
         )->setMethods(
@@ -776,7 +774,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         )->getMock();
         $cmisBindingsHelperMock->expects($this->any())->method('getJsonConverter')->willReturn($jsonConverterMock);
 
-        /** @var ObjectService|PHPUnit_Framework_MockObject_MockObject $objectService */
+        /** @var ObjectService|\PHPUnit\Framework\MockObject\MockObject $objectService */
         $objectService = $this->getMockBuilder(self::CLASS_TO_TEST)->setConstructorArgs(
             [$this->getSessionMock(), $cmisBindingsHelperMock]
         )->setMethods(
@@ -859,7 +857,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
             ['convertObject']
         )->getMock();
 
-        /** @var  ObjectData|PHPUnit_Framework_MockObject_MockObject $dummyObjectData */
+        /** @var ObjectData|\PHPUnit\Framework\MockObject\MockObject $dummyObjectData */
         $dummyObjectData = $this->getMockBuilder(ObjectData::class)->setMethods(
             ['getId']
         )->getMock();
@@ -875,7 +873,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
             'getJsonConverter'
         )->willReturn($jsonConverterMock);
 
-        /** @var ObjectService|PHPUnit_Framework_MockObject_MockObject $objectService */
+        /** @var ObjectService|\PHPUnit\Framework\MockObject\MockObject $objectService */
         $objectService = $this->getMockBuilder(self::CLASS_TO_TEST)->setConstructorArgs(
             [$this->getSessionMock(), $cmisBindingsHelperMock]
         )->setMethods(
@@ -1043,7 +1041,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
             ['getId']
         )->getMock();
 
-        /** @var  ObjectData|PHPUnit_Framework_MockObject_MockObject $dummyObjectData */
+        /** @var ObjectData|\PHPUnit\Framework\MockObject\MockObject $dummyObjectData */
         $dummyObjectData->expects($this->any())->method('getId')->willReturn('foo-id');
         $jsonConverterMock->expects($this->atLeastOnce())->method('convertObject')->with($responseData)->willReturn(
             $dummyObjectData
@@ -1056,7 +1054,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
             'getJsonConverter'
         )->willReturn($jsonConverterMock);
 
-        /** @var ObjectService|PHPUnit_Framework_MockObject_MockObject $objectService */
+        /** @var ObjectService|\PHPUnit\Framework\MockObject\MockObject $objectService */
         $objectService = $this->getMockBuilder(self::CLASS_TO_TEST)->setConstructorArgs(
             [$this->getSessionMock(), $cmisBindingsHelperMock]
         )->setMethods(
@@ -1226,7 +1224,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         )->getMock();
         $cmisBindingsHelperMock->expects($this->once())->method('getJsonConverter')->willReturn($jsonConverterMock);
 
-        /** @var ObjectService|PHPUnit_Framework_MockObject_MockObject $objectService */
+        /** @var ObjectService|\PHPUnit\Framework\MockObject\MockObject $objectService */
         $objectService = $this->getMockBuilder(self::CLASS_TO_TEST)->setConstructorArgs(
             [$this->getSessionMock(), $cmisBindingsHelperMock]
         )->setMethods(
@@ -1337,7 +1335,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
             ['convertObject']
         )->getMock();
 
-        /** @var  ObjectData|PHPUnit_Framework_MockObject_MockObject $dummyObjectData */
+        /** @var ObjectData|\PHPUnit\Framework\MockObject\MockObject $dummyObjectData */
         $dummyObjectData = $this->getMockBuilder(ObjectData::class)->setMethods(
             ['getId', 'getProperties']
         )->getMock();
@@ -1364,7 +1362,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
 
         $sessionMock = $this->getSessionMock($sessionParameterMap);
 
-        /** @var ObjectService|PHPUnit_Framework_MockObject_MockObject $objectService */
+        /** @var ObjectService|\PHPUnit\Framework\MockObject\MockObject $objectService */
         $objectService = $this->getMockBuilder(self::CLASS_TO_TEST)->setConstructorArgs(
             [$sessionMock, $cmisBindingsHelperMock]
         )->setMethods(
@@ -1495,7 +1493,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
             ['convertObject']
         )->getMock();
 
-        /** @var  ObjectData|PHPUnit_Framework_MockObject_MockObject $dummyObjectData */
+        /** @var ObjectData|\PHPUnit\Framework\MockObject\MockObject $dummyObjectData */
         $dummyObjectData = $this->getMockBuilder(ObjectData::class)->setMethods(
             ['getId', 'getProperties']
         )->getMock();
@@ -1522,7 +1520,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
 
         $sessionMock = $this->getSessionMock($sessionParameterMap);
 
-        /** @var ObjectService|PHPUnit_Framework_MockObject_MockObject $objectService */
+        /** @var ObjectService|\PHPUnit\Framework\MockObject\MockObject $objectService */
         $objectService = $this->getMockBuilder(self::CLASS_TO_TEST)->setConstructorArgs(
             [$sessionMock, $cmisBindingsHelperMock]
         )->setMethods(
@@ -1633,7 +1631,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
             ['convertObject']
         )->getMock();
 
-        /** @var  ObjectData|PHPUnit_Framework_MockObject_MockObject $dummyObjectData */
+        /** @var ObjectData|\PHPUnit\Framework\MockObject\MockObject $dummyObjectData */
         $dummyObjectData = $this->getMockBuilder(ObjectData::class)->setMethods(
             ['getId', 'getProperties']
         )->getMock();
@@ -1660,7 +1658,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
 
         $sessionMock = $this->getSessionMock($sessionParameterMap);
 
-        /** @var ObjectService|PHPUnit_Framework_MockObject_MockObject $objectService */
+        /** @var ObjectService|\PHPUnit\Framework\MockObject\MockObject $objectService */
         $objectService = $this->getMockBuilder(self::CLASS_TO_TEST)->setConstructorArgs(
             [$sessionMock, $cmisBindingsHelperMock]
         )->setMethods(
@@ -1765,11 +1763,11 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         )->getMock();
         $cmisBindingsHelperMock->expects($this->any())->method('getHttpInvoker')->willReturn($httpInvoker);
 
-        /** @var ObjectService|PHPUnit_Framework_MockObject_MockObject $objectService */
+        /** @var ObjectService|\PHPUnit\Framework\MockObject\MockObject $objectService */
         $objectService = $this->getMockBuilder(self::CLASS_TO_TEST)->setConstructorArgs(
             [$this->getSessionMock(), $cmisBindingsHelperMock]
         )->setMethods(
-            ['getObjectUrl']
+            ['getObjectUrl', 'read']
         )->getMock();
 
         $objectService->expects($this->any())->method('getObjectUrl')->with(
@@ -1858,8 +1856,8 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
             ['convertFailedToDelete']
         )->getMock();
 
-        /** @var  ObjectData|PHPUnit_Framework_MockObject_MockObject $dummyObjectData */
-        $dummyFailedToDeleteData = $this->getMock(FailedToDeleteData::class);
+        /** @var ObjectData|\PHPUnit\Framework\MockObject\MockObject $dummyObjectData */
+        $dummyFailedToDeleteData = $this->createMock(FailedToDeleteData::class);
 
         $jsonConverterMock->expects($this->atLeastOnce())->method(
             'convertFailedToDelete'
@@ -1869,7 +1867,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
 
         $sessionMock = $this->getSessionMock();
 
-        /** @var ObjectService|PHPUnit_Framework_MockObject_MockObject $objectService */
+        /** @var ObjectService|\PHPUnit\Framework\MockObject\MockObject $objectService */
         $objectService = $this->getMockBuilder(self::CLASS_TO_TEST)->setConstructorArgs(
             [$sessionMock]
         )->setMethods(
@@ -1983,7 +1981,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         )->getMock();
         $cmisBindingsHelperMock->expects($this->once())->method('getJsonConverter')->willReturn($jsonConverterMock);
 
-        /** @var ObjectService|PHPUnit_Framework_MockObject_MockObject $objectService */
+        /** @var ObjectService|\PHPUnit\Framework\MockObject\MockObject $objectService */
         $objectService = $this->getMockBuilder(self::CLASS_TO_TEST)->setConstructorArgs(
             [$this->getSessionMock(), $cmisBindingsHelperMock]
         )->setMethods(

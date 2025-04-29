@@ -16,14 +16,14 @@ use Dkd\PhpCmis\Enum\DateTimeResolution;
 /**
  * Class PropertyDateTimeDefinitionTest
  */
-class PropertyDateTimeDefinitionTest extends \PHPUnit_Framework_TestCase
+class PropertyDateTimeDefinitionTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     /**
      * @var PropertyDateTimeDefinition
      */
     protected $propertyDateTimeDefinition;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->propertyDateTimeDefinition = new PropertyDateTimeDefinition('testId');
     }

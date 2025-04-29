@@ -19,14 +19,14 @@ use Dkd\PhpCmis\PropertyIds;
 /**
  * Class ObjectDataTest
  */
-class ObjectDataTest extends \PHPUnit_Framework_TestCase
+class ObjectDataTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     /**
      * @var ObjectData
      */
     protected $objectData;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->objectData = new ObjectData();
     }

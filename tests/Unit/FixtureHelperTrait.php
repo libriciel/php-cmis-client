@@ -47,5 +47,5 @@ trait FixtureHelperTrait
      *
      * @param  string $message
      */
-    abstract public function fail($message = '');
+    abstract public function fail(string $message = '');
 }

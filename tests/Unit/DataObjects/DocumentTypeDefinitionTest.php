@@ -18,7 +18,7 @@ use Dkd\PhpCmis\Test\Unit\DataProviderCollectionTrait;
 /**
  * Class DocumentTypeDefinitionTest
  */
-class DocumentTypeDefinitionTest extends \PHPUnit_Framework_TestCase
+class DocumentTypeDefinitionTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use DataProviderCollectionTrait;
 
@@ -27,7 +27,7 @@ class DocumentTypeDefinitionTest extends \PHPUnit_Framework_TestCase
      */
     protected $documentTypeDefinition;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->documentTypeDefinition = new DocumentTypeDefinition('typeId');
     }

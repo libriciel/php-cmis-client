@@ -17,16 +17,16 @@ use PHPUnit_Framework_MockObject_MockObject;
 /**
  * Class AbstractPropertyDataTest
  */
-class AbstractPropertyDataTest extends \PHPUnit_Framework_TestCase
+class AbstractPropertyDataTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use DataProviderCollectionTrait;
 
     /**
-     * @var PHPUnit_Framework_MockObject_MockObject|AbstractPropertyData
+     * @var \PHPUnit\Framework\MockObject\MockObject|AbstractPropertyData
      */
     protected $propertyDataMock;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->propertyDataMock = $this->getMockBuilder(
             '\\Dkd\\PhpCmis\\DataObjects\\AbstractPropertyData'

@@ -15,7 +15,7 @@ use Dkd\PhpCmis\DataObjects\PropertyUriDefinition;
 /**
  * Class PropertyUriDefinitionTest
  */
-class PropertyUriDefinitionTest extends \PHPUnit_Framework_TestCase
+class PropertyUriDefinitionTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     public function testAssertIsInstanceOfAbstractPropertyDefinition()
     {

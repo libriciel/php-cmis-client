@@ -19,7 +19,7 @@ use Dkd\PhpCmis\Test\Unit\DataProviderCollectionTrait;
 /**
  * Class AbstractPropertyDefinitionTest
  */
-class AbstractPropertyDefinitionTest extends \PHPUnit_Framework_TestCase
+class AbstractPropertyDefinitionTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use DataProviderCollectionTrait;
 
@@ -45,7 +45,7 @@ class AbstractPropertyDefinitionTest extends \PHPUnit_Framework_TestCase
         'isOpenChoice',
     ];
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->abstractPropertyDefinition = $this->getMockBuilder(
             '\\Dkd\\PhpCmis\\DataObjects\\AbstractPropertyDefinition'

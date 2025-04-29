@@ -12,11 +12,12 @@ namespace Dkd\PhpCmis\Test\Unit\DataObjects;
 
 use Dkd\PhpCmis\DataObjects\AccessControlEntry;
 use Dkd\PhpCmis\DataObjects\AccessControlList;
+use PHPUnit\Framework\Error\Notice;
 
 /**
  * Class AccessControlListTest
  */
-class AccessControlListTest extends \PHPUnit_Framework_TestCase
+class AccessControlListTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     /**
      * @var AccessControlList
@@ -28,7 +29,7 @@ class AccessControlListTest extends \PHPUnit_Framework_TestCase
      */
     protected $aceMock;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->aceMock = $this->getMockBuilder(
             '\\Dkd\\PhpCmis\\Data\\AceInterface'
@@ -46,7 +47,7 @@ class AccessControlListTest extends \PHPUnit_Framework_TestCase
 
     public function testSetAcesThrowsExceptionIfAGivenAceItemIsNotOfTypeAceInterface()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
+        $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
         $this->acl->setAces([new \stdClass()]);
     }
 
@@ -77,7 +78,7 @@ class AccessControlListTest extends \PHPUnit_Framework_TestCase
 
     public function testSetIsExactCastsValueToBoolean()
     {
-        $this->setExpectedException('\\PHPUnit_Framework_Error_Notice');
+        $this->expectException(Notice::class);
         $this->acl->setIsExact(1);
         $this->assertAttributeSame(true, 'isExact', $this->acl);
     }

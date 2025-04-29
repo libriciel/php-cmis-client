@@ -16,7 +16,7 @@ use Dkd\PhpCmis\Test\Unit\DataProviderCollectionTrait;
 /**
  * Class PropertyStringDefinitionTest
  */
-class PropertyStringDefinitionTest extends \PHPUnit_Framework_TestCase
+class PropertyStringDefinitionTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use DataProviderCollectionTrait;
 
@@ -25,7 +25,7 @@ class PropertyStringDefinitionTest extends \PHPUnit_Framework_TestCase
      */
     protected $propertyStringDefinition;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->propertyStringDefinition = new PropertyStringDefinition('testId');
     }

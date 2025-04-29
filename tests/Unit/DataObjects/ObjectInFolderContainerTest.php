@@ -17,14 +17,14 @@ use Dkd\PhpCmis\DataObjects\ObjectInFolderContainer;
 /**
  * Class ObjectInFolderContainerTest
  */
-class ObjectInFolderContainerTest extends \PHPUnit_Framework_TestCase
+class ObjectInFolderContainerTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     /**
      * @var ObjectInFolderContainer
      */
     protected $objectInFolderContainer;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->objectInFolderContainer = new ObjectInFolderContainer(new ObjectInFolderData());
     }
@@ -56,7 +56,7 @@ class ObjectInFolderContainerTest extends \PHPUnit_Framework_TestCase
 
     public function testSetChildrenThrowsExceptionIfAGivenObjectIsNotOfTypeObjectInFolderContainerInterface()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
+        $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
         $this->objectInFolderContainer->setChildren([new \stdClass()]);
     }
 
@@ -79,12 +79,10 @@ class ObjectInFolderContainerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|ObjectInFolderContainerInterface
+     * @return \PHPUnit\Framework\MockObject\MockObject|ObjectInFolderContainerInterface
      */
     protected function getObjectInFolderContainerMock()
     {
-        return $this->getMockBuilder(
-            '\\Dkd\\PhpCmis\\Data\\ObjectInFolderContainerInterface'
-        )->disableOriginalConstructor()->getMockForAbstractClass();
+        return $this->createMock(ObjectInFolderContainerInterface::class);
     }
 }

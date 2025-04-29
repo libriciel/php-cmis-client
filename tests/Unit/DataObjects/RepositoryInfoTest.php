@@ -17,7 +17,7 @@ use Dkd\PhpCmis\Enum\CmisVersion;
 /**
  * Class RepositoryInfoTest
  */
-class RepositoryInfoTest extends \PHPUnit_Framework_TestCase
+class RepositoryInfoTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     const DO_NOT_TEST_INVALID_TYPE_VALUE = 'doNotTestInvalidType';
 
@@ -26,7 +26,7 @@ class RepositoryInfoTest extends \PHPUnit_Framework_TestCase
      */
     protected $repositoryInfo;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->repositoryInfo = new RepositoryInfo();
     }
@@ -166,16 +166,18 @@ class RepositoryInfoTest extends \PHPUnit_Framework_TestCase
             $setterName = 'set' . ucfirst($propertyName);
             $validType = gettype($validValue);
             if ($validType === 'object' || $validType === 'array') {
-                $this->setExpectedException(
-                    '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException',
-                    '',
-                    1413440336
+                //FIXME : get message
+                $this->expectException(
+                    '\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException'
                 );
+                $this->expectExceptionCode(1413440336);
                 $this->repositoryInfo->$setterName($invalidValue);
             } else {
                 @$this->repositoryInfo->$setterName($invalidValue);
                 $this->assertAttributeInternalType($validType, $propertyName, $this->repositoryInfo);
             }
+        } else {
+            $this->markTestIncomplete('This test does not have any assertions yet.');
         }
     }
 

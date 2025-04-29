@@ -17,7 +17,7 @@ use Dkd\PhpCmis\Test\Unit\ReflectionHelperTrait;
 /**
  * Class CmisBindingFactoryTest
  */
-class CmisBindingFactoryTest extends \PHPUnit_Framework_TestCase
+class CmisBindingFactoryTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     use ReflectionHelperTrait;
 
@@ -31,7 +31,7 @@ class CmisBindingFactoryTest extends \PHPUnit_Framework_TestCase
      */
     const CLASS_TO_TEST = '\\Dkd\\PhpCmis\\Bindings\\CmisBindingFactory';
 
-    public function setUp()
+    protected function setUp(): void
     {
         $className = self::CLASS_TO_TEST;
         $this->cmisBindingFactory = new $className();
@@ -39,7 +39,7 @@ class CmisBindingFactoryTest extends \PHPUnit_Framework_TestCase
 
     public function testCreateCmisBrowserBindingThrowsExceptionIfBrowserUrlIsNotConfigured()
     {
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
+        $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
         $this->cmisBindingFactory->createCmisBrowserBinding(['foo' => 'bar']);
     }
 
@@ -47,7 +47,7 @@ class CmisBindingFactoryTest extends \PHPUnit_Framework_TestCase
     {
         $sessionParameters = [];
 
-        $this->setExpectedException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
+        $this->expectException('\\Dkd\\PhpCmis\\Exception\\CmisInvalidArgumentException');
         $validateMethod = $this->getMethod(self::CLASS_TO_TEST, 'validateCmisBrowserBindingParameters');
         $validateMethod->invokeArgs($this->cmisBindingFactory, [&$sessionParameters]);
     }

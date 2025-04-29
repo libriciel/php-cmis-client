@@ -16,14 +16,14 @@ use Dkd\PhpCmis\Enum\ChangeType;
 /**
  * Class ChangeEventInfoTest
  */
-class ChangeEventInfoTest extends \PHPUnit_Framework_TestCase
+class ChangeEventInfoTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     /**
      * @var ChangeEventInfo
      */
     protected $changeEventInfo;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->changeEventInfo = new ChangeEventInfo();
     }

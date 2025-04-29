@@ -15,7 +15,7 @@ use Dkd\PhpCmis\DataObjects\PropertyHtmlDefinition;
 /**
  * Class PropertyHtmlDefinitionTest
  */
-class PropertyHtmlDefinitionTest extends \PHPUnit_Framework_TestCase
+class PropertyHtmlDefinitionTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
     public function testAssertIsInstanceOfAbstractPropertyDefinition()
     {
