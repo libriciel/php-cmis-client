@@ -313,7 +313,7 @@ abstract class AbstractBrowserBindingService implements LinkAccessInterface
             $exceptionName = '\\Dkd\\PhpCmis\\Exception\\Cmis' . ucfirst($jsonError) . 'Exception';
 
             if (class_exists($exceptionName)) {
-                return new $exceptionName($message, null, $exception);
+                return new $exceptionName($message, 0, $exception);
             }
         }
 
@@ -329,25 +329,25 @@ abstract class AbstractBrowserBindingService implements LinkAccessInterface
             case 307:
                 return new CmisConnectionException(
                     'Redirects are not supported (HTTP status code ' . $code . '): ' . $message,
-                    null,
+                    0,
                     $exception
                 );
             case 400:
-                return new CmisInvalidArgumentException($message, null, $exception);
+                return new CmisInvalidArgumentException($message, 0, $exception);
             case 401:
-                return new CmisUnauthorizedException($message, null, $exception);
+                return new CmisUnauthorizedException($message, 0, $exception);
             case 403:
-                return new CmisPermissionDeniedException($message, null, $exception);
+                return new CmisPermissionDeniedException($message, 0, $exception);
             case 404:
-                return new CmisObjectNotFoundException($message, null, $exception);
+                return new CmisObjectNotFoundException($message, 0, $exception);
             case 405:
-                return new CmisNotSupportedException($message, null, $exception);
+                return new CmisNotSupportedException($message, 0, $exception);
             case 407:
-                return new CmisProxyAuthenticationException($message, null, $exception);
+                return new CmisProxyAuthenticationException($message, 0, $exception);
             case 409:
-                return new CmisConstraintException($message, null, $exception);
+                return new CmisConstraintException($message, 0, $exception);
             default:
-                return new CmisRuntimeException($message, null, $exception);
+                return new CmisRuntimeException($message, 0, $exception);
         }
     }
 

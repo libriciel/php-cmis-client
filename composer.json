@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "php": ">=7.0.0",
+        "php": "^8.1",
         "dkd/enumeration": "~0.1",
         "dkd/php-populate": "^1",
         "guzzlehttp/guzzle": "^7.9",
