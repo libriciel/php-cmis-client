@@ -17,7 +17,6 @@ use Dkd\PhpCmis\DataObjects\ObjectList;
 use Dkd\PhpCmis\Enum\IncludeRelationships;
 use GuzzleHttp\Psr7\Response;
 use League\Url\Url;
-use PHPUnit_Framework_MockObject_MockObject;
 
 /**
  * Class DiscoveryServiceTest
@@ -51,7 +50,7 @@ class DiscoveryServiceTest extends AbstractBrowserBindingServiceTestCase
     ) {
         $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor()
             ->setMethods(['getBody'])->getMock();
-        $responseMock->expects($this->once())->method('getbody')->willReturn('{}');
+        $responseMock->expects($this->once())->method('getBody')->willReturn(\GuzzleHttp\Psr7\Utils::streamFor('{}'));
 
         $jsonConverterMock = $this->createMock('\\Dkd\\PhpCmis\\Converter\\JsonConverter');
 
@@ -113,7 +112,7 @@ class DiscoveryServiceTest extends AbstractBrowserBindingServiceTestCase
         $responseData = ['foo' => 'bar'];
         $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor(
         )->setMethods(['getBody'])->getMock();
-        $responseMock->expects($this->once())->method('getBody')->willReturn(json_encode($responseData));
+        $responseMock->expects($this->once())->method('getBody')->willReturn(\GuzzleHttp\Psr7\Utils::streamFor(json_encode($responseData)));
 
         $dummyObjectData = new ObjectData();
         $jsonConverterMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\Converter\\JsonConverter')->setMethods(
@@ -178,7 +177,7 @@ class DiscoveryServiceTest extends AbstractBrowserBindingServiceTestCase
         $responseData = $this->getResponseFixtureContentAsArray('Cmis/v1.1/BrowserBinding/doQuery-response.log');
         $responseMock = $this->getMockBuilder('\\GuzzleHttp\\Message\\Response')->disableOriginalConstructor(
         )->setMethods(['getBody'])->getMock();
-        $responseMock->expects($this->once())->method('getBody')->willReturn(json_encode($responseData));
+        $responseMock->expects($this->once())->method('getBody')->willReturn(\GuzzleHttp\Psr7\Utils::streamFor(json_encode($responseData)));
 
         $dummyObjectData = new ObjectData();
 
@@ -306,7 +305,7 @@ class DiscoveryServiceTest extends AbstractBrowserBindingServiceTestCase
         $responseData = ['foo' => 'bar'];
         $responseMock = $this->getMockBuilder('\\GuzzleHttp\\Message\\Response')->disableOriginalConstructor(
         )->setMethods(['getBody'])->getMock();
-        $responseMock->expects($this->once())->method('getBody')->willReturn(json_encode($responseData));
+        $responseMock->expects($this->once())->method('getBody')->willReturn(\GuzzleHttp\Psr7\Utils::streamFor(json_encode($responseData)));
 
         $dummyObjectData = new ObjectData();
         $jsonConverterMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\Converter\\JsonConverter')->setMethods(
@@ -367,7 +366,7 @@ class DiscoveryServiceTest extends AbstractBrowserBindingServiceTestCase
         );
         $responseMock = $this->getMockBuilder('\\GuzzleHttp\\Message\\Response')->disableOriginalConstructor(
         )->setMethods(['getBody'])->getMock();
-        $responseMock->expects($this->once())->method('getBody')->willReturn(json_encode($responseData));
+        $responseMock->expects($this->once())->method('getBody')->willReturn(\GuzzleHttp\Psr7\Utils::streamFor(json_encode($responseData)));
 
         $dummyObjectData = new ObjectData();
 

@@ -45,12 +45,10 @@ use Dkd\PhpCmis\Exception\CmisUpdateConflictException;
 use Dkd\PhpCmis\Exception\CmisVersioningException;
 use Dkd\PhpCmis\SessionParameter;
 use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Message\RequestInterface;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Client;
 use League\Url\Url;
-use PHPUnit_Framework_MockObject_MockObject;
 
 /**
  * Class AbstractBrowserBindingServiceTest
@@ -783,7 +781,7 @@ class AbstractBrowserBindingServiceTest extends AbstractBrowserBindingServiceTes
     {
         $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor(
         )->setMethods(['getBody'])->getMock();
-        $responseMock->expects($this->any())->method('getBody')->willReturn(null);
+        $responseMock->expects($this->any())->method('getBody')->willReturn(\GuzzleHttp\Psr7\Utils::streamFor(''));
 
         /** @var \PHPUnit\Framework\MockObject\MockObject|AbstractBrowserBindingService $binding */
         $binding = $this->getMockBuilder(
@@ -812,7 +810,7 @@ class AbstractBrowserBindingServiceTest extends AbstractBrowserBindingServiceTes
     {
         $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor(
         )->setMethods(['getBody'])->getMock();
-        $responseMock->expects($this->any())->method('getBody')->willReturn('[1]');
+        $responseMock->expects($this->any())->method('getBody')->willReturn(\GuzzleHttp\Psr7\Utils::streamFor('[1]'));
 
         /** @var \PHPUnit\Framework\MockObject\MockObject|AbstractBrowserBindingService $binding */
         $binding = $this->getMockBuilder(
@@ -858,7 +856,7 @@ class AbstractBrowserBindingServiceTest extends AbstractBrowserBindingServiceTes
 
         $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor(
         )->setMethods(['getBody'])->getMock();
-        $responseMock->expects($this->any())->method('getBody')->willReturn(json_encode([['valid repository info stuff']]));
+        $responseMock->expects($this->any())->method('getBody')->willReturn(\GuzzleHttp\Psr7\Utils::streamFor(json_encode([['valid repository info stuff']])));
 
         /** @var \PHPUnit\Framework\MockObject\MockObject|AbstractBrowserBindingService $binding */
         $binding = $this->getMockBuilder(
@@ -931,7 +929,7 @@ class AbstractBrowserBindingServiceTest extends AbstractBrowserBindingServiceTes
 
         $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor(
         )->setMethods(['getBody'])->getMock();
-        $responseMock->expects($this->any())->method('getBody')->willReturn('[["some info"]]');
+        $responseMock->expects($this->any())->method('getBody')->willReturn(\GuzzleHttp\Psr7\Utils::streamFor('[["some info"]]'));
 
         /** @var \PHPUnit\Framework\MockObject\MockObject|AbstractBrowserBindingService $binding */
         $binding = $this->getMockBuilder(

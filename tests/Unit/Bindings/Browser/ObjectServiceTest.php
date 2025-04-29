@@ -33,7 +33,6 @@ use Dkd\PhpCmis\SessionParameter;
 use GuzzleHttp\Psr7\LimitStream;
 use GuzzleHttp\Psr7\Response;
 use League\Url\Url;
-use PHPUnit_Framework_MockObject_MockObject;
 use Psr\Http\Message\StreamInterface;
 
 /**
@@ -69,7 +68,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         $responseData = ['foo' => 'bar'];
         $responseMock = $this->getMockBuilder('\\GuzzleHttp\\Message\\Response')->disableOriginalConstructor(
         )->setMethods(['getBody'])->getMock();
-        $responseMock->expects($this->any())->method('getBody')->willReturn(json_encode($responseData));
+        $responseMock->expects($this->any())->method('getBody')->willReturn(\GuzzleHttp\Psr7\Utils::streamFor(json_encode($responseData)));
 
         $dummyObjectData = new ObjectData();
         $jsonConverterMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\Converter\\JsonConverter')->setMethods(
@@ -194,7 +193,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         $responseData = ['foo' => 'bar'];
         $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor(
         )->setMethods(['getBody'])->getMock();
-        $responseMock->expects($this->any())->method('getBody')->willReturn(json_encode($responseData));
+        $responseMock->expects($this->any())->method('getBody')->willReturn(\GuzzleHttp\Psr7\Utils::streamFor(json_encode($responseData)));
 
         $jsonConverterMock = $this->getMockBuilder(JsonConverter::class)->setMethods(
             ['convertObject']
@@ -425,7 +424,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         $responseData = ['foo' => 'bar'];
         $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor(
         )->setMethods(['getBody'])->getMock();
-        $responseMock->expects($this->any())->method('getBody')->willReturn(json_encode($responseData));
+        $responseMock->expects($this->any())->method('getBody')->willReturn(\GuzzleHttp\Psr7\Utils::streamFor(json_encode($responseData)));
 
         $jsonConverterMock = $this->getMockBuilder(JsonConverter::class)->setMethods(
             ['convertObject']
@@ -669,7 +668,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         $responseData = ['foo' => 'bar'];
         $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor(
         )->setMethods(['getBody'])->getMock();
-        $responseMock->expects($this->any())->method('getBody')->willReturn(json_encode($responseData));
+        $responseMock->expects($this->any())->method('getBody')->willReturn(\GuzzleHttp\Psr7\Utils::streamFor(json_encode($responseData)));
 
         $jsonConverterMock = $this->getMockBuilder(JsonConverter::class)->setMethods(
             ['convertObject']
@@ -759,7 +758,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         $responseData = ['foo' => 'bar'];
         $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor(
         )->setMethods(['getBody'])->getMock();
-        $responseMock->expects($this->any())->method('getBody')->willReturn(json_encode($responseData));
+        $responseMock->expects($this->any())->method('getBody')->willReturn(\GuzzleHttp\Psr7\Utils::streamFor(json_encode($responseData)));
 
         $dummyProperties = new Properties();
         $jsonConverterMock = $this->getMockBuilder(JsonConverter::class)->setMethods(
@@ -851,7 +850,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         $responseData = ['foo' => 'bar'];
         $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor(
         )->setMethods(['getBody'])->getMock();
-        $responseMock->expects($this->any())->method('getBody')->willReturn(json_encode($responseData));
+        $responseMock->expects($this->any())->method('getBody')->willReturn(\GuzzleHttp\Psr7\Utils::streamFor(json_encode($responseData)));
 
         $jsonConverterMock = $this->getMockBuilder(JsonConverter::class)->setMethods(
             ['convertObject']
@@ -1032,7 +1031,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         $responseData = ['foo' => 'bar'];
         $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor(
         )->setMethods(['getBody'])->getMock();
-        $responseMock->expects($this->any())->method('getBody')->willReturn(json_encode($responseData));
+        $responseMock->expects($this->any())->method('getBody')->willReturn(\GuzzleHttp\Psr7\Utils::streamFor(json_encode($responseData)));
 
         $jsonConverterMock = $this->getMockBuilder(JsonConverter::class)->setMethods(
             ['convertObject']
@@ -1209,7 +1208,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         $responseData = ['foo' => 'bar'];
         $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor(
         )->setMethods(['getBody'])->getMock();
-        $responseMock->expects($this->once())->method('getBody')->willReturn(json_encode($responseData));
+        $responseMock->expects($this->once())->method('getBody')->willReturn(\GuzzleHttp\Psr7\Utils::streamFor(json_encode($responseData)));
 
         $dummyObjectData = new ObjectData();
         $jsonConverterMock = $this->getMockBuilder(JsonConverter::class)->setMethods(
@@ -1329,7 +1328,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         $responseData = ['foo' => 'bar'];
         $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor(
         )->setMethods(['getBody'])->getMock();
-        $responseMock->expects($this->any())->method('getBody')->willReturn(json_encode($responseData));
+        $responseMock->expects($this->any())->method('getBody')->willReturn(\GuzzleHttp\Psr7\Utils::streamFor(json_encode($responseData)));
 
         $jsonConverterMock = $this->getMockBuilder(JsonConverter::class)->setMethods(
             ['convertObject']
@@ -1487,7 +1486,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         $responseData = ['foo' => 'bar'];
         $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor(
         )->setMethods(['getBody'])->getMock();
-        $responseMock->expects($this->any())->method('getBody')->willReturn(json_encode($responseData));
+        $responseMock->expects($this->any())->method('getBody')->willReturn(\GuzzleHttp\Psr7\Utils::streamFor(json_encode($responseData)));
 
         $jsonConverterMock = $this->getMockBuilder(JsonConverter::class)->setMethods(
             ['convertObject']
@@ -1625,7 +1624,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         $responseData = ['foo' => 'bar'];
         $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor(
         )->setMethods(['getBody'])->getMock();
-        $responseMock->expects($this->any())->method('getBody')->willReturn(json_encode($responseData));
+        $responseMock->expects($this->any())->method('getBody')->willReturn(\GuzzleHttp\Psr7\Utils::streamFor(json_encode($responseData)));
 
         $jsonConverterMock = $this->getMockBuilder(JsonConverter::class)->setMethods(
             ['convertObject']
@@ -1751,7 +1750,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         $contentStream = $stream = $this->getMockForAbstractClass(StreamInterface::class);
         $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor(
         )->setMethods(['getBody'])->getMock();
-        $responseMock->expects($this->any())->method('getBody')->willReturn($contentStream);
+        $responseMock->expects($this->any())->method('getBody')->willReturn(\GuzzleHttp\Psr7\Utils::streamFor($contentStream));
 
         $httpInvoker = $this->getMockBuilder(CmisBindingsHelper::class)->setMethods(
             ['get']
@@ -1850,7 +1849,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         $responseData = ['foo' => 'bar'];
         $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor(
         )->setMethods(['getBody'])->getMock();
-        $responseMock->expects($this->any())->method('getBody')->willReturn(json_encode($responseData));
+        $responseMock->expects($this->any())->method('getBody')->willReturn(\GuzzleHttp\Psr7\Utils::streamFor(json_encode($responseData)));
 
         $jsonConverterMock = $this->getMockBuilder(JsonConverter::class)->setMethods(
             ['convertFailedToDelete']
@@ -1966,7 +1965,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         $responseData = ['foo' => 'bar'];
         $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor(
         )->setMethods(['getBody'])->getMock();
-        $responseMock->expects($this->once())->method('getBody')->willReturn(json_encode($responseData));
+        $responseMock->expects($this->once())->method('getBody')->willReturn(\GuzzleHttp\Psr7\Utils::streamFor(json_encode($responseData)));
 
         $dummyRenditionData = new RenditionData();
         $jsonConverterMock = $this->getMockBuilder(JsonConverter::class)->setMethods(
