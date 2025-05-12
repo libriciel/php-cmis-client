@@ -116,7 +116,7 @@ class CmisBindingsHelper
         } catch (\Exception $exception) {
             throw new CmisRuntimeException(
                 sprintf('Could not create object of type "%s"!', $spiClass),
-                null,
+                0,
                 $exception
             );
         }
@@ -160,7 +160,7 @@ class CmisBindingsHelper
         } catch (\Exception $exception) {
             throw new CmisRuntimeException(
                 sprintf('Could not create object of type "%s"!', $invokerClass),
-                null,
+                0,
                 $exception
             );
         }
@@ -194,7 +194,7 @@ class CmisBindingsHelper
         } catch (\Exception $exception) {
             throw new CmisRuntimeException(
                 sprintf('Could not create object of type "%s"!', $jsonConverterClass),
-                null,
+                0,
                 $exception
             );
         }
@@ -233,7 +233,7 @@ class CmisBindingsHelper
         } catch (\Exception $exception) {
             throw new CmisRuntimeException(
                 sprintf('Could not create object of type "%s"!', $className),
-                null,
+                0,
                 $exception
             );
         }
