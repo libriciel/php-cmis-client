@@ -17,8 +17,6 @@ use Dkd\PhpCmis\DataObjects\ItemTypeDefinition;
 use Dkd\PhpCmis\DataObjects\RepositoryInfoBrowserBinding;
 use Dkd\PhpCmis\Definitions\TypeDefinitionInterface;
 use GuzzleHttp\Psr7\Response;
-use League\Url\Url;
-use PHPUnit_Framework_MockObject_MockObject;
 
 /**
  * Class RepositoryServiceTest
@@ -123,7 +121,7 @@ class RepositoryServiceTest extends AbstractBrowserBindingServiceTestCase
         $responseData = ['foo' => 'bar'];
         $responseMock = $this->getMockBuilder('\\GuzzleHttp\\Message\\Response')->disableOriginalConstructor(
         )->setMethods(['getBody'])->getMock();
-        $responseMock->expects($this->any())->method('getBody')->willReturn(json_encode($responseData));
+        $responseMock->expects($this->any())->method('getBody')->willReturn(\GuzzleHttp\Psr7\Utils::streamFor(json_encode($responseData)));
 
         $jsonConverterMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\Converter\\JsonConverter')->setMethods(
             ['convertFromTypeDefinition','convertTypeDefinition']
@@ -154,7 +152,7 @@ class RepositoryServiceTest extends AbstractBrowserBindingServiceTestCase
 
         $repositoryService->expects($this->atLeastOnce())->method('getRepositoryUrl')->with(
             $repositoryId
-        )->willReturn(Url::createFromUrl(self::BROWSER_URL_TEST));
+        )->willReturn(\League\Uri\Http::new(self::BROWSER_URL_TEST));
         $repositoryService->expects($this->atLeastOnce())->method('post')->with(
             $expectedUrl
         )->willReturn($responseMock);
@@ -176,7 +174,7 @@ class RepositoryServiceTest extends AbstractBrowserBindingServiceTestCase
 
         return [
             [
-                Url::createFromUrl(
+                \League\Uri\Http::new(
                     self::BROWSER_URL_TEST
                     . '?cmisaction=createType&type[foo]=bar&type[baz]=bazz'
                 ),
@@ -212,7 +210,7 @@ class RepositoryServiceTest extends AbstractBrowserBindingServiceTestCase
 
         $repositoryService->expects($this->atLeastOnce())->method('getRepositoryUrl')->with(
             $repositoryId
-        )->willReturn(Url::createFromUrl(self::BROWSER_URL_TEST));
+        )->willReturn(\League\Uri\Http::new(self::BROWSER_URL_TEST));
         $repositoryService->expects($this->atLeastOnce())->method('post')->with(
             $expectedUrl
         )->willReturn($responseMock);
@@ -232,7 +230,7 @@ class RepositoryServiceTest extends AbstractBrowserBindingServiceTestCase
     {
         return [
             [
-                Url::createFromUrl(
+                \League\Uri\Http::new(
                     self::BROWSER_URL_TEST
                     . '?cmisaction=deleteType&typeId=typeId'
                 ),
@@ -258,7 +256,7 @@ class RepositoryServiceTest extends AbstractBrowserBindingServiceTestCase
         $responseData = ['foo' => 'bar'];
         $responseMock = $this->getMockBuilder('\\GuzzleHttp\\Message\\Response')->disableOriginalConstructor(
         )->setMethods(['getBody'])->getMock();
-        $responseMock->expects($this->any())->method('getBody')->willReturn(json_encode($responseData));
+        $responseMock->expects($this->any())->method('getBody')->willReturn(\GuzzleHttp\Psr7\Utils::streamFor(json_encode($responseData)));
 
         $jsonConverterMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\Converter\\JsonConverter')->setMethods(
             ['convertFromTypeDefinition','convertTypeDefinition']
@@ -289,7 +287,7 @@ class RepositoryServiceTest extends AbstractBrowserBindingServiceTestCase
 
         $repositoryService->expects($this->atLeastOnce())->method('getRepositoryUrl')->with(
             $repositoryId
-        )->willReturn(Url::createFromUrl(self::BROWSER_URL_TEST));
+        )->willReturn(\League\Uri\Http::new(self::BROWSER_URL_TEST));
         $repositoryService->expects($this->atLeastOnce())->method('post')->with(
             $expectedUrl
         )->willReturn($responseMock);
@@ -308,11 +306,11 @@ class RepositoryServiceTest extends AbstractBrowserBindingServiceTestCase
     public function updateTypeDataProvider()
     {
         $typeDefinitionArrayRepresentation = ['foo' => 'bar'];
-        $typeDefinitionJsonRepresentation = '{"foo":"bar"}';
+        $typeDefinitionJsonRepresentation = '{"foo"%3A"bar"}';
 
         return [
             [
-                Url::createFromUrl(
+                \League\Uri\Http::new(
                     self::BROWSER_URL_TEST
                     . '?cmisaction=updateType&type=' . $typeDefinitionJsonRepresentation
                 ),

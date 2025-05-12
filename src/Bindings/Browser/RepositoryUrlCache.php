@@ -12,7 +12,9 @@ namespace Dkd\PhpCmis\Bindings\Browser;
 
 use Dkd\PhpCmis\Constants;
 use Dkd\PhpCmis\Exception\CmisInvalidArgumentException;
-use League\Url\Url;
+use League\Uri\Http;
+use League\Uri\Modifier;
+use Psr\Http\Message\UriInterface;
 
 /**
  * URL cache for repository and root URLs.
@@ -74,7 +76,7 @@ class RepositoryUrlCache
      *
      * @param string $repositoryId
      * @param string|null $selector add optional cmis selector parameter
-     * @return Url|null
+     * @return UriInterface|null
      */
     public function getRepositoryUrl($repositoryId, $selector = null)
     {
@@ -85,7 +87,9 @@ class RepositoryUrlCache
         $repositoryUrl = $this->buildUrl($baseUrl);
 
         if ($selector !== null && $selector !== '') {
-            $repositoryUrl->getQuery()->modify([Constants::PARAM_SELECTOR => $selector]);
+            $repositoryUrl = Modifier::from($repositoryUrl)
+                ->mergeQueryParameters([Constants::PARAM_SELECTOR => $selector])
+                ->getUri();
         }
 
         return $repositoryUrl;
@@ -108,7 +112,7 @@ class RepositoryUrlCache
      * @param string $repositoryId
      * @param string $objectId
      * @param string|null $selector
-     * @return Url|null
+     * @return UriInterface|null
      */
     public function getObjectUrl($repositoryId, $objectId, $selector = null)
     {
@@ -117,11 +121,14 @@ class RepositoryUrlCache
         }
 
         $url = $this->buildUrl($this->getRootUrl($repositoryId));
-        $urlQuery = $url->getQuery();
-        $urlQuery->modify([Constants::PARAM_OBJECT_ID => (string) $objectId]);
+        $url = Modifier::from($url)
+            ->mergeQueryParameters([Constants::PARAM_OBJECT_ID => (string) $objectId])
+            ->getUri();
 
         if (!empty($selector)) {
-            $urlQuery->modify([Constants::PARAM_SELECTOR => (string) $selector]);
+            $url = Modifier::from($url)
+                ->mergeQueryParameters([Constants::PARAM_SELECTOR => (string) $selector])
+                ->getUri();
         }
 
         return $url;
@@ -133,7 +140,7 @@ class RepositoryUrlCache
      * @param string $repositoryId
      * @param string $path
      * @param string|null $selector
-     * @return Url
+     * @return UriInterface
      */
     public function getPathUrl($repositoryId, $path, $selector = null)
     {
@@ -142,10 +149,14 @@ class RepositoryUrlCache
         }
 
         $url = $this->buildUrl($this->getRootUrl($repositoryId));
-        $url->getPath()->append($path);
+        $url = Modifier::from($url)
+            ->appendSegment($path)
+            ->getUri();
 
         if (!empty($selector)) {
-            $url->getQuery()->modify([Constants::PARAM_SELECTOR => $selector]);
+            $url = Modifier::from($url)
+                ->mergeQueryParameters([Constants::PARAM_SELECTOR => $selector])
+                ->getUri();
         }
 
         return $url;
@@ -155,10 +166,9 @@ class RepositoryUrlCache
      * Build an instance of \League\Url\Url for the given url
      *
      * @param string $url
-     * @return Url
      */
-    public function buildUrl($url)
+    public function buildUrl($url): UriInterface
     {
-        return Url::createFromUrl($url);
+        return Http::new($url);
     }
 }
