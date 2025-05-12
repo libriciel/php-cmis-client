@@ -15,6 +15,7 @@ use Dkd\PhpCmis\Data\ExtensionDataInterface;
 use Dkd\PhpCmis\Data\ObjectListInterface;
 use Dkd\PhpCmis\DiscoveryServiceInterface;
 use Dkd\PhpCmis\Enum\IncludeRelationships;
+use League\Uri\Modifier;
 
 /**
  * Discovery Service Browser Binding client.
@@ -56,21 +57,25 @@ class DiscoveryService extends AbstractBrowserBindingService implements Discover
     ) {
         $url = $this->getRepositoryUrl($repositoryId, Constants::SELECTOR_CONTENT_CHANGES);
 
-        $url->getQuery()->modify(
-            [
+        $url = Modifier::from($url)
+            ->mergeQueryParameters([
                 Constants::PARAM_PROPERTIES => $includeProperties ? 'true' : 'false',
                 Constants::PARAM_POLICY_IDS => $includePolicyIds ? 'true' : 'false',
                 Constants::PARAM_ACL => $includeAcl ? 'true' : 'false',
                 Constants::PARAM_SUCCINCT => $this->getSuccinct() ? 'true' : 'false',
-            ]
-        );
+            ])
+            ->getUri();
 
         if ($changeLogToken !== null) {
-            $url->getQuery()->modify([Constants::PARAM_CHANGE_LOG_TOKEN => (string) $changeLogToken]);
+            $url = Modifier::from($url)
+                ->mergeQueryParameters([Constants::PARAM_CHANGE_LOG_TOKEN => (string) $changeLogToken])
+                ->getUri();
         }
 
         if ($maxItems > 0) {
-            $url->getQuery()->modify([Constants::PARAM_MAX_ITEMS => (string) $maxItems]);
+            $url = Modifier::from($url)
+                ->mergeQueryParameters([Constants::PARAM_MAX_ITEMS => (string) $maxItems])
+                ->getUri();
         }
 
         $responseData = (array) $this->readJson($url);
@@ -119,25 +124,28 @@ class DiscoveryService extends AbstractBrowserBindingService implements Discover
         ExtensionDataInterface $extension = null
     ) {
         $url = $this->getRepositoryUrl($repositoryId);
-
-        $url->getQuery()->modify(
-            [
+        $url = Modifier::from($url)
+            ->mergeQueryParameters([
                 Constants::CONTROL_CMISACTION => Constants::CMISACTION_QUERY,
                 Constants::PARAM_STATEMENT => (string) $statement,
                 Constants::PARAM_SEARCH_ALL_VERSIONS => $searchAllVersions ? 'true' : 'false',
                 Constants::PARAM_ALLOWABLE_ACTIONS => $includeAllowableActions ? 'true' : 'false',
                 Constants::PARAM_RENDITION_FILTER => $renditionFilter,
                 Constants::PARAM_SKIP_COUNT => (string) $skipCount,
-                Constants::PARAM_DATETIME_FORMAT => (string) $this->getDateTimeFormat()
-            ]
-        );
+                Constants::PARAM_DATETIME_FORMAT => (string) $this->getDateTimeFormat(),
+            ])
+            ->getUri();
 
         if ($includeRelationships !== null) {
-            $url->getQuery()->modify([Constants::PARAM_RELATIONSHIPS => (string) $includeRelationships]);
+            $url = Modifier::from($url)
+                ->mergeQueryParameters([Constants::PARAM_RELATIONSHIPS => (string) $includeRelationships])
+                ->getUri();
         }
 
         if ($maxItems > 0) {
-            $url->getQuery()->modify([Constants::PARAM_MAX_ITEMS => (string) $maxItems]);
+            $url = Modifier::from($url)
+                ->mergeQueryParameters([Constants::PARAM_MAX_ITEMS => (string) $maxItems])
+                ->getUri();
         }
 
         return $this->getJsonConverter()->convertQueryResultList((array) $this->postJson($url));

@@ -48,7 +48,7 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Client;
-use League\Url\Url;
+use League\Uri\Http;
 
 /**
  * Class AbstractBrowserBindingServiceTest
@@ -193,7 +193,7 @@ class AbstractBrowserBindingServiceTest extends AbstractBrowserBindingServiceTes
             RepositoryUrlCache::class
         )->setMethods(['getRepositoryUrl'])->getMock();
 
-        $url = Url::createFromUrl(self::BROWSER_URL_TEST);
+        $url = \League\Uri\Http::new(self::BROWSER_URL_TEST);
 
         $repositoryUrlCacheMock->expects($this->once())->method('getRepositoryUrl')->willReturn($url);
         $binding->expects($this->any())->method('getRepositoryUrlCache')->willReturn($repositoryUrlCacheMock);
@@ -246,7 +246,7 @@ class AbstractBrowserBindingServiceTest extends AbstractBrowserBindingServiceTes
             RepositoryUrlCache::class
         )->setMethods(['getObjectUrl'])->getMock();
 
-        $url = Url::createFromUrl(self::BROWSER_URL_TEST);
+        $url = \League\Uri\Http::new(self::BROWSER_URL_TEST);
 
         $repositoryUrlCacheMock->expects($this->once())->method('getObjectUrl')->willReturn($url);
         $binding->expects($this->any())->method('getRepositoryUrlCache')->willReturn($repositoryUrlCacheMock);
@@ -299,7 +299,7 @@ class AbstractBrowserBindingServiceTest extends AbstractBrowserBindingServiceTes
             RepositoryUrlCache::class
         )->setMethods(['getPathUrl'])->getMock();
 
-        $url = Url::createFromUrl(self::BROWSER_URL_TEST);
+        $url = \League\Uri\Http::new(self::BROWSER_URL_TEST);
 
         $repositoryUrlCacheMock->expects($this->once())->method('getPathUrl')->willReturn($url);
         $binding->expects($this->any())->method('getRepositoryUrlCache')->willReturn($repositoryUrlCacheMock);
@@ -510,7 +510,7 @@ class AbstractBrowserBindingServiceTest extends AbstractBrowserBindingServiceTes
     {
         $sessionMock = $this->getSessionMock();
 
-        $testUrl = Url::createFromUrl(self::BROWSER_URL_TEST);
+        $testUrl = Http::new(self::BROWSER_URL_TEST);
         $responseMock = $this->createMock(Response::class);
         $httpInvokerMock = $this->getMockBuilder(Client::class)->disableOriginalConstructor()->setMethods(
             ['get']
@@ -535,7 +535,7 @@ class AbstractBrowserBindingServiceTest extends AbstractBrowserBindingServiceTes
     {
         $sessionMock = $this->getSessionMock();
 
-        $testUrl = Url::createFromUrl(self::BROWSER_URL_TEST);
+        $testUrl = \League\Uri\Http::new(self::BROWSER_URL_TEST);
         $responseMock = $this->createMock(Response::class);
         $httpInvokerMock = $this->getMockBuilder(Client::class)->disableOriginalConstructor()->setMethods(
             ['get']
@@ -569,7 +569,7 @@ class AbstractBrowserBindingServiceTest extends AbstractBrowserBindingServiceTes
     {
         $sessionMock = $this->getSessionMock();
 
-        $testUrl = Url::createFromUrl(self::BROWSER_URL_TEST);
+        $testUrl = \League\Uri\Http::new(self::BROWSER_URL_TEST);
         $responseMock = $this->createMock(Response::class);
         $httpInvokerMock = $this->getMockBuilder(Client::class)->disableOriginalConstructor()->setMethods(
             ['get']
@@ -601,7 +601,7 @@ class AbstractBrowserBindingServiceTest extends AbstractBrowserBindingServiceTes
 
     public function testPostCallsHttpInvokerAndReturnsRequestResult()
     {
-        $testUrl = Url::createFromUrl(self::BROWSER_URL_TEST);
+        $testUrl = \League\Uri\Http::new(self::BROWSER_URL_TEST);
         $content = 'fooBarBaz';
 
         $responseMock = $this->createMock(Response::class);
@@ -629,7 +629,7 @@ class AbstractBrowserBindingServiceTest extends AbstractBrowserBindingServiceTes
 
     public function testPostCatchesAllRequestExceptionsAndConvertsThemToACmisException()
     {
-        $testUrl = Url::createFromUrl('http://foo.bar.baz');
+        $testUrl = \League\Uri\Http::new('http://foo.bar.baz');
         $content = 'fooBarBaz';
 
         $responseMock = $this->createMock(Response::class);
@@ -717,8 +717,8 @@ class AbstractBrowserBindingServiceTest extends AbstractBrowserBindingServiceTes
             ['getRepositoryUrl', 'read']
         )->getMockForAbstractClass();
 
-        $urlDummy = Url::createFromUrl('http://foo.bar.baz?foo=bar');
-        $expectedUrl = Url::createFromUrl('http://foo.bar.baz?foo=bar&typeId=typeId');
+        $urlDummy = \League\Uri\Http::new('http://foo.bar.baz?foo=bar');
+        $expectedUrl = \League\Uri\Http::new('http://foo.bar.baz?foo=bar&typeId=typeId');
 
         $binding->expects($this->any())->method('getRepositoryUrl')->willReturn($urlDummy);
         $binding->expects($this->any())->method('read')->with($expectedUrl)->willReturn($dummyResponse);
@@ -794,7 +794,7 @@ class AbstractBrowserBindingServiceTest extends AbstractBrowserBindingServiceTes
             RepositoryUrlCache::class
         )->setMethods(['buildUrl'])->getMock();
         $repositoryUrlCacheMock->expects($this->any())->method('buildUrl')->willReturn(
-            Url::createFromUrl(self::BROWSER_URL_TEST)
+            \League\Uri\Http::new(self::BROWSER_URL_TEST)
         );
 
         $binding->expects($this->any())->method('getRepositoryUrlCache')->willReturn($repositoryUrlCacheMock);
@@ -823,7 +823,7 @@ class AbstractBrowserBindingServiceTest extends AbstractBrowserBindingServiceTes
             RepositoryUrlCache::class
         )->setMethods(['buildUrl'])->getMock();
         $repositoryUrlCacheMock->expects($this->any())->method('buildUrl')->willReturn(
-            Url::createFromUrl(self::BROWSER_URL_TEST)
+            \League\Uri\Http::new(self::BROWSER_URL_TEST)
         );
 
         $binding->expects($this->any())->method('getRepositoryUrlCache')->willReturn($repositoryUrlCacheMock);
@@ -869,7 +869,7 @@ class AbstractBrowserBindingServiceTest extends AbstractBrowserBindingServiceTes
             RepositoryUrlCache::class
         )->setMethods(['buildUrl'])->getMock();
         $repositoryUrlCacheMock->expects($this->any())->method('buildUrl')->willReturn(
-            Url::createFromUrl(self::BROWSER_URL_TEST)
+            \League\Uri\Http::new(self::BROWSER_URL_TEST)
         );
 
         $binding->expects($this->any())->method('getRepositoryUrlCache')->willReturn($repositoryUrlCacheMock);
@@ -955,11 +955,11 @@ class AbstractBrowserBindingServiceTest extends AbstractBrowserBindingServiceTes
         )->setMethods(['getRepositoryUrl', 'buildUrl', 'addRepository'])->disableProxyingToOriginalMethods(
         )->getMock();
         $repositoryUrlCacheMock->expects($this->any())->method('buildUrl')->willReturn(
-            Url::createFromUrl('http://foo.bar.baz')
+            \League\Uri\Http::new('http://foo.bar.baz')
         );
         $repositoryUrlCacheMockWithRepositoryUrlEntry = clone $repositoryUrlCacheMock;
         $repositoryUrlCacheMockWithRepositoryUrlEntry->expects($this->any())->method('getRepositoryUrl')->willReturn(
-            Url::createFromUrl('http://foo.bar.baz')
+            \League\Uri\Http::new('http://foo.bar.baz')
         );
         $repositoryUrlCacheMockWithRepositoryUrlEntry->expects($this->once())->method('addRepository');
 

@@ -12,7 +12,6 @@ namespace Dkd\PhpCmis\Test\Unit\Bindings\Browser;
 
 use Dkd\PhpCmis\Bindings\Browser\RepositoryUrlCache;
 use Dkd\PhpCmis\Constants;
-use League\Url\Url;
 
 /**
  * Class RepositoryUrlCacheTest
@@ -175,7 +174,7 @@ class RepositoryUrlCacheTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
      */
     public function testGetRepositoryUrlReturnsInstanceOfUrlBasedOnBaseUrlString($repositoryUrlCache)
     {
-        $expectedUrl = Url::createFromUrl($this->dummyData[0]['repositoryUrl']);
+        $expectedUrl = \League\Uri\Http::new($this->dummyData[0]['repositoryUrl']);
         $this->assertEquals($expectedUrl, $repositoryUrlCache->getRepositoryUrl($this->dummyData[0]['id']));
     }
 
@@ -187,7 +186,7 @@ class RepositoryUrlCacheTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
         $repositoryUrlCache
     ) {
         $selector = 'fooSelector';
-        $expectedUrl = Url::createFromUrl(
+        $expectedUrl = \League\Uri\Http::new(
             $this->dummyData[0]['repositoryUrl'] . '?' . Constants::PARAM_SELECTOR . '=' . $selector
         );
         $this->assertEquals($expectedUrl, $repositoryUrlCache->getRepositoryUrl($this->dummyData[0]['id'], $selector));
@@ -208,7 +207,7 @@ class RepositoryUrlCacheTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
      */
     public function testGetRootUrlReturnsInstanceOfUrlBasedOnBaseUrlString($repositoryUrlCache)
     {
-        $expectedUrl = Url::createFromUrl($this->dummyData[0]['rootUrl']);
+        $expectedUrl = \League\Uri\Http::new($this->dummyData[0]['rootUrl']);
         $this->assertEquals($expectedUrl, $repositoryUrlCache->getRootUrl($this->dummyData[0]['id']));
     }
 
@@ -228,7 +227,7 @@ class RepositoryUrlCacheTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
     public function testGetObjectUrlReturnsInstanceOfUrlBasedOnBaseUrlStringWithObjectIdSelector($repositoryUrlCache)
     {
         $objectId = 'object-id';
-        $expectedUrl = Url::createFromUrl(
+        $expectedUrl = \League\Uri\Http::new(
             $this->dummyData[0]['rootUrl'] . '?' . Constants::PARAM_OBJECT_ID . '=' . $objectId
         );
         $this->assertEquals($expectedUrl, $repositoryUrlCache->getObjectUrl($this->dummyData[0]['id'], $objectId));
@@ -243,7 +242,7 @@ class RepositoryUrlCacheTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
     ) {
         $selector = 'fooSelector';
         $objectId = 'object-id';
-        $expectedUrl = Url::createFromUrl(
+        $expectedUrl = \League\Uri\Http::new(
             $this->dummyData[0]['rootUrl'] . '?'
             . Constants::PARAM_OBJECT_ID . '=' . $objectId . '&'
             . Constants::PARAM_SELECTOR . '=' . $selector
@@ -270,7 +269,7 @@ class RepositoryUrlCacheTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
     public function testGetPathUrlReturnsInstanceOfUrlBasedOnBaseUrlStringWithObjectIdSelector($repositoryUrlCache)
     {
         $path = '/foo/bar/baz';
-        $expectedUrl = Url::createFromUrl(
+        $expectedUrl = \League\Uri\Http::new(
             $this->dummyData[0]['rootUrl'] . $path
         );
         $this->assertEquals($expectedUrl, $repositoryUrlCache->getPathUrl($this->dummyData[0]['id'], $path));
@@ -285,7 +284,7 @@ class RepositoryUrlCacheTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
     ) {
         $selector = 'fooSelector';
         $path = '/foo/bar/baz';
-        $expectedUrl = Url::createFromUrl(
+        $expectedUrl = \League\Uri\Http::new(
             $this->dummyData[0]['rootUrl'] . $path . '?' . Constants::PARAM_SELECTOR . '=' . $selector
         );
         $this->assertEquals(
@@ -297,7 +296,7 @@ class RepositoryUrlCacheTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
     public function testBuildUrlReturnsUrlInstanceBasedOnGivenUrlString()
     {
         $urlString = 'http://foo.bar.baz';
-        $url = Url::createFromUrl($urlString);
+        $url = \League\Uri\Http::new($urlString);
         $this->assertEquals($url, $this->repositoryUrlCache->buildUrl($urlString));
     }
 }

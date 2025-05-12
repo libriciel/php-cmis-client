@@ -12,11 +12,8 @@ namespace Dkd\PhpCmis\Test\Unit\Bindings\Browser;
 
 use Dkd\PhpCmis\Bindings\Browser\NavigationService;
 use Dkd\PhpCmis\Constants;
-use Dkd\PhpCmis\Data\ExtensionDataInterface;
 use Dkd\PhpCmis\DataObjects\ObjectData;
 use Dkd\PhpCmis\Enum\IncludeRelationships;
-use League\Url\Url;
-use PHPUnit_Framework_MockObject_MockObject;
 
 /**
  * Class NavigationServiceTest
@@ -81,10 +78,10 @@ class NavigationServiceTest extends AbstractBrowserBindingServiceTestCase
     {
         return [
             [
-                Url::createFromUrl(
-                    self::BROWSER_URL_TEST . '?filter=filter,123&orderBy=cmis:objectId&includeAllowableActions=true'
-                    . '&includeRelationships=none&renditionFilter=cmis:none&includePathSegment=true&maxItems=99'
-                    . '&skipCount=0&succinct=false&dateTimeFormat=simple'
+                \League\Uri\Http::new(
+                    self::BROWSER_URL_TEST . '?includeAllowableActions=true&renditionFilter=cmis%3Anone'.
+                    '&includePathSegment=true&skipCount=0&succinct=false&dateTimeFormat=simple&filter=filter%2C123'.
+                    '&orderBy=cmis%3AobjectId&maxItems=99&includeRelationships=none'
                 ),
                 'repositoryId',
                 'folderId',
@@ -98,10 +95,9 @@ class NavigationServiceTest extends AbstractBrowserBindingServiceTestCase
                 0
             ],
             [
-                Url::createFromUrl(
-                    self::BROWSER_URL_TEST . '?orderBy=cmis:objectId&includeAllowableActions=false'
-                    . '&renditionFilter=cmis:none&includePathSegment=false'
-                    . '&skipCount=20&succinct=false&dateTimeFormat=simple'
+                \League\Uri\Http::new(
+                    self::BROWSER_URL_TEST . '?includeAllowableActions=false&renditionFilter=cmis%3Anone'.
+                    '&includePathSegment=false&skipCount=20&succinct=false&dateTimeFormat=simple&orderBy=cmis%3AobjectId'
                 ),
                 'repositoryId',
                 'folderId',
@@ -115,10 +111,10 @@ class NavigationServiceTest extends AbstractBrowserBindingServiceTestCase
                 20
             ],
             [
-                Url::createFromUrl(
-                    self::BROWSER_URL_TEST . '?filter=filter,123&includeAllowableActions=false'
-                    . '&includeRelationships=both&renditionFilter=cmis:none&includePathSegment=false'
-                    . '&skipCount=20&succinct=false&dateTimeFormat=simple'
+                \League\Uri\Http::new(
+                    self::BROWSER_URL_TEST . '?includeAllowableActions=false&renditionFilter=cmis%3Anone'.
+                    '&includePathSegment=false&skipCount=20&succinct=false&dateTimeFormat=simple&filter=filter%2C123'.
+                    '&includeRelationships=both'
                 ),
                 'repositoryId',
                 'folderId',
@@ -187,10 +183,10 @@ class NavigationServiceTest extends AbstractBrowserBindingServiceTestCase
     {
         return [
             [
-                Url::createFromUrl(
-                    self::BROWSER_URL_TEST . '?filter=filter,123&orderBy=cmis:objectId&includeAllowableActions=true'
-                    . '&includeRelationships=none&renditionFilter=cmis:none&maxItems=99'
-                    . '&skipCount=0&succinct=false&dateTimeFormat=simple'
+                \League\Uri\Http::new(
+                    self::BROWSER_URL_TEST . '?includeAllowableActions=true&renditionFilter=cmis%3Anone'.
+                    '&skipCount=0&succinct=false&dateTimeFormat=simple&filter=filter%2C123&orderBy=cmis%3AobjectId'.
+                    '&maxItems=99&includeRelationships=none'
                 ),
                 'repositoryId',
                 'folderId',
@@ -203,9 +199,9 @@ class NavigationServiceTest extends AbstractBrowserBindingServiceTestCase
                 0
             ],
             [
-                Url::createFromUrl(
-                    self::BROWSER_URL_TEST . '?includeAllowableActions=true&renditionFilter=cmis:none'
-                    . '&skipCount=0&succinct=false&dateTimeFormat=simple'
+                \League\Uri\Http::new(
+                    self::BROWSER_URL_TEST . '?includeAllowableActions=true&renditionFilter=cmis%3Anone'.
+                    '&skipCount=0&succinct=false&dateTimeFormat=simple'
                 ),
                 'repositoryId',
                 'folderId',
@@ -270,10 +266,10 @@ class NavigationServiceTest extends AbstractBrowserBindingServiceTestCase
     {
         return [
             [
-                Url::createFromUrl(
-                    self::BROWSER_URL_TEST . '?depth=5&filter=filter,123&includeAllowableActions=true'
-                    . '&includeRelationships=none&renditionFilter=cmis:none&includePathSegment=true'
-                    .'&succinct=false&dateTimeFormat=simple'
+                \League\Uri\Http::new(
+                    self::BROWSER_URL_TEST . '?depth=5&includeAllowableActions=true&renditionFilter=cmis%3Anone'.
+                    '&includePathSegment=true&succinct=false&dateTimeFormat=simple&filter=filter%2C123'.
+                    '&includeRelationships=none'
                 ),
                 'repositoryId',
                 'folderId',
@@ -285,10 +281,10 @@ class NavigationServiceTest extends AbstractBrowserBindingServiceTestCase
                 true
             ],
             [
-                Url::createFromUrl(
-                    self::BROWSER_URL_TEST . '?depth=5&filter=filter,123&includeAllowableActions=true'
-                    . '&includeRelationships=none&renditionFilter=cmis:none&includePathSegment=true'
-                    .'&succinct=false&dateTimeFormat=simple'
+                \League\Uri\Http::new(
+                    self::BROWSER_URL_TEST . '?depth=5&includeAllowableActions=true&renditionFilter=cmis%3Anone'.
+                    '&includePathSegment=true&succinct=false&dateTimeFormat=simple&filter=filter%2C123'.
+                    '&includeRelationships=none'
                 ),
                 'repositoryId',
                 'folderId',
@@ -300,10 +296,9 @@ class NavigationServiceTest extends AbstractBrowserBindingServiceTestCase
                 true
             ],
             [
-                Url::createFromUrl(
-                    self::BROWSER_URL_TEST . '?depth=5&includeAllowableActions=true'
-                    . '&includeRelationships=none&renditionFilter=cmis:none&includePathSegment=true'
-                    .'&succinct=false&dateTimeFormat=simple'
+                \League\Uri\Http::new(
+                    self::BROWSER_URL_TEST . '?depth=5&includeAllowableActions=true&renditionFilter=cmis%3Anone'.
+                    '&includePathSegment=true&succinct=false&dateTimeFormat=simple&includeRelationships=none'
                 ),
                 'repositoryId',
                 'folderId',
@@ -352,15 +347,15 @@ class NavigationServiceTest extends AbstractBrowserBindingServiceTestCase
     {
         return [
             [
-                Url::createFromUrl(
-                    self::BROWSER_URL_TEST . '?filter=filter,123&succinct=false&dateTimeFormat=simple'
+                \League\Uri\Http::new(
+                    self::BROWSER_URL_TEST . '?succinct=false&dateTimeFormat=simple&filter=filter%2C123'
                 ),
                 'repositoryId',
                 'folderId',
                 'filter,123'
             ],
             [
-                Url::createFromUrl(
+                \League\Uri\Http::new(
                     self::BROWSER_URL_TEST . '?succinct=false&dateTimeFormat=simple'
                 ),
                 'repositoryId',
@@ -419,10 +414,10 @@ class NavigationServiceTest extends AbstractBrowserBindingServiceTestCase
     {
         return [
             [
-                Url::createFromUrl(
-                    self::BROWSER_URL_TEST . '?depth=5&filter=filter,123&includeAllowableActions=true'
-                    . '&includeRelationships=none&renditionFilter=cmis:none&includePathSegment=true'
-                    . '&succinct=false&dateTimeFormat=simple'
+                \League\Uri\Http::new(
+                    self::BROWSER_URL_TEST . '?depth=5&includeAllowableActions=true&renditionFilter=cmis%3Anone'.
+                    '&includePathSegment=true&succinct=false&dateTimeFormat=simple&filter=filter%2C123'.
+                    '&includeRelationships=none'
                 ),
                 'repositoryId',
                 'folderId',
@@ -434,10 +429,9 @@ class NavigationServiceTest extends AbstractBrowserBindingServiceTestCase
                 true
             ],
             [
-                Url::createFromUrl(
-                    self::BROWSER_URL_TEST . '?depth=5&includeAllowableActions=true'
-                    . '&renditionFilter=cmis:none&includePathSegment=false'
-                    . '&succinct=false&dateTimeFormat=simple'
+                \League\Uri\Http::new(
+                    self::BROWSER_URL_TEST . '?depth=5&includeAllowableActions=true&renditionFilter=cmis%3Anone'.
+                    '&includePathSegment=false&succinct=false&dateTimeFormat=simple'
                 ),
                 'repositoryId',
                 'folderId',
@@ -498,10 +492,10 @@ class NavigationServiceTest extends AbstractBrowserBindingServiceTestCase
     {
         return [
             [
-                Url::createFromUrl(
-                    self::BROWSER_URL_TEST . '?filter=filter,123&includeAllowableActions=true'
-                    . '&includeRelationships=none&renditionFilter=cmis:none&includeRelativePathSegment=true'
-                    . '&succinct=false&dateTimeFormat=simple'
+                \League\Uri\Http::new(
+                    self::BROWSER_URL_TEST . '?includeAllowableActions=true&renditionFilter=cmis%3Anone'.
+                    '&includeRelativePathSegment=true&succinct=false&dateTimeFormat=simple&filter=filter%2C123'.
+                    '&includeRelationships=none'
                 ),
                 'repositoryId',
                 'objectId',
@@ -512,10 +506,9 @@ class NavigationServiceTest extends AbstractBrowserBindingServiceTestCase
                 true
             ],
             [
-                Url::createFromUrl(
-                    self::BROWSER_URL_TEST . '?includeAllowableActions=true'
-                    . '&renditionFilter=cmis:none&includeRelativePathSegment=false'
-                    . '&succinct=false&dateTimeFormat=simple'
+                \League\Uri\Http::new(
+                    self::BROWSER_URL_TEST . '?includeAllowableActions=true&renditionFilter=cmis%3Anone'.
+                    '&includeRelativePathSegment=false&succinct=false&dateTimeFormat=simple'
                 ),
                 'repositoryId',
                 'objectId',
@@ -543,7 +536,7 @@ class NavigationServiceTest extends AbstractBrowserBindingServiceTestCase
         $responseData = ['foo' => 'bar'];
         $responseMock = $this->getMockBuilder('\\GuzzleHttp\\Message\\Response')->disableOriginalConstructor(
         )->setMethods(['getBody'])->getMock();
-        $responseMock->expects($this->any())->method('getBody')->willReturn(json_encode($responseData));
+        $responseMock->expects($this->any())->method('getBody')->willReturn(\GuzzleHttp\Psr7\Utils::streamFor(json_encode($responseData)));
 
         $jsonConverterMock = $this->getMockBuilder('\\Dkd\\PhpCmis\\Converter\\JsonConverter')->setMethods(
             [$convertFunctionName]
@@ -571,7 +564,7 @@ class NavigationServiceTest extends AbstractBrowserBindingServiceTestCase
             $repositoryId,
             $objectId,
             $selector
-        )->willReturn(Url::createFromUrl(self::BROWSER_URL_TEST));
+        )->willReturn(\League\Uri\Http::new(self::BROWSER_URL_TEST));
         $navigationService->expects($this->once())->method('read')->with($expectedUrl)->willReturn($responseMock);
 
         return $navigationService;
