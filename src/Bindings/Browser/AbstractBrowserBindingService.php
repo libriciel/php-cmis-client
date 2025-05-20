@@ -477,7 +477,8 @@ abstract class AbstractBrowserBindingService implements LinkAccessInterface
             } else {
                 $multipart[] = [
                     'name' => $prefix ? $prefixedName : $name,
-                    'contents' => $value
+                    'contents' => $value,
+                    'headers' => ['Content-type' => 'text/plain; charset=utf-8'],
                 ];
             }
         }
