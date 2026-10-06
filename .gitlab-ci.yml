@@ -6,20 +6,27 @@ stages:
   image: php:${PHP_VERSION}-cli-alpine
   variables:
     COMPOSER_CACHE_DIR: "$CI_PROJECT_DIR/.composer-cache"
+    DEPENDENCIES: highest
   cache:
-    key: "composer-php${PHP_VERSION}"
+    key: "composer-php${PHP_VERSION}-${DEPENDENCIES}"
     paths:
       - .composer-cache/
   before_script:
     - curl -sSL -o /usr/local/bin/composer https://getcomposer.org/download/latest-stable/composer.phar
     - chmod +x /usr/local/bin/composer
-    - composer install --no-interaction --no-progress --prefer-dist
+    - |
+      if [ "$DEPENDENCIES" = "lowest" ]; then
+        composer update --no-interaction --no-progress --prefer-dist --prefer-lowest --prefer-stable
+      else
+        composer update --no-interaction --no-progress --prefer-dist
+      fi
 
 unit_test:
   extends: .php_test
   parallel:
     matrix:
       - PHP_VERSION: ["8.1", "8.2", "8.3", "8.4", "8.5"]
+        DEPENDENCIES: ["highest", "lowest"]
   script:
     - vendor/bin/phpunit --colors=never --log-junit report.xml
   artifacts:
