@@ -24,7 +24,7 @@
         "league/uri-components": "^7.5"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "~2.2",
+        "squizlabs/php_codesniffer": "^4.0",
         "phpunit/phpunit": "^9.6",
         "phpmd/phpmd" : "~2.1",
         "rector/rector": "^2.0"
