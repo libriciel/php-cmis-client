@@ -5,3 +5,4 @@ compose.override.yaml
 composer.lock
 /build
 /examples/conf/Configuration.php
+.composer-cache/

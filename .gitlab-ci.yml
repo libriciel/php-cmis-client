@@ -1,30 +1,58 @@
 stages:
-  - build
   - test
 
-variables:
-  CONTAINER_IMAGE: "${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}"
-
-build:
-  stage: build
-  tags:
-    - docker-build
-  script:
-    - docker login -u "gitlab-ci-token" -p "$CI_JOB_TOKEN" $CI_REGISTRY
-    - docker build --pull -t ${CONTAINER_IMAGE} .
-    - docker login -u "gitlab-ci-token" -p "$CI_JOB_TOKEN" $CI_REGISTRY
-    - docker push ${CONTAINER_IMAGE}
+.php_test:
+  stage: test
+  image: php:${PHP_VERSION}-cli-alpine
+  variables:
+    COMPOSER_CACHE_DIR: "$CI_PROJECT_DIR/.composer-cache"
+    DEPENDENCIES: highest
+  cache:
+    key: "composer-php${PHP_VERSION}-${DEPENDENCIES}"
+    paths:
+      - .composer-cache/
+  before_script:
+    - curl -sSL -o /usr/local/bin/composer https://getcomposer.org/download/latest-stable/composer.phar
+    - chmod +x /usr/local/bin/composer
+    - |
+      if [ "$DEPENDENCIES" = "lowest" ]; then
+        composer update --no-interaction --no-progress --prefer-dist --prefer-lowest --prefer-stable
+      else
+        composer update --no-interaction --no-progress --prefer-dist
+      fi
 
 unit_test:
-  stage: test
-  image : "$CONTAINER_IMAGE"
+  extends: .php_test
+  parallel:
+    matrix:
+      - PHP_VERSION: ["8.1", "8.2", "8.3", "8.4", "8.5"]
+        DEPENDENCIES: ["highest", "lowest"]
+  script:
+    - vendor/bin/phpunit --colors=never --log-junit report.xml
+  artifacts:
+    when: always
+    expire_in: 1 week
+    reports:
+      junit: report.xml
+
+coverage:
+  extends: .php_test
   variables:
+    PHP_VERSION: "8.1"
     XDEBUG_MODE: coverage
   script:
-    - cd /app
-    - vendor/bin/phpunit --coverage-text --colors=never --coverage-clover coverage/coverage.xml --log-junit coverage/logfile.xml
+    - apk add --no-cache $PHPIZE_DEPS linux-headers
+    - curl -sSL -o /usr/local/bin/pie https://github.com/php/pie/releases/latest/download/pie.phar
+    - chmod +x /usr/local/bin/pie
+    - pie install --no-interaction xdebug/xdebug
+    - vendor/bin/phpunit --colors=never --coverage-text --coverage-clover coverage/coverage.xml --coverage-cobertura coverage/cobertura.xml
   coverage: '/^\s*Lines:\s*\d+.\d+\%/'
   artifacts:
+    when: always
+    expire_in: 1 week
     paths:
       - coverage
-    expire_in: 1h
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage/cobertura.xml
