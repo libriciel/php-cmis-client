@@ -1,20 +1,19 @@
-FROM php:8.1-cli
+FROM php:8.4-cli-alpine
 
 WORKDIR /app
 
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    git \
-    libzip-dev \
-    unzip \
-    && rm -rf /var/lib/apt/lists/* \
-    && docker-php-ext-install zip
-
-RUN pecl install xdebug && docker-php-ext-enable xdebug
+RUN --mount=type=bind,from=ghcr.io/php/pie:bin,source=/pie,target=/usr/local/bin/pie \
+    apk add --no-cache --virtual .dev-build-deps \
+    $PHPIZE_DEPS \
+    linux-headers \
+ && pie install xdebug/xdebug \
+ && docker-php-ext-enable xdebug \
+ && apk del .dev-build-deps
 
 COPY ./composer.json /app
 
-RUN composer install
+RUN composer install --no-interaction --prefer-dist
 
 COPY ./ /app
