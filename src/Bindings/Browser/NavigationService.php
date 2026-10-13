@@ -62,7 +62,7 @@ class NavigationService extends AbstractBrowserBindingService implements Navigat
         ?ExtensionDataInterface $extension = null
     ) {
         $url = $this->getObjectUrl($repositoryId, $folderId, Constants::SELECTOR_CHECKEDOUT);
-        $url = Modifier::from($url)
+        $url = Modifier::wrap($url)
             ->mergeQueryParameters([
                 Constants::PARAM_ALLOWABLE_ACTIONS => $includeAllowableActions ? 'true' : 'false',
                 Constants::PARAM_RENDITION_FILTER => $renditionFilter,
@@ -70,30 +70,30 @@ class NavigationService extends AbstractBrowserBindingService implements Navigat
                 Constants::PARAM_SUCCINCT => $this->getSuccinct() ? 'true' : 'false',
                 Constants::PARAM_DATETIME_FORMAT => (string) $this->getDateTimeFormat(),
             ])
-            ->getUri();
+            ->unwrap();
 
         if (!empty($filter)) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_FILTER => (string) $filter])
-                ->getUri();
+                ->unwrap();
         }
 
         if (!empty($orderBy)) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_ORDER_BY => $orderBy])
-                ->getUri();
+                ->unwrap();
         }
 
         if ($maxItems > 0) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_MAX_ITEMS => (string) $maxItems])
-                ->getUri();
+                ->unwrap();
         }
 
         if ($includeRelationships !== null) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_RELATIONSHIPS => (string) $includeRelationships])
-                ->getUri();
+                ->unwrap();
         }
 
         $responseData = (array) $this->readJson($url);
@@ -141,7 +141,7 @@ class NavigationService extends AbstractBrowserBindingService implements Navigat
         ?ExtensionDataInterface $extension = null
     ) {
         $url = $this->getObjectUrl($repositoryId, $folderId, Constants::SELECTOR_CHILDREN);
-        $url = Modifier::from($url)
+        $url = Modifier::wrap($url)
             ->mergeQueryParameters([
                 Constants::PARAM_ALLOWABLE_ACTIONS => $includeAllowableActions ? 'true' : 'false',
                 Constants::PARAM_RENDITION_FILTER => $renditionFilter,
@@ -150,30 +150,30 @@ class NavigationService extends AbstractBrowserBindingService implements Navigat
                 Constants::PARAM_SUCCINCT => $this->getSuccinct() ? 'true' : 'false',
                 Constants::PARAM_DATETIME_FORMAT => (string) $this->getDateTimeFormat()
             ])
-            ->getUri();
+            ->unwrap();
 
         if (!empty($filter)) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_FILTER => (string) $filter])
-                ->getUri();
+                ->unwrap();
         }
 
         if (!empty($orderBy)) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_ORDER_BY => $orderBy])
-                ->getUri();
+                ->unwrap();
         }
 
         if ($maxItems > 0) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_MAX_ITEMS => (string) $maxItems])
-                ->getUri();
+                ->unwrap();
         }
 
         if ($includeRelationships !== null) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_RELATIONSHIPS => (string) $includeRelationships])
-                ->getUri();
+                ->unwrap();
         }
 
         $responseData = (array) $this->readJson($url);
@@ -213,7 +213,7 @@ class NavigationService extends AbstractBrowserBindingService implements Navigat
         ?ExtensionDataInterface $extension = null
     ) {
         $url = $this->getObjectUrl($repositoryId, $folderId, Constants::SELECTOR_DESCENDANTS);
-        $url = Modifier::from($url)
+        $url = Modifier::wrap($url)
             ->mergeQueryParameters([
                 Constants::PARAM_DEPTH => (string) $depth,
                 Constants::PARAM_ALLOWABLE_ACTIONS => $includeAllowableActions ? 'true' : 'false',
@@ -222,18 +222,18 @@ class NavigationService extends AbstractBrowserBindingService implements Navigat
                 Constants::PARAM_SUCCINCT => $this->getSuccinct() ? 'true' : 'false',
                 Constants::PARAM_DATETIME_FORMAT => (string) $this->getDateTimeFormat(),
             ])
-            ->getUri();
+            ->unwrap();
 
         if (!empty($filter)) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_FILTER => (string) $filter])
-                ->getUri();
+                ->unwrap();
         }
 
         if ($includeRelationships !== null) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_RELATIONSHIPS => (string) $includeRelationships])
-                ->getUri();
+                ->unwrap();
         }
 
         $responseData = (array) $this->readJson($url);
@@ -259,17 +259,17 @@ class NavigationService extends AbstractBrowserBindingService implements Navigat
         ?ExtensionDataInterface $extension = null
     ) {
         $url = $this->getObjectUrl($repositoryId, $folderId, Constants::SELECTOR_PARENT);
-        $url = Modifier::from($url)
+        $url = Modifier::wrap($url)
             ->mergeQueryParameters([
                 Constants::PARAM_SUCCINCT => $this->getSuccinct() ? 'true' : 'false',
                 Constants::PARAM_DATETIME_FORMAT => (string) $this->getDateTimeFormat(),
             ])
-            ->getUri();
+            ->unwrap();
 
         if (!empty($filter)) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_FILTER => (string) $filter])
-                ->getUri();
+                ->unwrap();
         }
 
         $responseData = (array) $this->readJson($url);
@@ -309,7 +309,7 @@ class NavigationService extends AbstractBrowserBindingService implements Navigat
         ?ExtensionDataInterface $extension = null
     ) {
         $url = $this->getObjectUrl($repositoryId, $folderId, Constants::SELECTOR_FOLDER_TREE);
-        $url = Modifier::from($url)
+        $url = Modifier::wrap($url)
             ->mergeQueryParameters([
                 Constants::PARAM_DEPTH => (string) $depth,
                 Constants::PARAM_ALLOWABLE_ACTIONS => $includeAllowableActions ? 'true' : 'false',
@@ -318,18 +318,18 @@ class NavigationService extends AbstractBrowserBindingService implements Navigat
                 Constants::PARAM_SUCCINCT => $this->getSuccinct() ? 'true' : 'false',
                 Constants::PARAM_DATETIME_FORMAT => (string) $this->getDateTimeFormat(),
             ])
-            ->getUri();
+            ->unwrap();
 
         if (!empty($filter)) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_FILTER => (string) $filter])
-                ->getUri();
+                ->unwrap();
         }
 
         if ($includeRelationships !== null) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_RELATIONSHIPS => (string) $includeRelationships])
-                ->getUri();
+                ->unwrap();
         }
 
         $responseData = (array) $this->readJson($url);
@@ -367,7 +367,7 @@ class NavigationService extends AbstractBrowserBindingService implements Navigat
         ?ExtensionDataInterface $extension = null
     ) {
         $url = $this->getObjectUrl($repositoryId, $objectId, Constants::SELECTOR_PARENTS);
-        $url = Modifier::from($url)
+        $url = Modifier::wrap($url)
             ->mergeQueryParameters([
                 Constants::PARAM_ALLOWABLE_ACTIONS => $includeAllowableActions ? 'true' : 'false',
                 Constants::PARAM_RENDITION_FILTER => $renditionFilter,
@@ -375,18 +375,18 @@ class NavigationService extends AbstractBrowserBindingService implements Navigat
                 Constants::PARAM_SUCCINCT => $this->getSuccinct() ? 'true' : 'false',
                 Constants::PARAM_DATETIME_FORMAT => (string) $this->getDateTimeFormat(),
             ])
-            ->getUri();
+            ->unwrap();
 
         if (!empty($filter)) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_FILTER => (string) $filter])
-                ->getUri();
+                ->unwrap();
         }
 
         if ($includeRelationships !== null) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_RELATIONSHIPS => (string) $includeRelationships])
-                ->getUri();
+                ->unwrap();
         }
 
         $responseData = (array) $this->readJson($url);

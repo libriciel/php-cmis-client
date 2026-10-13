@@ -87,9 +87,9 @@ class RepositoryUrlCache
         $repositoryUrl = $this->buildUrl($baseUrl);
 
         if ($selector !== null && $selector !== '') {
-            $repositoryUrl = Modifier::from($repositoryUrl)
+            $repositoryUrl = Modifier::wrap($repositoryUrl)
                 ->mergeQueryParameters([Constants::PARAM_SELECTOR => $selector])
-                ->getUri();
+                ->unwrap();
         }
 
         return $repositoryUrl;
@@ -121,14 +121,14 @@ class RepositoryUrlCache
         }
 
         $url = $this->buildUrl($this->getRootUrl($repositoryId));
-        $url = Modifier::from($url)
+        $url = Modifier::wrap($url)
             ->mergeQueryParameters([Constants::PARAM_OBJECT_ID => (string) $objectId])
-            ->getUri();
+            ->unwrap();
 
         if (!empty($selector)) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_SELECTOR => (string) $selector])
-                ->getUri();
+                ->unwrap();
         }
 
         return $url;
@@ -149,14 +149,14 @@ class RepositoryUrlCache
         }
 
         $url = $this->buildUrl($this->getRootUrl($repositoryId));
-        $url = Modifier::from($url)
-            ->appendSegment($path)
-            ->getUri();
+        $url = Modifier::wrap($url)
+            ->appendPath($path)
+            ->unwrap();
 
         if (!empty($selector)) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_SELECTOR => $selector])
-                ->getUri();
+                ->unwrap();
         }
 
         return $url;

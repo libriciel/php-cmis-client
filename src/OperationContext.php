@@ -96,7 +96,7 @@ class OperationContext implements OperationContextInterface
      */
     public function setCacheEnabled($cacheEnabled)
     {
-        $this->cacheEnabled = (boolean) $cacheEnabled;
+        $this->cacheEnabled = (bool) $cacheEnabled;
         return $this;
     }
 
@@ -256,7 +256,7 @@ class OperationContext implements OperationContextInterface
      */
     public function setLoadSecondaryTypeProperties($loadSecondaryTypeProperties)
     {
-        $this->loadSecondaryTypeProperties = (boolean) $loadSecondaryTypeProperties;
+        $this->loadSecondaryTypeProperties = (bool) $loadSecondaryTypeProperties;
 
         return $this;
     }

@@ -339,7 +339,6 @@ class OperationContextTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
     {
         $operationContext = new \ReflectionClass('\\Dkd\\PhpCmis\\OperationContext');
         $renditionFilterProperty = $operationContext->getProperty('renditionFilter');
-        $renditionFilterProperty->setAccessible(true);
         $renditionFilterProperty->setValue($this->operationContext, []);
 
         $this->assertNull($this->operationContext->getRenditionFilterString());

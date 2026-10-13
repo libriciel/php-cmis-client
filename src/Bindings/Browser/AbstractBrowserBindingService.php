@@ -505,9 +505,9 @@ abstract class AbstractBrowserBindingService implements LinkAccessInterface
 
         // build URL
         $url = $this->getRepositoryUrl($repositoryId, Constants::SELECTOR_TYPE_DEFINITION);
-        $url = Modifier::from($url)
+        $url = Modifier::wrap($url)
             ->mergeQueryParameters([Constants::PARAM_TYPE_ID => $typeId])
-            ->getUri();
+            ->unwrap();
 
         return $this->getJsonConverter()->convertTypeDefinition(
             (array) $this->readJson($url)
@@ -761,9 +761,9 @@ abstract class AbstractBrowserBindingService implements LinkAccessInterface
     {
         $result = $this->getRepositoryUrlCache()->getObjectUrl($repositoryId, $documentId, Constants::SELECTOR_CONTENT);
         if ($result !== null) {
-            $result = Modifier::from($result)
+            $result = Modifier::wrap($result)
                 ->mergeQueryParameters([Constants::PARAM_STREAM_ID => $streamId])
-                ->getUri();
+                ->unwrap();
             $result = (string)$result;
         }
         return $result;

@@ -1322,9 +1322,9 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         $changeToken = null,
         $sessionParameterMap = []
     ) {
-        $expectedUrl = Modifier::from($expectedUrl)
+        $expectedUrl = Modifier::wrap($expectedUrl)
             ->mergeQueryParameters($expectedPostData)
-            ->getUri();
+            ->unwrap();
 
         $responseData = ['foo' => 'bar'];
         $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor(

@@ -1113,7 +1113,7 @@ class Session implements SessionInterface
         return $this->getBinding()->getRepositoryService()->getTypeDescendants(
             $this->getRepositoryId(),
             $typeId,
-            (integer) $depth,
+            (int) $depth,
             $includePropertyDefinitions
         );
     }

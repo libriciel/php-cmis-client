@@ -30,7 +30,7 @@ trait TypeHelperTrait
     {
         $invalidType = null;
         $valueType = gettype($value);
-        $nullAllowed = (boolean) $nullAllowed;
+        $nullAllowed = (bool) $nullAllowed;
 
         if ($valueType === 'object') {
             if (!is_a($value, $expectedType)) {

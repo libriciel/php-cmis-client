@@ -37,12 +37,12 @@ class RepositoryService extends AbstractBrowserBindingService implements Reposit
     {
         $url = $this->getRepositoryUrl($repositoryId);
 
-        $url = Modifier::from($url)
+        $url = Modifier::wrap($url)
             ->mergeQueryParameters([
                 Constants::CONTROL_CMISACTION => Constants::CMISACTION_CREATE_TYPE,
                 Constants::CONTROL_TYPE => $this->getJsonConverter()->convertFromTypeDefinition($type),
             ])
-            ->getUri();
+            ->unwrap();
 
         return $this->getJsonConverter()->convertTypeDefinition($this->postJson($url));
     }
@@ -58,12 +58,12 @@ class RepositoryService extends AbstractBrowserBindingService implements Reposit
     {
         $url = $this->getRepositoryUrl($repositoryId);
 
-        $url = Modifier::from($url)
+        $url = Modifier::wrap($url)
             ->mergeQueryParameters([
                 Constants::CONTROL_CMISACTION => Constants::CMISACTION_DELETE_TYPE,
                 Constants::CONTROL_TYPE_ID => $typeId,
             ])
-            ->getUri();
+            ->unwrap();
 
         $this->post($url);
     }
@@ -124,24 +124,24 @@ class RepositoryService extends AbstractBrowserBindingService implements Reposit
         ?ExtensionDataInterface $extension = null
     ) {
         $url = $this->getRepositoryUrl($repositoryId, Constants::SELECTOR_TYPE_CHILDREN);
-        $url = Modifier::from($url)
+        $url = Modifier::wrap($url)
             ->mergeQueryParameters([
                 Constants::PARAM_PROPERTY_DEFINITIONS => $includePropertyDefinitions ? 'true' : 'false',
                 Constants::PARAM_SKIP_COUNT => $skipCount,
                 Constants::PARAM_DATETIME_FORMAT => (string) $this->getDateTimeFormat(),
             ])
-            ->getUri();
+            ->unwrap();
 
         if ($typeId !== null) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_TYPE_ID => $typeId])
-                ->getUri();
+                ->unwrap();
         }
 
         if ($maxItems !== null) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_MAX_ITEMS => $maxItems])
-                ->getUri();
+                ->unwrap();
         }
 
         $responseData = (array) $this->readJson($url);
@@ -205,23 +205,23 @@ class RepositoryService extends AbstractBrowserBindingService implements Reposit
         ?ExtensionDataInterface $extension = null
     ) {
         $url = $this->getRepositoryUrl($repositoryId, Constants::SELECTOR_TYPE_DESCENDANTS);
-        $url = Modifier::from($url)
+        $url = Modifier::wrap($url)
             ->mergeQueryParameters([
                 Constants::PARAM_PROPERTY_DEFINITIONS => $includePropertyDefinitions ? 'true' : 'false',
                 Constants::PARAM_DATETIME_FORMAT => (string) $this->getDateTimeFormat(),
             ])
-            ->getUri();
+            ->unwrap();
 
         if ($typeId !== null) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_TYPE_ID => $typeId])
-                ->getUri();
+                ->unwrap();
         }
 
         if ($depth !== null) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_DEPTH => $depth])
-                ->getUri();
+                ->unwrap();
         }
 
         $responseData = (array) $this->readJson($url);
@@ -241,12 +241,12 @@ class RepositoryService extends AbstractBrowserBindingService implements Reposit
     {
         $url = $this->getRepositoryUrl($repositoryId);
 
-        $url = Modifier::from($url)
+        $url = Modifier::wrap($url)
             ->mergeQueryParameters([
                 Constants::CONTROL_CMISACTION => Constants::CMISACTION_UPDATE_TYPE,
                 Constants::CONTROL_TYPE => json_encode($this->getJsonConverter()->convertFromTypeDefinition($type)),
             ])
-            ->getUri();
+            ->unwrap();
 
         return $this->getJsonConverter()->convertTypeDefinition($this->postJson($url));
     }

@@ -251,7 +251,6 @@ class SessionTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
         $repositoryInfo->expects($this->once())->method('getId');
         $objectType = $this->createMock(PhpCmis\Data\ObjectTypeInterface::class);
         $property = new \ReflectionProperty($session, 'repositoryInfo');
-        $property->setAccessible(true);
         $property->setValue($session, $repositoryInfo);
         $session->getRelationships(
             new PhpCmis\DataObjects\ObjectId('foobar-object-id'),
