@@ -436,17 +436,17 @@ class ObjectService extends AbstractBrowserBindingService implements ObjectServi
 
         $url = $this->getObjectUrl($repositoryId, $objectId);
 
-        $url = Modifier::from($url)
+        $url = Modifier::wrap($url)
             ->mergeQueryParameters([
                 Constants::CONTROL_CMISACTION => Constants::CMISACTION_DELETE_CONTENT,
                 Constants::PARAM_SUCCINCT => $this->getSuccinct() ? 'true' : 'false',
             ])
-            ->getUri();
+            ->unwrap();
 
         if ($changeToken !== null && !$this->getSession()->get(SessionParameter::OMIT_CHANGE_TOKENS, false)) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_CHANGE_TOKEN => $changeToken])
-                ->getUri();
+                ->unwrap();
         }
 
         $newObject = $this->getJsonConverter()->convertObject((array) $this->postJson($url));
@@ -513,19 +513,19 @@ class ObjectService extends AbstractBrowserBindingService implements ObjectServi
         ?ExtensionDataInterface $extension = null
     ) {
         $url = $this->getObjectUrl($repositoryId, $folderId);
-        $url = Modifier::from($url)
+        $url = Modifier::wrap($url)
             ->mergeQueryParameters([
                 Constants::CONTROL_CMISACTION => Constants::CMISACTION_DELETE_TREE,
                 Constants::PARAM_FOLDER_ID => $folderId,
                 Constants::PARAM_ALL_VERSIONS => $allVersions ? 'true' : 'false',
                 Constants::PARAM_CONTINUE_ON_FAILURE => $continueOnFailure ? 'true' : 'false',
             ])
-            ->getUri();
+            ->unwrap();
 
         if ($unfileObjects !== null) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_UNFILE_OBJECTS => (string) $unfileObjects])
-                ->getUri();
+                ->unwrap();
         }
 
         return $this->getJsonConverter()->convertFailedToDelete($this->postJson($url));
@@ -574,9 +574,9 @@ class ObjectService extends AbstractBrowserBindingService implements ObjectServi
         $url = $this->getObjectUrl($repositoryId, $objectId, Constants::SELECTOR_CONTENT);
 
         if ($streamId !== null) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_STREAM_ID => $streamId])
-                ->getUri();
+                ->unwrap();
         }
 
         $response = $this->getHttpInvoker()->get((string) $url);
@@ -644,7 +644,7 @@ class ObjectService extends AbstractBrowserBindingService implements ObjectServi
         }
         $url = $this->getObjectUrl($repositoryId, $objectId, Constants::SELECTOR_OBJECT);
 
-        $url = Modifier::from($url)
+        $url = Modifier::wrap($url)
             ->mergeQueryParameters([
                 Constants::PARAM_ALLOWABLE_ACTIONS => $includeAllowableActions ? 'true' : 'false',
                 Constants::PARAM_RENDITION_FILTER => $renditionFilter,
@@ -653,18 +653,18 @@ class ObjectService extends AbstractBrowserBindingService implements ObjectServi
                 Constants::PARAM_SUCCINCT => $this->getSuccinct() ? 'true' : 'false',
                 Constants::PARAM_DATETIME_FORMAT => (string)$this->getDateTimeFormat(),
             ])
-            ->getUri();
+            ->unwrap();
 
         if (!empty($filter)) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_FILTER => (string) $filter])
-                ->getUri();
+                ->unwrap();
         }
 
         if ($includeRelationships !== null) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_RELATIONSHIPS => (string) $includeRelationships])
-                ->getUri();
+                ->unwrap();
         }
 
         $responseData = (array) $this->readJson($url);
@@ -727,7 +727,7 @@ class ObjectService extends AbstractBrowserBindingService implements ObjectServi
 
         $url = $this->getPathUrl($repositoryId, $path, Constants::SELECTOR_OBJECT);
 
-        $url = Modifier::from($url)
+        $url = Modifier::wrap($url)
             ->mergeQueryParameters([
                 Constants::PARAM_ALLOWABLE_ACTIONS => $includeAllowableActions ? 'true' : 'false',
                 Constants::PARAM_RENDITION_FILTER => $renditionFilter,
@@ -736,18 +736,18 @@ class ObjectService extends AbstractBrowserBindingService implements ObjectServi
                 Constants::PARAM_SUCCINCT => $this->getSuccinct() ? 'true' : 'false',
                 Constants::PARAM_DATETIME_FORMAT => (string) $this->getDateTimeFormat(),
             ])
-            ->getUri();
+            ->unwrap();
 
         if (!empty($filter)) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_FILTER => (string) $filter])
-                ->getUri();
+                ->unwrap();
         }
 
         if ($includeRelationships !== null) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_RELATIONSHIPS => (string) $includeRelationships])
-                ->getUri();
+                ->unwrap();
         }
 
         $responseData = (array) $this->readJson($url);
@@ -789,17 +789,17 @@ class ObjectService extends AbstractBrowserBindingService implements ObjectServi
         }
 
         $url = $this->getObjectUrl($repositoryId, $objectId, Constants::SELECTOR_PROPERTIES);
-        $url = Modifier::from($url)
+        $url = Modifier::wrap($url)
             ->mergeQueryParameters(            [
                 Constants::PARAM_SUCCINCT => $this->getSuccinct() ? 'true' : 'false',
                 Constants::PARAM_DATETIME_FORMAT => (string) $this->getDateTimeFormat(),
             ])
-            ->getUri();
+            ->unwrap();
 
         if (!empty($filter)) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_FILTER => (string) $filter])
-                ->getUri();
+                ->unwrap();
         }
 
         $responseData = (array) $this->readJson($url);
@@ -849,17 +849,17 @@ class ObjectService extends AbstractBrowserBindingService implements ObjectServi
         }
 
         $url = $this->getObjectUrl($repositoryId, $objectId, Constants::SELECTOR_RENDITIONS);
-        $url = Modifier::from($url)
+        $url = Modifier::wrap($url)
             ->mergeQueryParameters([
                 Constants::PARAM_RENDITION_FILTER => $renditionFilter,
                 Constants::PARAM_SKIP_COUNT => (string) $skipCount,
             ])
-            ->getUri();
+            ->unwrap();
 
         if ($maxItems !== null) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_MAX_ITEMS => (string) $maxItems])
-                ->getUri();
+                ->unwrap();
         }
 
         $responseData = (array) $this->readJson($url);
@@ -888,14 +888,14 @@ class ObjectService extends AbstractBrowserBindingService implements ObjectServi
         $this->flushCached();
 
         $url = $this->getObjectUrl($repositoryId, $objectId);
-        $url = Modifier::from($url)
+        $url = Modifier::wrap($url)
             ->mergeQueryParameters([
                 Constants::CONTROL_CMISACTION => Constants::CMISACTION_MOVE,
                 Constants::PARAM_TARGET_FOLDER_ID => $targetFolderId,
                 Constants::PARAM_SOURCE_FOLDER_ID => $sourceFolderId,
                 Constants::PARAM_SUCCINCT => $this->getSuccinct() ? 'true' : 'false',
             ])
-            ->getUri();
+            ->unwrap();
 
         $newObject = $this->getJsonConverter()->convertObject($this->postJson($url));
 
@@ -936,18 +936,18 @@ class ObjectService extends AbstractBrowserBindingService implements ObjectServi
 
         $url = $this->getObjectUrl($repositoryId, $objectId);
 
-        $url = Modifier::from($url)
+        $url = Modifier::wrap($url)
             ->mergeQueryParameters([
                 Constants::CONTROL_CMISACTION => Constants::CMISACTION_SET_CONTENT,
                 Constants::PARAM_OVERWRITE_FLAG => $overwriteFlag ? 'true' : 'false',
                 Constants::PARAM_SUCCINCT => $this->getSuccinct() ? 'true' : 'false',
             ])
-            ->getUri();
+            ->unwrap();
 
         if ($changeToken !== null && !$this->getSession()->get(SessionParameter::OMIT_CHANGE_TOKENS, false)) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_CHANGE_TOKEN => $changeToken])
-                ->getUri();
+                ->unwrap();
         }
 
         $newObject = $this->getJsonConverter()->convertObject(
@@ -994,9 +994,9 @@ class ObjectService extends AbstractBrowserBindingService implements ObjectServi
         $url = $this->getObjectUrl($repositoryId, $objectId);
 
         if ($changeToken !== null && !$this->getSession()->get(SessionParameter::OMIT_CHANGE_TOKENS, false)) {
-            $url = Modifier::from($url)
+            $url = Modifier::wrap($url)
                 ->mergeQueryParameters([Constants::PARAM_CHANGE_TOKEN => $changeToken])
-                ->getUri();
+                ->unwrap();
         }
 
         $queryArray = $this->convertPropertiesToQueryArray($properties);
