@@ -27,7 +27,6 @@ trait ReflectionHelperTrait
     {
         $class = new \ReflectionClass($class);
         $method = $class->getMethod($method);
-        $method->setAccessible(true);
 
         return $method;
     }
@@ -44,7 +43,6 @@ trait ReflectionHelperTrait
         $reflection = new \ReflectionObject($object);
 
         $property = $reflection->getProperty($propertyName);
-        $property->setAccessible(true);
         $property->setValue($object, $value);
     }
 }

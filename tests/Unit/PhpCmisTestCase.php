@@ -16,7 +16,6 @@ class PhpCmisTestCase extends TestCase
     {
         $reflection = new ReflectionClass($object);
         $property = $reflection->getProperty($attributeName);
-        $property->setAccessible(true);
         $value = $property->getValue($object);
 
         $this->assertInstanceOf($expectedClass, $value);
@@ -29,7 +28,6 @@ class PhpCmisTestCase extends TestCase
     {
         $reflection = new ReflectionClass($object);
         $property = $reflection->getProperty($attributeName);
-        $property->setAccessible(true);
         $value = $property->getValue($object);
 
         $this->assertSame($expectedValue, $value);
@@ -42,7 +40,6 @@ class PhpCmisTestCase extends TestCase
     {
         $reflection = new ReflectionClass($object);
         $property = $reflection->getProperty($attributeName);
-        $property->setAccessible(true);
         $value = $property->getValue($object);
 
         $this->assertEquals($expectedValue, $value);
@@ -55,7 +52,6 @@ class PhpCmisTestCase extends TestCase
     {
         $reflection = new ReflectionClass($className);
         $property = $reflection->getProperty($staticAttributeName);
-        $property->setAccessible(true);
 
         return $property->getValue();
     }
@@ -67,7 +63,6 @@ class PhpCmisTestCase extends TestCase
     {
         $reflection = new ReflectionClass($object);
         $property = $reflection->getProperty($attributeName);
-        $property->setAccessible(true);
         $value = $property->getValue($object);
 
         $this->assertEmpty($value, "Failed asserting that the attribute '$attributeName' is empty.");
@@ -80,7 +75,6 @@ class PhpCmisTestCase extends TestCase
     {
         $reflection = new ReflectionClass($object);
         $property = $reflection->getProperty($attributeName);
-        $property->setAccessible(true);
         $value = $property->getValue($object);
 
         $actualType = gettype($value);

@@ -403,7 +403,6 @@ class QueryStatementTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
         $sessionMock->expects($this->once())->method('getTypeDefinition')->willThrowException($exception);
         $queryStatement = new QueryStatement($sessionMock, 'foobar');
         $method = new \ReflectionMethod($queryStatement, 'getQueryNameAndAliasForType');
-        $method->setAccessible(true);
         $input = ['foobar-notfound', 'unused'];
         $output = $method->invokeArgs($queryStatement, $input);
         $this->assertEquals($input, $output);
