@@ -46,7 +46,7 @@ interface RenditionInterface extends RenditionDataInterface
      * @param OperationContextInterface|null $context
      * @return DocumentInterface|null the rendition document or <code>null</code> if there is no rendition document
      */
-    public function getRenditionDocument(OperationContextInterface $context = null);
+    public function getRenditionDocument(?OperationContextInterface $context = null);
 
     /**
      * Returns the width in pixels if the rendition is an image.

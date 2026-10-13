@@ -57,7 +57,7 @@ interface FolderInterface extends FileableCmisObjectInterface, FolderPropertiesI
         array $policies = [],
         array $addAces = [],
         array $removeAces = [],
-        OperationContextInterface $context = null
+        ?OperationContextInterface $context = null
     );
 
     /**
@@ -95,7 +95,7 @@ interface FolderInterface extends FileableCmisObjectInterface, FolderPropertiesI
         array $policies = [],
         array $addAces = [],
         array $removeAces = [],
-        OperationContextInterface $context = null
+        ?OperationContextInterface $context = null
     );
 
     /**
@@ -116,7 +116,7 @@ interface FolderInterface extends FileableCmisObjectInterface, FolderPropertiesI
         array $policies = [],
         array $addAces = [],
         array $removeAces = [],
-        OperationContextInterface $context = null
+        ?OperationContextInterface $context = null
     );
 
     /**
@@ -136,7 +136,7 @@ interface FolderInterface extends FileableCmisObjectInterface, FolderPropertiesI
         array $policies = [],
         array $addAces = [],
         array $removeAces = [],
-        OperationContextInterface $context = null
+        ?OperationContextInterface $context = null
     );
 
     /**
@@ -156,7 +156,7 @@ interface FolderInterface extends FileableCmisObjectInterface, FolderPropertiesI
         array $policies = [],
         array $addAces = [],
         array $removeAces = [],
-        OperationContextInterface $context = null
+        ?OperationContextInterface $context = null
     );
 
     /**
@@ -182,7 +182,7 @@ interface FolderInterface extends FileableCmisObjectInterface, FolderPropertiesI
      * @param OperationContextInterface|null $context
      * @return DocumentInterface[] A list of checked out documents.
      */
-    public function getCheckedOutDocs(OperationContextInterface $context = null);
+    public function getCheckedOutDocs(?OperationContextInterface $context = null);
 
     /**
      * Returns the children of this folder using the given OperationContext.
@@ -190,7 +190,7 @@ interface FolderInterface extends FileableCmisObjectInterface, FolderPropertiesI
      * @param OperationContextInterface|null $context
      * @return CmisObjectInterface[] A list of the child objects for the specified folder.
      */
-    public function getChildren(OperationContextInterface $context = null);
+    public function getChildren(?OperationContextInterface $context = null);
 
     /**
      * Gets the folder descendants starting with this folder.
@@ -200,7 +200,7 @@ interface FolderInterface extends FileableCmisObjectInterface, FolderPropertiesI
      * @return TreeInterface A tree that contains FileableCmisObject objects
      * @see FileableCmisObject FileableCmisObject contained in returned TreeInterface
      */
-    public function getDescendants($depth, OperationContextInterface $context = null);
+    public function getDescendants($depth, ?OperationContextInterface $context = null);
 
     /**
      * Gets the parent folder object.
@@ -225,7 +225,7 @@ interface FolderInterface extends FileableCmisObjectInterface, FolderPropertiesI
      * @return TreeInterface A tree that contains FileableCmisObject objects
      * @see FileableCmisObject FileableCmisObject contained in returned TreeInterface
      */
-    public function getFolderTree($depth, OperationContextInterface $context = null);
+    public function getFolderTree($depth, ?OperationContextInterface $context = null);
 
     /**
      * Returns the path of the folder.

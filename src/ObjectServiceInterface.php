@@ -51,7 +51,7 @@ interface ObjectServiceInterface
         StreamInterface $contentStream,
         $isLastChunk,
         & $changeToken = null,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -71,7 +71,7 @@ interface ObjectServiceInterface
         PropertiesInterface $properties,
         array $addSecondaryTypeIds,
         array $removeSecondaryTypeIds,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -100,12 +100,12 @@ interface ObjectServiceInterface
         $repositoryId,
         PropertiesInterface $properties,
         $folderId = null,
-        StreamInterface $contentStream = null,
-        VersioningState $versioningState = null,
+        ?StreamInterface $contentStream = null,
+        ?VersioningState $versioningState = null,
         array $policies = [],
-        AclInterface $addAces = null,
-        AclInterface $removeAces = null,
-        ExtensionDataInterface $extension = null
+        ?AclInterface $addAces = null,
+        ?AclInterface $removeAces = null,
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -132,11 +132,11 @@ interface ObjectServiceInterface
         $sourceId,
         PropertiesInterface $properties,
         $folderId = null,
-        VersioningState $versioningState = null,
+        ?VersioningState $versioningState = null,
         array $policies = [],
-        AclInterface $addAces = null,
-        AclInterface $removeAces = null,
-        ExtensionDataInterface $extension = null
+        ?AclInterface $addAces = null,
+        ?AclInterface $removeAces = null,
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -162,9 +162,9 @@ interface ObjectServiceInterface
         PropertiesInterface $properties,
         $folderId,
         array $policies = [],
-        AclInterface $addAces = null,
-        AclInterface $removeAces = null,
-        ExtensionDataInterface $extension = null
+        ?AclInterface $addAces = null,
+        ?AclInterface $removeAces = null,
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -189,9 +189,9 @@ interface ObjectServiceInterface
         PropertiesInterface $properties,
         $folderId = null,
         array $policies = [],
-        AclInterface $addAces = null,
-        AclInterface $removeAces = null,
-        ExtensionDataInterface $extension = null
+        ?AclInterface $addAces = null,
+        ?AclInterface $removeAces = null,
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -215,9 +215,9 @@ interface ObjectServiceInterface
         PropertiesInterface $properties,
         $folderId = null,
         array $policies = [],
-        AclInterface $addAces = null,
-        AclInterface $removeAces = null,
-        ExtensionDataInterface $extension = null
+        ?AclInterface $addAces = null,
+        ?AclInterface $removeAces = null,
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -238,9 +238,9 @@ interface ObjectServiceInterface
         $repositoryId,
         PropertiesInterface $properties,
         array $policies = [],
-        AclInterface $addAces = null,
-        AclInterface $removeAces = null,
-        ExtensionDataInterface $extension = null
+        ?AclInterface $addAces = null,
+        ?AclInterface $removeAces = null,
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -256,7 +256,7 @@ interface ObjectServiceInterface
         $repositoryId,
         & $objectId,
         & $changeToken = null,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -272,7 +272,7 @@ interface ObjectServiceInterface
         $repositoryId,
         $objectId,
         $allVersions = true,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -293,9 +293,9 @@ interface ObjectServiceInterface
         $repositoryId,
         $folderId,
         $allVersions = true,
-        UnfileObject $unfileObjects = null,
+        ?UnfileObject $unfileObjects = null,
         $continueOnFailure = false,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -306,7 +306,7 @@ interface ObjectServiceInterface
      * @param ExtensionDataInterface|null $extension
      * @return AllowableActionsInterface
      */
-    public function getAllowableActions($repositoryId, $objectId, ExtensionDataInterface $extension = null);
+    public function getAllowableActions($repositoryId, $objectId, ?ExtensionDataInterface $extension = null);
 
     /**
      * Gets the content stream for the specified document object, or gets a rendition stream for
@@ -326,7 +326,7 @@ interface ObjectServiceInterface
         $streamId = null,
         $offset = null,
         $length = null,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -355,11 +355,11 @@ interface ObjectServiceInterface
         $objectId,
         $filter = null,
         $includeAllowableActions = false,
-        IncludeRelationships $includeRelationships = null,
+        ?IncludeRelationships $includeRelationships = null,
         $renditionFilter = Constants::RENDITION_NONE,
         $includePolicyIds = false,
         $includeAcl = false,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -388,11 +388,11 @@ interface ObjectServiceInterface
         $path,
         $filter = null,
         $includeAllowableActions = false,
-        IncludeRelationships $includeRelationships = null,
+        ?IncludeRelationships $includeRelationships = null,
         $renditionFilter = Constants::RENDITION_NONE,
         $includePolicyIds = false,
         $includeAcl = false,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -409,7 +409,7 @@ interface ObjectServiceInterface
         $repositoryId,
         $objectId,
         $filter = null,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -433,7 +433,7 @@ interface ObjectServiceInterface
         $renditionFilter = Constants::RENDITION_NONE,
         $maxItems = null,
         $skipCount = 0,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -452,7 +452,7 @@ interface ObjectServiceInterface
         & $objectId,
         $targetFolderId,
         $sourceFolderId,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -475,7 +475,7 @@ interface ObjectServiceInterface
         StreamInterface $contentStream,
         $overwriteFlag = true,
         & $changeToken = null,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -493,6 +493,6 @@ interface ObjectServiceInterface
         & $objectId,
         PropertiesInterface $properties,
         & $changeToken = null,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 }

@@ -74,7 +74,7 @@ trait DataProviderCollectionTrait
      * @param \Closure $filter
      * @return array
      */
-    public function allTypesDataProvider(\Closure $filter = null)
+    public function allTypesDataProvider(?\Closure $filter = null)
     {
         $values = [
             'string' => ['String'],

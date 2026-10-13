@@ -46,7 +46,7 @@ class PropertyDecimalDefinition extends AbstractPropertyDefinition implements Mu
      *
      * @param DecimalPrecision|null $precision the precision or <code>null</code> if the decimal supports any value
      */
-    public function setPrecision(DecimalPrecision $precision = null)
+    public function setPrecision(?DecimalPrecision $precision = null)
     {
         $this->precision = $precision;
     }

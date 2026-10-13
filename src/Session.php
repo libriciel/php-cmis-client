@@ -117,11 +117,11 @@ class Session implements SessionInterface
      */
     public function __construct(
         array $parameters,
-        ObjectFactoryInterface $objectFactory = null,
-        Cache $cache = null,
-        Cache $typeDefinitionCache = null,
-        Cache $objectTypeCache = null,
-        CmisBindingsHelper $cmisBindingHelper = null
+        ?ObjectFactoryInterface $objectFactory = null,
+        ?Cache $cache = null,
+        ?Cache $typeDefinitionCache = null,
+        ?Cache $objectTypeCache = null,
+        ?CmisBindingsHelper $cmisBindingHelper = null
     ) {
         if (empty($parameters)) {
             throw new CmisInvalidArgumentException('No parameters provided!', 1408115280);
@@ -275,7 +275,7 @@ class Session implements SessionInterface
         ObjectIdInterface $objectId,
         $addAces = [],
         $removeAces = [],
-        AclPropagation $aclPropagation = null
+        ?AclPropagation $aclPropagation = null
     ) {
         // TODO: Implement applyAcl() method.
     }
@@ -353,9 +353,9 @@ class Session implements SessionInterface
      */
     public function createDocument(
         array $properties,
-        ObjectIdInterface $folderId = null,
-        StreamInterface $contentStream = null,
-        VersioningState $versioningState = null,
+        ?ObjectIdInterface $folderId = null,
+        ?StreamInterface $contentStream = null,
+        ?VersioningState $versioningState = null,
         array $policies = [],
         array $addAces = [],
         array $removeAces = []
@@ -423,8 +423,8 @@ class Session implements SessionInterface
     public function createDocumentFromSource(
         ObjectIdInterface $source,
         array $properties = [],
-        ObjectIdInterface $folderId = null,
-        VersioningState $versioningState = null,
+        ?ObjectIdInterface $folderId = null,
+        ?VersioningState $versioningState = null,
         array $policies = [],
         array $addAces = [],
         array $removeAces = []
@@ -577,7 +577,7 @@ class Session implements SessionInterface
         $includeAcls = false,
         $includeAllowableActions = true,
         $includePolicies = false,
-        IncludeRelationships $includeRelationships = null,
+        ?IncludeRelationships $includeRelationships = null,
         array $renditionFilter = [],
         $includePathSegments = true,
         $orderBy = null,
@@ -771,7 +771,7 @@ class Session implements SessionInterface
      * @param OperationContextInterface|null $context
      * @return DocumentInterface[]
      */
-    public function getCheckedOutDocs(OperationContextInterface $context = null)
+    public function getCheckedOutDocs(?OperationContextInterface $context = null)
     {
         // TODO: Implement getCheckedOutDocs() method.
     }
@@ -798,7 +798,7 @@ class Session implements SessionInterface
         $changeLogToken,
         $includeProperties,
         $maxNumItems = null,
-        OperationContextInterface $context = null
+        ?OperationContextInterface $context = null
     ) {
         if ($context === null) {
             $context = $this->getDefaultContext();
@@ -873,7 +873,7 @@ class Session implements SessionInterface
     public function getLatestDocumentVersion(
         ObjectIdInterface $objectId,
         $major = false,
-        OperationContextInterface $context = null
+        ?OperationContextInterface $context = null
     ) {
         // TODO: Implement getLatestDocumentVersion() method.
     }
@@ -894,7 +894,7 @@ class Session implements SessionInterface
      * @return CmisObjectInterface the requested object
      * @throws CmisObjectNotFoundException - if an object with the given ID doesn't exist
      */
-    public function getObject(ObjectIdInterface $objectId, OperationContextInterface $context = null)
+    public function getObject(ObjectIdInterface $objectId, ?OperationContextInterface $context = null)
     {
         if ($context === null) {
             $context = $this->getDefaultContext();
@@ -942,7 +942,7 @@ class Session implements SessionInterface
      *      if path is empty.
      * @throws CmisObjectNotFoundException - if an object with the given path doesn't exist
      */
-    public function getObjectByPath($path, OperationContextInterface $context = null)
+    public function getObjectByPath($path, ?OperationContextInterface $context = null)
     {
         if (empty($path)) {
             throw new CmisInvalidArgumentException('Path must not be empty.');
@@ -997,7 +997,7 @@ class Session implements SessionInterface
         $includeSubRelationshipTypes,
         RelationshipDirection $relationshipDirection,
         ObjectTypeInterface $type,
-        OperationContextInterface $context = null
+        ?OperationContextInterface $context = null
     ) {
 
         if ($context === null) {
@@ -1042,7 +1042,7 @@ class Session implements SessionInterface
      * @return FolderInterface the root folder object
      * @throws CmisRuntimeException
      */
-    public function getRootFolder(OperationContextInterface $context = null)
+    public function getRootFolder(?OperationContextInterface $context = null)
     {
         $rootFolderId = $this->getRepositoryInfo()->getRootFolderId();
 
@@ -1128,7 +1128,7 @@ class Session implements SessionInterface
      * @return QueryResultInterface[]
      * @throws CmisInvalidArgumentException If statement is empty
      */
-    public function query($statement, $searchAllVersions = false, OperationContextInterface $context = null)
+    public function query($statement, $searchAllVersions = false, ?OperationContextInterface $context = null)
     {
         if (empty($statement)) {
             throw new CmisInvalidArgumentException('Statement must not be empty.');
@@ -1179,7 +1179,7 @@ class Session implements SessionInterface
         $typeId,
         $where = null,
         $searchAllVersions = false,
-        OperationContextInterface $context = null
+        ?OperationContextInterface $context = null
     ) {
         if (empty($typeId)) {
             throw new CmisInvalidArgumentException('Type id must not be empty.');

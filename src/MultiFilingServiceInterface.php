@@ -35,7 +35,7 @@ interface MultiFilingServiceInterface
         $objectId,
         $folderId,
         $allVersions = true,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -52,6 +52,6 @@ interface MultiFilingServiceInterface
         $repositoryId,
         $objectId,
         $folderId = null,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 }

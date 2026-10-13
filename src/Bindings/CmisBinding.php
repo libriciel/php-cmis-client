@@ -58,8 +58,8 @@ class CmisBinding implements CmisBindingInterface
     public function __construct(
         BindingSessionInterface $session,
         array $sessionParameters,
-        Cache $typeDefinitionCache = null,
-        BindingsObjectFactoryInterface $objectFactory = null
+        ?Cache $typeDefinitionCache = null,
+        ?BindingsObjectFactoryInterface $objectFactory = null
     ) {
         if (count($sessionParameters) === 0) {
             throw new CmisRuntimeException('Session parameters must be set!');

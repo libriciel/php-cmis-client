@@ -32,7 +32,7 @@ interface VersioningServiceInterface
      * @param string $objectId the identifier for the PWC
      * @param ExtensionDataInterface|null $extension
      */
-    public function cancelCheckOut($repositoryId, & $objectId, ExtensionDataInterface $extension = null);
+    public function cancelCheckOut($repositoryId, & $objectId, ?ExtensionDataInterface $extension = null);
 
     /**
      * Checks-in the private working copy (PWC) document.
@@ -57,13 +57,13 @@ interface VersioningServiceInterface
         $repositoryId,
         & $objectId,
         $major = true,
-        PropertiesInterface $properties = null,
-        StreamInterface $contentStream = null,
+        ?PropertiesInterface $properties = null,
+        ?StreamInterface $contentStream = null,
         $checkinComment = null,
         array $policies = [],
-        AclInterface $addAces = null,
-        AclInterface $removeAces = null,
-        ExtensionDataInterface $extension = null
+        ?AclInterface $addAces = null,
+        ?AclInterface $removeAces = null,
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -80,7 +80,7 @@ interface VersioningServiceInterface
     public function checkOut(
         $repositoryId,
         & $objectId,
-        ExtensionDataInterface $extension = null,
+        ?ExtensionDataInterface $extension = null,
         $contentCopied = null
     );
 
@@ -104,7 +104,7 @@ interface VersioningServiceInterface
         $versionSeriesId,
         $filter = null,
         $includeAllowableActions = false,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -138,11 +138,11 @@ interface VersioningServiceInterface
         $major = false,
         $filter = null,
         $includeAllowableActions = false,
-        IncludeRelationships $includeRelationships = null,
+        ?IncludeRelationships $includeRelationships = null,
         $renditionFilter = Constants::RENDITION_NONE,
         $includePolicyIds = false,
         $includeAcl = false,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -166,6 +166,6 @@ interface VersioningServiceInterface
         $versionSeriesId,
         $major = false,
         $filter = null,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 }

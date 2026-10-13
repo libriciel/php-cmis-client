@@ -33,7 +33,7 @@ interface FileableCmisObjectInterface extends CmisObjectInterface
      * @return FolderInterface[] the list of parent folders of this object or an
      * empty list if this object is unfiled or if this object is the root folder
      */
-    public function getParents(OperationContextInterface $context = null);
+    public function getParents(?OperationContextInterface $context = null);
 
     /**
      * Returns the paths of this object.
@@ -55,7 +55,7 @@ interface FileableCmisObjectInterface extends CmisObjectInterface
     public function move(
         ObjectIdInterface $sourceFolderId,
         ObjectIdInterface $targetFolderId,
-        OperationContextInterface $context = null
+        ?OperationContextInterface $context = null
     );
 
     /**

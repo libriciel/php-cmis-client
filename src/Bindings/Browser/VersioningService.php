@@ -31,7 +31,7 @@ class VersioningService extends AbstractBrowserBindingService implements Version
      * @param string $objectId the identifier for the PWC
      * @param ExtensionDataInterface|null $extension
      */
-    public function cancelCheckOut($repositoryId, & $objectId, ExtensionDataInterface $extension = null)
+    public function cancelCheckOut($repositoryId, & $objectId, ?ExtensionDataInterface $extension = null)
     {
         $objectId = $this->getJsonConverter()->convertObject(
             (array) $this->postJson(
@@ -67,13 +67,13 @@ class VersioningService extends AbstractBrowserBindingService implements Version
         $repositoryId,
         & $objectId,
         $major = true,
-        PropertiesInterface $properties = null,
-        StreamInterface $contentStream = null,
+        ?PropertiesInterface $properties = null,
+        ?StreamInterface $contentStream = null,
         $checkinComment = null,
         array $policies = [],
-        AclInterface $addAces = null,
-        AclInterface $removeAces = null,
-        ExtensionDataInterface $extension = null
+        ?AclInterface $addAces = null,
+        ?AclInterface $removeAces = null,
+        ?ExtensionDataInterface $extension = null
     ) {
         $queryArray = $this->createQueryArray(
             Constants::CMISACTION_CHECK_IN,
@@ -135,7 +135,7 @@ class VersioningService extends AbstractBrowserBindingService implements Version
     public function checkOut(
         $repositoryId,
         & $objectId,
-        ExtensionDataInterface $extension = null,
+        ?ExtensionDataInterface $extension = null,
         $contentCopied = null
     ) {
         $objectData = $this->getJsonConverter()->convertObject(
@@ -171,7 +171,7 @@ class VersioningService extends AbstractBrowserBindingService implements Version
         $versionSeriesId,
         $filter = null,
         $includeAllowableActions = false,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     ) {
         return $this->getJsonConverter()->convertObjectList(
             [
@@ -210,11 +210,11 @@ class VersioningService extends AbstractBrowserBindingService implements Version
         $major = false,
         $filter = null,
         $includeAllowableActions = false,
-        IncludeRelationships $includeRelationships = null,
+        ?IncludeRelationships $includeRelationships = null,
         $renditionFilter = Constants::RENDITION_NONE,
         $includePolicyIds = false,
         $includeAcl = false,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     ) {
         $object = (array) $this->readJson(
             $this->getObjectUrl($repositoryId, $objectId, Constants::SELECTOR_VERSIONS)
@@ -243,7 +243,7 @@ class VersioningService extends AbstractBrowserBindingService implements Version
         $versionSeriesId,
         $major = false,
         $filter = null,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     ) {
         return $this->getObjectOfLatestVersion(
             $repositoryId,
@@ -264,7 +264,7 @@ class VersioningService extends AbstractBrowserBindingService implements Version
     protected function createQueryArray(
         $action,
         array $parameters = [],
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     ) {
         $queryArray = array_replace(
             $parameters,

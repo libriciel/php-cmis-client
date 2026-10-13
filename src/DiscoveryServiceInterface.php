@@ -53,7 +53,7 @@ interface DiscoveryServiceInterface
         $includePolicyIds = false,
         $includeAcl = false,
         $maxItems = null,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -87,11 +87,11 @@ interface DiscoveryServiceInterface
         $repositoryId,
         $statement,
         $searchAllVersions = false,
-        IncludeRelationships $includeRelationships = null,
+        ?IncludeRelationships $includeRelationships = null,
         $renditionFilter = Constants::RENDITION_NONE,
         $includeAllowableActions = false,
         $maxItems = null,
         $skipCount = 0,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 }

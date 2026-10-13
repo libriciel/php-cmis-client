@@ -32,7 +32,7 @@ interface RepositoryServiceInterface
      * @param ExtensionDataInterface|null $extension
      * @return TypeDefinitionInterface
      */
-    public function createType($repositoryId, TypeDefinitionInterface $type, ExtensionDataInterface $extension = null);
+    public function createType($repositoryId, TypeDefinitionInterface $type, ?ExtensionDataInterface $extension = null);
 
     /**
      * Deletes a type.
@@ -41,7 +41,7 @@ interface RepositoryServiceInterface
      * @param string $typeId The typeId of an object-type specified in the repository.
      * @param ExtensionDataInterface|null $extension
      */
-    public function deleteType($repositoryId, $typeId, ExtensionDataInterface $extension = null);
+    public function deleteType($repositoryId, $typeId, ?ExtensionDataInterface $extension = null);
 
     /**
      * Returns information about the CMIS repository, the optional capabilities it
@@ -51,7 +51,7 @@ interface RepositoryServiceInterface
      * @param ExtensionDataInterface|null $extension
      * @return RepositoryInfoInterface
      */
-    public function getRepositoryInfo($repositoryId, ExtensionDataInterface $extension = null);
+    public function getRepositoryInfo($repositoryId, ?ExtensionDataInterface $extension = null);
 
     /**
      * Returns a list of CMIS repository information available from this CMIS service endpoint.
@@ -60,7 +60,7 @@ interface RepositoryServiceInterface
      * @param ExtensionDataInterface|null $extension
      * @return RepositoryInfoInterface[]
      */
-    public function getRepositoryInfos(ExtensionDataInterface $extension = null);
+    public function getRepositoryInfos(?ExtensionDataInterface $extension = null);
 
     /**
      * Returns the list of object types defined for the repository that are children of the specified type.
@@ -83,7 +83,7 @@ interface RepositoryServiceInterface
         $includePropertyDefinitions = false,
         $maxItems = null,
         $skipCount = 0,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -94,7 +94,7 @@ interface RepositoryServiceInterface
      * @param ExtensionDataInterface|null $extension
      * @return TypeDefinitionInterface the newly created type
      */
-    public function getTypeDefinition($repositoryId, $typeId, ExtensionDataInterface $extension = null);
+    public function getTypeDefinition($repositoryId, $typeId, ?ExtensionDataInterface $extension = null);
 
     /**
      * Returns the set of descendant object type defined for the repository under the specified type.
@@ -114,7 +114,7 @@ interface RepositoryServiceInterface
         $typeId = null,
         $depth = null,
         $includePropertyDefinitions = false,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -125,5 +125,5 @@ interface RepositoryServiceInterface
      * @param ExtensionDataInterface|null $extension
      * @return TypeDefinitionInterface the updated type
      */
-    public function updateType($repositoryId, TypeDefinitionInterface $type, ExtensionDataInterface $extension = null);
+    public function updateType($repositoryId, TypeDefinitionInterface $type, ?ExtensionDataInterface $extension = null);
 }

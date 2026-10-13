@@ -119,7 +119,7 @@ class JsonConverter extends AbstractDataConverter
      * @param array|null $data
      * @return AllowableActions|null
      */
-    public function convertAllowableActions(array $data = null)
+    public function convertAllowableActions(?array $data = null)
     {
         if (empty($data)) {
             return null;
@@ -149,7 +149,7 @@ class JsonConverter extends AbstractDataConverter
      * @param array|null $data The JSON that contains the repository info
      * @return null|RepositoryInfoBrowserBinding
      */
-    public function convertRepositoryInfo(array $data = null)
+    public function convertRepositoryInfo(?array $data = null)
     {
         return empty($data) ? null : $this->setRepositoryInfoValues(new RepositoryInfoBrowserBinding(), $data);
     }
@@ -214,7 +214,7 @@ class JsonConverter extends AbstractDataConverter
      * @param array|null $data
      * @return RepositoryCapabilities|null
      */
-    public function convertRepositoryCapabilities(array $data = null)
+    public function convertRepositoryCapabilities(?array $data = null)
     {
         if (empty($data)) {
             return null;
@@ -301,7 +301,7 @@ class JsonConverter extends AbstractDataConverter
      * @param string[]|null $data
      * @return NewTypeSettableAttributes|null Returns object or <code>null</code> if given data is empty
      */
-    public function convertNewTypeSettableAttributes(array $data = null)
+    public function convertNewTypeSettableAttributes(?array $data = null)
     {
         if (empty($data)) {
             return null;
@@ -340,7 +340,7 @@ class JsonConverter extends AbstractDataConverter
      * @return CreatablePropertyTypes|null Returns a CreatablePropertyTypes object or <code>null</code> if empty data
      *      is given.
      */
-    public function convertCreatablePropertyTypes(array $data = null)
+    public function convertCreatablePropertyTypes(?array $data = null)
     {
         if (empty($data)) {
             return null;
@@ -373,7 +373,7 @@ class JsonConverter extends AbstractDataConverter
      * @param boolean $isExact
      * @return AccessControlList
      */
-    public function convertAcl(array $data = null, $isExact = false)
+    public function convertAcl(?array $data = null, $isExact = false)
     {
         if (empty($data)) {
             return null;
@@ -425,7 +425,7 @@ class JsonConverter extends AbstractDataConverter
      * @param array|null $data
      * @return AclCapabilities|null
      */
-    public function convertAclCapabilities(array $data = null)
+    public function convertAclCapabilities(?array $data = null)
     {
         if (empty($data)) {
             return null;
@@ -505,7 +505,7 @@ class JsonConverter extends AbstractDataConverter
      * @return AbstractTypeDefinition|null
      * @throws CmisInvalidArgumentException
      */
-    public function convertTypeDefinition(array $data = null)
+    public function convertTypeDefinition(?array $data = null)
     {
         if (empty($data)) {
             return null;
@@ -608,7 +608,7 @@ class JsonConverter extends AbstractDataConverter
      * @param array|null $data The data that should be populated to the object
      * @return TypeMutability|null Returns the type mutability object or <code>null</code> if empty array is given
      */
-    public function convertTypeMutability(array $data = null)
+    public function convertTypeMutability(?array $data = null)
     {
         if (empty($data)) {
             return null;
@@ -640,7 +640,7 @@ class JsonConverter extends AbstractDataConverter
      * @param array|null $data
      * @return PropertyDefinitionInterface|null
      */
-    public function convertPropertyDefinition(array $data = null)
+    public function convertPropertyDefinition(?array $data = null)
     {
         if (empty($data)) {
             return null;
@@ -776,7 +776,7 @@ class JsonConverter extends AbstractDataConverter
      * @param array|null $data
      * @return null|ObjectData
      */
-    public function convertObject(array $data = null)
+    public function convertObject(?array $data = null)
     {
         if (empty($data)) {
             return null;
@@ -850,7 +850,7 @@ class JsonConverter extends AbstractDataConverter
      * @param array|null $data
      * @return ObjectDataInterface[]
      */
-    public function convertObjects(array $data = null)
+    public function convertObjects(?array $data = null)
     {
         return array_filter(
             array_map(
@@ -873,7 +873,7 @@ class JsonConverter extends AbstractDataConverter
      * @return null|Properties
      * @throws CmisRuntimeException
      */
-    public function convertProperties(array $data = null, $extensions = [])
+    public function convertProperties(?array $data = null, $extensions = [])
     {
         if (empty($data)) {
             return null;
@@ -979,7 +979,7 @@ class JsonConverter extends AbstractDataConverter
      * @return PropertiesInterface
      * @throws \Exception
      */
-    public function convertSuccinctProperties(array $data = null, $extensions = [])
+    public function convertSuccinctProperties(?array $data = null, $extensions = [])
     {
         throw new \Exception('Succinct properties are currently not supported.');
 // TODO IMPLEMENT SUCCINCT PROPERTY SUPPORT
@@ -1013,7 +1013,7 @@ class JsonConverter extends AbstractDataConverter
      * @param array|null $data
      * @return null|RenditionData
      */
-    public function convertRendition(array $data = null)
+    public function convertRendition(?array $data = null)
     {
         if (empty($data)) {
             return null;
@@ -1056,7 +1056,7 @@ class JsonConverter extends AbstractDataConverter
      * @param array|null $data
      * @return RenditionData[]
      */
-    public function convertRenditions(array $data = null)
+    public function convertRenditions(?array $data = null)
     {
         return array_filter(
             array_map(
@@ -1080,7 +1080,7 @@ class JsonConverter extends AbstractDataConverter
      * @param string[] $cmisKeys
      * @return CmisExtensionElement[]
      */
-    public function convertExtension(array $data = null, array $cmisKeys = [])
+    public function convertExtension(?array $data = null, array $cmisKeys = [])
     {
         $extensions = [];
 
@@ -1113,7 +1113,7 @@ class JsonConverter extends AbstractDataConverter
      * @param array|null $data
      * @return ExtensionFeature[]
      */
-    public function convertExtensionFeatures(array $data = null)
+    public function convertExtensionFeatures(?array $data = null)
     {
         $features = [];
         $extendedFeatures = array_filter(array_filter((array) $data, 'is_array'), function ($item) { return !empty($item); });
@@ -1148,7 +1148,7 @@ class JsonConverter extends AbstractDataConverter
      * @param array|null $data
      * @return PolicyIdList List of policy ids
      */
-    public function convertPolicyIdList(array $data = null)
+    public function convertPolicyIdList(?array $data = null)
     {
         $policyIdsList = new PolicyIdList();
         $policyIdsList->setPolicyIds(
@@ -1473,7 +1473,7 @@ class JsonConverter extends AbstractDataConverter
      * @return TypeDefinitionListInterface|null Returns a TypeDefinitionListInterface object or <code>null</code>
      *      if empty data is given.
      */
-    public function convertTypeChildren(array $data = null)
+    public function convertTypeChildren(?array $data = null)
     {
         if (empty($data)) {
             return null;
@@ -1505,7 +1505,7 @@ class JsonConverter extends AbstractDataConverter
      * @param array|null $data
      * @return TypeDefinitionContainerInterface[] Returns an array of TypeDefinitionContainerInterface objects
      */
-    public function convertTypeDescendants(array $data = null)
+    public function convertTypeDescendants(?array $data = null)
     {
         $result = [];
 
@@ -1540,7 +1540,7 @@ class JsonConverter extends AbstractDataConverter
      * @param array|null $data
      * @return null|ObjectInFolderList
      */
-    public function convertObjectInFolderList(array $data = null)
+    public function convertObjectInFolderList(?array $data = null)
     {
         if (empty($data)) {
             return null;
@@ -1567,7 +1567,7 @@ class JsonConverter extends AbstractDataConverter
      * @param array|null $data
      * @return ObjectInFolderData|null
      */
-    public function convertObjectInFolder(array $data = null)
+    public function convertObjectInFolder(?array $data = null)
     {
         if (empty($data)) {
             return null;
@@ -1592,7 +1592,7 @@ class JsonConverter extends AbstractDataConverter
      * @param array|null $data
      * @return ObjectParentData[]
      */
-    public function convertObjectParents(array $data = null)
+    public function convertObjectParents(?array $data = null)
     {
         return array_filter(
             array_map(
@@ -1612,7 +1612,7 @@ class JsonConverter extends AbstractDataConverter
      * @param array|null $data
      * @return null|ObjectParentData
      */
-    public function convertObjectParentData(array $data = null)
+    public function convertObjectParentData(?array $data = null)
     {
         if (empty($data)) {
             return null;
@@ -1636,7 +1636,7 @@ class JsonConverter extends AbstractDataConverter
      * @param array|null $data
      * @return null|ObjectList
      */
-    public function convertObjectList(array $data = null)
+    public function convertObjectList(?array $data = null)
     {
         if (empty($data)) {
             return null;
@@ -1674,7 +1674,7 @@ class JsonConverter extends AbstractDataConverter
      * @param array|null $data
      * @return null|ObjectList
      */
-    public function convertQueryResultList(array $data = null)
+    public function convertQueryResultList(?array $data = null)
     {
         if (empty($data)) {
             return null;
@@ -1709,7 +1709,7 @@ class JsonConverter extends AbstractDataConverter
      * @param array|null $data
      * @return ObjectInFolderContainer[]
      */
-    public function convertDescendants(array $data = null)
+    public function convertDescendants(?array $data = null)
     {
         return array_filter(
             array_map(
@@ -1727,7 +1727,7 @@ class JsonConverter extends AbstractDataConverter
      * @return null|ObjectInFolderContainer
      * @throws CmisRuntimeException
      */
-    public function convertDescendant(array $data = null)
+    public function convertDescendant(?array $data = null)
     {
         if (empty($data)) {
             return null;
@@ -1764,7 +1764,7 @@ class JsonConverter extends AbstractDataConverter
      * @param array|null $data
      * @return FailedToDeleteData
      */
-    public function convertFailedToDelete(array $data = null)
+    public function convertFailedToDelete(?array $data = null)
     {
         $result = new FailedToDeleteData();
 

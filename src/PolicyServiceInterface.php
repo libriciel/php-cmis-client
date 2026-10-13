@@ -29,7 +29,7 @@ interface PolicyServiceInterface
      * @param string $objectId The identifier of the object.
      * @param ExtensionDataInterface|null $extension
      */
-    public function applyPolicy($repositoryId, $policyId, $objectId, ExtensionDataInterface $extension = null);
+    public function applyPolicy($repositoryId, $policyId, $objectId, ?ExtensionDataInterface $extension = null);
 
     /**
      * Gets the list of policies currently applied to the specified object.
@@ -45,7 +45,7 @@ interface PolicyServiceInterface
         $repositoryId,
         $objectId,
         $filter = null,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -56,5 +56,5 @@ interface PolicyServiceInterface
      * @param string $objectId The identifier of the object.
      * @param ExtensionDataInterface|null $extension
      */
-    public function removePolicy($repositoryId, $policyId, $objectId, ExtensionDataInterface $extension = null);
+    public function removePolicy($repositoryId, $policyId, $objectId, ?ExtensionDataInterface $extension = null);
 }

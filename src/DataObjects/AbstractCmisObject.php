@@ -123,7 +123,7 @@ abstract class AbstractCmisObject implements CmisObjectInterface
         SessionInterface $session,
         ObjectTypeInterface $objectType,
         OperationContextInterface $context,
-        ObjectDataInterface $objectData = null
+        ?ObjectDataInterface $objectData = null
     ) {
         if (count($this->getMissingBaseProperties($objectType->getPropertyDefinitions())) !== 0) {
             throw new CmisInvalidArgumentException(
@@ -251,7 +251,7 @@ abstract class AbstractCmisObject implements CmisObjectInterface
      * @param PropertyDefinitionInterface[]|null $properties
      * @return array
      */
-    protected function getMissingBaseProperties(array $properties = null)
+    protected function getMissingBaseProperties(?array $properties = null)
     {
         $basePropertyKeys = PropertyIds::getBasePropertyKeys();
 

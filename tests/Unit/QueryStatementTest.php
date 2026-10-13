@@ -420,7 +420,7 @@ class QueryStatementTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
         $parameterIndex,
         $value,
         $expectedValue,
-        \Closure $callback = null
+        ?\Closure $callback = null
     ) {
         if ($callback) {
             $callback($this);
@@ -470,7 +470,7 @@ class QueryStatementTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
         $parameterIndex,
         \DateTime $value,
         $expectedValue,
-        \Closure $callback = null
+        ?\Closure $callback = null
     ) {
         if ($callback) {
             $callback($this);
@@ -520,7 +520,7 @@ class QueryStatementTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
         $parameterIndex,
         \DateTime $value,
         $expectedValue,
-        \Closure $callback = null
+        ?\Closure $callback = null
     ) {
         if ($callback) {
             $callback($this);
@@ -571,7 +571,7 @@ class QueryStatementTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
         $parameterIndex,
         ObjectIdInterface $value,
         $expectedValue,
-        \Closure $callback = null
+        ?\Closure $callback = null
     ) {
         if ($callback) {
             $callback($this);
@@ -629,7 +629,7 @@ class QueryStatementTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
         $parameterIndex,
         $value,
         $expectedValue,
-        \Closure $callback = null
+        ?\Closure $callback = null
     ) {
         if ($callback) {
             $callback($this);
@@ -691,7 +691,7 @@ class QueryStatementTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
         $parameterIndex,
         PropertyDefinitionInterface $value,
         $expectedValue,
-        \Closure $callback = null
+        ?\Closure $callback = null
     ) {
         if ($callback) {
             $callback($this);
@@ -761,7 +761,7 @@ class QueryStatementTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
         $parameterIndex,
         $value,
         $expectedValue,
-        \Closure $callback = null
+        ?\Closure $callback = null
     ) {
         if ($callback) {
             $callback($this);
@@ -826,7 +826,7 @@ class QueryStatementTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
         $parameterIndex,
         $value,
         $expectedValue,
-        \Closure $callback = null
+        ?\Closure $callback = null
     ) {
         if ($callback) {
             $callback($this);
@@ -893,7 +893,7 @@ class QueryStatementTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
         $parameterIndex,
         $value,
         $expectedValue,
-        \Closure $callback = null
+        ?\Closure $callback = null
     ) {
         if ($callback) {
             $callback($this);
@@ -960,7 +960,7 @@ class QueryStatementTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
         $parameterIndex,
         ObjectTypeInterface $value,
         $expectedValue,
-        \Closure $callback = null
+        ?\Closure $callback = null
     ) {
         if ($callback) {
             $callback($this);

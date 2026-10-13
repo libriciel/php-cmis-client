@@ -30,7 +30,7 @@ class CmisBindingFactory
      * @param Cache|null $typeDefinitionCache
      * @return CmisBinding
      */
-    public function createCmisBrowserBinding(array $sessionParameters, Cache $typeDefinitionCache = null)
+    public function createCmisBrowserBinding(array $sessionParameters, ?Cache $typeDefinitionCache = null)
     {
         $this->validateCmisBrowserBindingParameters($sessionParameters);
 

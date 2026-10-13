@@ -27,9 +27,9 @@ class SessionFactory implements SessionFactoryInterface
      */
     public function createSession(
         array $parameters,
-        ObjectFactoryInterface $objectFactory = null,
-        Cache $cache = null,
-        Cache $typeDefinitionCache = null
+        ?ObjectFactoryInterface $objectFactory = null,
+        ?Cache $cache = null,
+        ?Cache $typeDefinitionCache = null
     ) {
         $session = new Session($parameters, $objectFactory, $cache, $typeDefinitionCache);
         return $session;
@@ -44,9 +44,9 @@ class SessionFactory implements SessionFactoryInterface
      */
     public function getRepositories(
         array $parameters,
-        ObjectFactoryInterface $objectFactory = null,
-        Cache $cache = null,
-        Cache $typeDefinitionCache = null
+        ?ObjectFactoryInterface $objectFactory = null,
+        ?Cache $cache = null,
+        ?Cache $typeDefinitionCache = null
     ) {
         $cmisBindingsHelper = new CmisBindingsHelper();
         $binding = $cmisBindingsHelper->createBinding(

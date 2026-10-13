@@ -27,7 +27,7 @@ class Relationship extends AbstractFileableCmisObject implements RelationshipInt
      * @param OperationContextInterface|null $context
      * @return CmisObjectInterface|null If the source object ID is invalid, <code>null</code> will be returned.
      */
-    public function getSource(OperationContextInterface $context = null)
+    public function getSource(?OperationContextInterface $context = null)
     {
         $sourceId = $this->getSourceId();
         if ($sourceId === null) {
@@ -44,7 +44,7 @@ class Relationship extends AbstractFileableCmisObject implements RelationshipInt
      * @param OperationContextInterface|null $context
      * @return CmisObjectInterface If the target object ID is invalid, <code>null</code> will be returned.
      */
-    public function getTarget(OperationContextInterface $context = null)
+    public function getTarget(?OperationContextInterface $context = null)
     {
         $context = $this->ensureContext($context);
         $targetId = $this->getTargetId();

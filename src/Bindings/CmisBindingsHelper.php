@@ -35,7 +35,7 @@ class CmisBindingsHelper
      */
     public function createBinding(
         array $parameters,
-        Cache $typeDefinitionCache = null
+        ?Cache $typeDefinitionCache = null
     ) {
         if (count($parameters) === 0) {
             throw new CmisRuntimeException('Session parameters must be set!');

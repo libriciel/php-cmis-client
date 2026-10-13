@@ -68,7 +68,7 @@ class Rendition extends RenditionData implements RenditionInterface
      * @param OperationContextInterface|null $context
      * @return DocumentInterface|null the rendition document or <code>null</code> if there is no rendition document
      */
-    public function getRenditionDocument(OperationContextInterface $context = null)
+    public function getRenditionDocument(?OperationContextInterface $context = null)
     {
         $renditionDocumentId = $this->getRenditionDocumentId();
         if (empty($renditionDocumentId)) {

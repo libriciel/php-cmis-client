@@ -41,7 +41,7 @@ abstract class AbstractFileableCmisObject extends AbstractCmisObject implements 
         SessionInterface $session,
         ObjectTypeInterface $objectType,
         OperationContextInterface $context,
-        ObjectDataInterface $objectData = null
+        ?ObjectDataInterface $objectData = null
     ) {
         $this->initialize($session, $objectType, $context, $objectData);
     }
@@ -54,7 +54,7 @@ abstract class AbstractFileableCmisObject extends AbstractCmisObject implements 
      *     or if this object is the root folder
      * @throws CmisRuntimeException Throws exception if invalid data is returned by the repository
      */
-    public function getParents(OperationContextInterface $context = null)
+    public function getParents(?OperationContextInterface $context = null)
     {
         $context = $this->ensureContext($context);
 
@@ -174,7 +174,7 @@ abstract class AbstractFileableCmisObject extends AbstractCmisObject implements 
     public function move(
         ObjectIdInterface $sourceFolderId,
         ObjectIdInterface $targetFolderId,
-        OperationContextInterface $context = null
+        ?OperationContextInterface $context = null
     ) {
         $context = $this->ensureContext($context);
 
@@ -257,8 +257,8 @@ abstract class AbstractFileableCmisObject extends AbstractCmisObject implements 
      * @throws CmisRuntimeException Throws exception if newly created object is not a document as expected
      */
     protected function getNewlyCreatedObject(
-        ObjectIdInterface $objectId = null,
-        OperationContextInterface $context = null
+        ?ObjectIdInterface $objectId = null,
+        ?OperationContextInterface $context = null
     ) {
         // if no context is provided the object will not be fetched
         if ($context === null || $objectId === null) {
@@ -277,7 +277,7 @@ abstract class AbstractFileableCmisObject extends AbstractCmisObject implements 
      *
      * @return OperationContextInterface
      */
-    protected function ensureContext(OperationContextInterface $context = null)
+    protected function ensureContext(?OperationContextInterface $context = null)
     {
         if ($context === null) {
             $context = $this->getSession()->getDefaultContext();
