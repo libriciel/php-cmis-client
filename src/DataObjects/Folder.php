@@ -71,7 +71,7 @@ class Folder extends AbstractFileableCmisObject implements FolderInterface
         array $policies = [],
         array $addAces = [],
         array $removeAces = [],
-        OperationContextInterface $context = null
+        ?OperationContextInterface $context = null
     ) {
         $newObjectId = $this->getSession()->createDocument(
             $properties,
@@ -130,7 +130,7 @@ class Folder extends AbstractFileableCmisObject implements FolderInterface
         array $policies = [],
         array $addAces = [],
         array $removeAces = [],
-        OperationContextInterface $context = null
+        ?OperationContextInterface $context = null
     ) {
         $newObjectId = $this->getSession()->createDocumentFromSource(
             $source,
@@ -172,7 +172,7 @@ class Folder extends AbstractFileableCmisObject implements FolderInterface
         array $policies = [],
         array $addAces = [],
         array $removeAces = [],
-        OperationContextInterface $context = null
+        ?OperationContextInterface $context = null
     ) {
         $newObjectId = $this->getSession()->createFolder($properties, $this, $policies, $addAces, $removeAces);
 
@@ -205,7 +205,7 @@ class Folder extends AbstractFileableCmisObject implements FolderInterface
         array $policies = [],
         array $addAces = [],
         array $removeAces = [],
-        OperationContextInterface $context = null
+        ?OperationContextInterface $context = null
     ) {
         $newObjectId = $this->getSession()->createItem($properties, $this, $policies, $addAces, $removeAces);
 
@@ -238,7 +238,7 @@ class Folder extends AbstractFileableCmisObject implements FolderInterface
         array $policies = [],
         array $addAces = [],
         array $removeAces = [],
-        OperationContextInterface $context = null
+        ?OperationContextInterface $context = null
     ) {
         $newObjectId = $this->getSession()->createPolicy($properties, $this, $policies, $addAces, $removeAces);
 
@@ -291,7 +291,7 @@ class Folder extends AbstractFileableCmisObject implements FolderInterface
      * @param OperationContextInterface|null $context
      * @return DocumentInterface[] A list of checked out documents.
      */
-    public function getCheckedOutDocs(OperationContextInterface $context = null)
+    public function getCheckedOutDocs(?OperationContextInterface $context = null)
     {
         $context = $this->ensureContext($context);
         $checkedOutDocs = $this->getBinding()->getNavigationService()->getCheckedOutDocs(
@@ -325,7 +325,7 @@ class Folder extends AbstractFileableCmisObject implements FolderInterface
      * @param OperationContextInterface|null $context
      * @return CmisObjectInterface[] A list of the child objects for the specified folder.
      */
-    public function getChildren(OperationContextInterface $context = null)
+    public function getChildren(?OperationContextInterface $context = null)
     {
         $context = $this->ensureContext($context);
         $children = $this->getBinding()->getNavigationService()->getChildren(
@@ -358,7 +358,7 @@ class Folder extends AbstractFileableCmisObject implements FolderInterface
      * @return TreeInterface A tree that contains FileableCmisObject objects
      * @see FileableCmisObject FileableCmisObject contained in returned TreeInterface
      */
-    public function getDescendants($depth, OperationContextInterface $context = null)
+    public function getDescendants($depth, ?OperationContextInterface $context = null)
     {
         $context = $this->ensureContext($context);
         $containerList = $this->getBinding()->getNavigationService()->getDescendants(
@@ -414,7 +414,7 @@ class Folder extends AbstractFileableCmisObject implements FolderInterface
      * @return TreeInterface A tree that contains FileableCmisObject objects
      * @see FileableCmisObject FileableCmisObject contained in returned TreeInterface
      */
-    public function getFolderTree($depth, OperationContextInterface $context = null)
+    public function getFolderTree($depth, ?OperationContextInterface $context = null)
     {
         $context = $this->ensureContext($context);
         $containerList = $this->getBinding()->getNavigationService()->getFolderTree(

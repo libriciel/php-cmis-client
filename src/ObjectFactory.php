@@ -284,7 +284,7 @@ class ObjectFactory implements ObjectFactoryInterface
      */
     public function convertProperties(
         array $properties,
-        ObjectTypeInterface $type = null,
+        ?ObjectTypeInterface $type = null,
         array $secondaryTypes = [],
         array $updatabilityFilter = []
     ) {
@@ -632,7 +632,7 @@ class ObjectFactory implements ObjectFactoryInterface
         $queryName = '',
         $displayName = '',
         $description = '',
-        TypeMutabilityInterface $typeMutability = null
+        ?TypeMutabilityInterface $typeMutability = null
     ) {
         $typeDefinition = $this->getBindingsObjectFactory()->getTypeDefinitionByBaseTypeId($baseTypeIdString, $id);
 

@@ -64,7 +64,7 @@ interface SessionInterface
         ObjectIdInterface $objectId,
         $addAces = [],
         $removeAces = [],
-        AclPropagation $aclPropagation = null
+        ?AclPropagation $aclPropagation = null
     );
 
     /**
@@ -129,9 +129,9 @@ interface SessionInterface
      */
     public function createDocument(
         array $properties,
-        ObjectIdInterface $folderId = null,
-        StreamInterface $contentStream = null,
-        VersioningState $versioningState = null,
+        ?ObjectIdInterface $folderId = null,
+        ?StreamInterface $contentStream = null,
+        ?VersioningState $versioningState = null,
         array $policies = [],
         array $addAces = [],
         array $removeAces = []
@@ -169,8 +169,8 @@ interface SessionInterface
     public function createDocumentFromSource(
         ObjectIdInterface $source,
         array $properties = [],
-        ObjectIdInterface $folderId = null,
-        VersioningState $versioningState = null,
+        ?ObjectIdInterface $folderId = null,
+        ?VersioningState $versioningState = null,
         array $policies = [],
         array $addAces = [],
         array $removeAces = []
@@ -244,7 +244,7 @@ interface SessionInterface
         $includeAcls = false,
         $includeAllowableActions = true,
         $includePolicies = false,
-        IncludeRelationships $includeRelationships = null,
+        ?IncludeRelationships $includeRelationships = null,
         array $renditionFilter = [],
         $includePathSegments = true,
         $orderBy = null,
@@ -356,7 +356,7 @@ interface SessionInterface
      * @param OperationContextInterface|null $context
      * @return DocumentInterface[]
      */
-    public function getCheckedOutDocs(OperationContextInterface $context = null);
+    public function getCheckedOutDocs(?OperationContextInterface $context = null);
 
     /**
      * Returns the content changes.
@@ -372,7 +372,7 @@ interface SessionInterface
         $changeLogToken,
         $includeProperties,
         $maxNumItems = null,
-        OperationContextInterface $context = null
+        ?OperationContextInterface $context = null
     );
 
     /**
@@ -417,7 +417,7 @@ interface SessionInterface
     public function getLatestDocumentVersion(
         ObjectIdInterface $objectId,
         $major = false,
-        OperationContextInterface $context = null
+        ?OperationContextInterface $context = null
     );
 
     /**
@@ -433,7 +433,7 @@ interface SessionInterface
      * @return CmisObjectInterface the requested object
      * @throws CmisObjectNotFoundException - if an object with the given ID doesn't exist
      */
-    public function getObject(ObjectIdInterface $objectId, OperationContextInterface $context = null);
+    public function getObject(ObjectIdInterface $objectId, ?OperationContextInterface $context = null);
 
     /**
      * Returns a CMIS object from the session cache. If the object is not in the cache or the given OperationContext
@@ -447,7 +447,7 @@ interface SessionInterface
      * @return CmisObjectInterface Returns a CMIS object from the session cache.
      * @throws CmisObjectNotFoundException - if an object with the given ID doesn't exist
      */
-    public function getObjectByPath($path, OperationContextInterface $context = null);
+    public function getObjectByPath($path, ?OperationContextInterface $context = null);
 
     /**
      * Gets a factory object that provides methods to create the objects used by this API.
@@ -471,7 +471,7 @@ interface SessionInterface
         $includeSubRelationshipTypes,
         RelationshipDirection $relationshipDirection,
         ObjectTypeInterface $type,
-        OperationContextInterface $context = null
+        ?OperationContextInterface $context = null
     );
 
     /**
@@ -487,7 +487,7 @@ interface SessionInterface
      * @param OperationContextInterface|null $context
      * @return FolderInterface the root folder object
      */
-    public function getRootFolder(OperationContextInterface $context = null);
+    public function getRootFolder(?OperationContextInterface $context = null);
 
     /**
      * Gets the type children of a type.
@@ -532,7 +532,7 @@ interface SessionInterface
      * @param OperationContextInterface|null $context the operation context to use
      * @return QueryResultInterface[]
      */
-    public function query($statement, $searchAllVersions = false, OperationContextInterface $context = null);
+    public function query($statement, $searchAllVersions = false, ?OperationContextInterface $context = null);
 
     /**
      * Builds a CMIS query and returns the query results as an iterator of CmisObject objects.
@@ -548,7 +548,7 @@ interface SessionInterface
         $typeId,
         $where = null,
         $searchAllVersions = false,
-        OperationContextInterface $context = null
+        ?OperationContextInterface $context = null
     );
 
     /**

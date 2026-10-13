@@ -61,7 +61,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         $objectId,
         $filter = null,
         $includeAllowableActions = false,
-        IncludeRelationships $includeRelationships = null,
+        ?IncludeRelationships $includeRelationships = null,
         $renditionFilter = null,
         $includePolicyIds = false,
         $includeAcl = false
@@ -184,11 +184,11 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         $repositoryId,
         PropertiesInterface $properties,
         $folderId = null,
-        StreamInterface $contentStream = null,
-        VersioningState $versioningState = null,
+        ?StreamInterface $contentStream = null,
+        ?VersioningState $versioningState = null,
         array $policies = [],
-        AclInterface $addAces = null,
-        AclInterface $removeAces = null
+        ?AclInterface $addAces = null,
+        ?AclInterface $removeAces = null
     ) {
         $responseData = ['foo' => 'bar'];
         $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor(
@@ -418,8 +418,8 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         PropertiesInterface $properties,
         $folderId,
         array $policies = [],
-        AclInterface $addAces = null,
-        AclInterface $removeAces = null
+        ?AclInterface $addAces = null,
+        ?AclInterface $removeAces = null
     ) {
         $responseData = ['foo' => 'bar'];
         $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor(
@@ -663,7 +663,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         $objectId,
         $targetFolderId,
         $sourceFolderId,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     ) {
         $responseData = ['foo' => 'bar'];
         $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor(
@@ -753,7 +753,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         $repositoryId,
         $objectId,
         $filter = null,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     ) {
         $responseData = ['foo' => 'bar'];
         $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor(
@@ -843,9 +843,9 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         PropertiesInterface $properties,
         $folderId = null,
         array $policies = [],
-        AclInterface $addAces = null,
-        AclInterface $removeAces = null,
-        ExtensionDataInterface $extension = null
+        ?AclInterface $addAces = null,
+        ?AclInterface $removeAces = null,
+        ?ExtensionDataInterface $extension = null
     ) {
         $responseData = ['foo' => 'bar'];
         $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor(
@@ -1022,11 +1022,11 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         $sourceId,
         PropertiesInterface $properties,
         $folderId = null,
-        VersioningState $versioningState = null,
+        ?VersioningState $versioningState = null,
         array $policies = [],
-        AclInterface $addAces = null,
-        AclInterface $removeAces = null,
-        ExtensionDataInterface $extension = null
+        ?AclInterface $addAces = null,
+        ?AclInterface $removeAces = null,
+        ?ExtensionDataInterface $extension = null
     ) {
         $responseData = ['foo' => 'bar'];
         $responseMock = $this->getMockBuilder(Response::class)->disableOriginalConstructor(
@@ -1200,7 +1200,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         $path,
         $filter = null,
         $includeAllowableActions = false,
-        IncludeRelationships $includeRelationships = null,
+        ?IncludeRelationships $includeRelationships = null,
         $renditionFilter = null,
         $includePolicyIds = false,
         $includeAcl = false
@@ -1843,7 +1843,7 @@ class ObjectServiceTest extends AbstractBrowserBindingServiceTestCase
         $repositoryId,
         $folderId,
         $allVersions = true,
-        UnfileObject $unfileObjects = null,
+        ?UnfileObject $unfileObjects = null,
         $continueOnFailure = false
     ) {
         $responseData = ['foo' => 'bar'];

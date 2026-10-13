@@ -366,7 +366,7 @@ class RepositoryInfo extends AbstractExtensionData implements RepositoryInfoInte
      *
      * @param CmisVersion|null $cmisVersion
      */
-    public function setCmisVersion(CmisVersion $cmisVersion = null)
+    public function setCmisVersion(?CmisVersion $cmisVersion = null)
     {
         $this->cmisVersion = CmisVersion::cast($cmisVersion);
     }

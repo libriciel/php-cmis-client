@@ -281,7 +281,7 @@ class QueryStatement implements QueryStatementInterface
      * @param OperationContextInterface|null $context the operation context to use
      * @return QueryResultInterface[]
      */
-    public function query($searchAllVersions, OperationContextInterface $context = null)
+    public function query($searchAllVersions, ?OperationContextInterface $context = null)
     {
         return $this->session->query($this->toQueryString(), $searchAllVersions, $context);
     }

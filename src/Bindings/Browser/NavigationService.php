@@ -55,11 +55,11 @@ class NavigationService extends AbstractBrowserBindingService implements Navigat
         $filter = null,
         $orderBy = null,
         $includeAllowableActions = false,
-        IncludeRelationships $includeRelationships = null,
+        ?IncludeRelationships $includeRelationships = null,
         $renditionFilter = Constants::RENDITION_NONE,
         $maxItems = null,
         $skipCount = 0,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     ) {
         $url = $this->getObjectUrl($repositoryId, $folderId, Constants::SELECTOR_CHECKEDOUT);
         $url = Modifier::from($url)
@@ -133,12 +133,12 @@ class NavigationService extends AbstractBrowserBindingService implements Navigat
         $filter = null,
         $orderBy = null,
         $includeAllowableActions = false,
-        IncludeRelationships $includeRelationships = null,
+        ?IncludeRelationships $includeRelationships = null,
         $renditionFilter = Constants::RENDITION_NONE,
         $includePathSegment = false,
         $maxItems = null,
         $skipCount = 0,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     ) {
         $url = $this->getObjectUrl($repositoryId, $folderId, Constants::SELECTOR_CHILDREN);
         $url = Modifier::from($url)
@@ -207,10 +207,10 @@ class NavigationService extends AbstractBrowserBindingService implements Navigat
         $depth,
         $filter = null,
         $includeAllowableActions = false,
-        IncludeRelationships $includeRelationships = null,
+        ?IncludeRelationships $includeRelationships = null,
         $renditionFilter = Constants::RENDITION_NONE,
         $includePathSegment = false,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     ) {
         $url = $this->getObjectUrl($repositoryId, $folderId, Constants::SELECTOR_DESCENDANTS);
         $url = Modifier::from($url)
@@ -256,7 +256,7 @@ class NavigationService extends AbstractBrowserBindingService implements Navigat
         $repositoryId,
         $folderId,
         $filter = null,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     ) {
         $url = $this->getObjectUrl($repositoryId, $folderId, Constants::SELECTOR_PARENT);
         $url = Modifier::from($url)
@@ -303,10 +303,10 @@ class NavigationService extends AbstractBrowserBindingService implements Navigat
         $depth,
         $filter = null,
         $includeAllowableActions = false,
-        IncludeRelationships $includeRelationships = null,
+        ?IncludeRelationships $includeRelationships = null,
         $renditionFilter = Constants::RENDITION_NONE,
         $includePathSegment = false,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     ) {
         $url = $this->getObjectUrl($repositoryId, $folderId, Constants::SELECTOR_FOLDER_TREE);
         $url = Modifier::from($url)
@@ -361,10 +361,10 @@ class NavigationService extends AbstractBrowserBindingService implements Navigat
         $objectId,
         $filter = null,
         $includeAllowableActions = false,
-        IncludeRelationships $includeRelationships = null,
+        ?IncludeRelationships $includeRelationships = null,
         $renditionFilter = Constants::RENDITION_NONE,
         $includeRelativePathSegment = false,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     ) {
         $url = $this->getObjectUrl($repositoryId, $objectId, Constants::SELECTOR_PARENTS);
         $url = Modifier::from($url)

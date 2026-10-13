@@ -45,7 +45,7 @@ class TypeHelperTraitTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
     public function testCheckTypeThrowsExceptionIfGivenValueIsNotOfExpectedType(
         $expectedType,
         $value,
-        \Closure $callback = null,
+        ?\Closure $callback = null,
         $nullAllowed = false
     ) {
         if ($callback !== null) {

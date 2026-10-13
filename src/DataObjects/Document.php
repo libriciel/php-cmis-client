@@ -198,13 +198,13 @@ class Document extends AbstractFileableCmisObject implements DocumentInterface
      * @throws CmisRuntimeException Exception is thrown if the created object is not a document
      */
     public function copy(
-        ObjectIdInterface $targetFolderId = null,
+        ?ObjectIdInterface $targetFolderId = null,
         array $properties = [],
-        VersioningState $versioningState = null,
+        ?VersioningState $versioningState = null,
         array $policies = [],
         array $addAces = [],
         array $removeAces = [],
-        OperationContextInterface $context = null
+        ?OperationContextInterface $context = null
     ) {
         try {
             $newObjectId = $this->getSession()->createDocumentFromSource(
@@ -268,9 +268,9 @@ class Document extends AbstractFileableCmisObject implements DocumentInterface
      * @throws CmisRuntimeException
      */
     protected function copyViaClient(
-        ObjectIdInterface $targetFolderId = null,
+        ?ObjectIdInterface $targetFolderId = null,
         array $properties = [],
-        VersioningState $versioningState = null,
+        ?VersioningState $versioningState = null,
         array $policies = [],
         array $addAces = [],
         array $removeAces = []
@@ -363,7 +363,7 @@ class Document extends AbstractFileableCmisObject implements DocumentInterface
      * @param OperationContextInterface|null $context
      * @return DocumentInterface[]
      */
-    public function getAllVersions(OperationContextInterface $context = null)
+    public function getAllVersions(?OperationContextInterface $context = null)
     {
         $context = $this->ensureContext($context);
         $versions = $this->getBinding()->getVersioningService()->getAllVersions(
@@ -446,7 +446,7 @@ class Document extends AbstractFileableCmisObject implements DocumentInterface
      * @param OperationContextInterface|null $context
      * @return DocumentInterface the latest document object
      */
-    public function getObjectOfLatestVersion($major, OperationContextInterface $context = null)
+    public function getObjectOfLatestVersion($major, ?OperationContextInterface $context = null)
     {
         $context = $this->ensureContext($context);
 

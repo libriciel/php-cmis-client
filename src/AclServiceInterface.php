@@ -33,10 +33,10 @@ interface AclServiceInterface
     public function applyAcl(
         $repositoryId,
         $objectId,
-        AclInterface $addAces = null,
-        AclInterface $removeAces = null,
-        AclPropagation $aclPropagation = null,
-        ExtensionDataInterface $extension = null
+        ?AclInterface $addAces = null,
+        ?AclInterface $removeAces = null,
+        ?AclPropagation $aclPropagation = null,
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -57,6 +57,6 @@ interface AclServiceInterface
         $repositoryId,
         $objectId,
         $onlyBasicPermissions = true,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 }

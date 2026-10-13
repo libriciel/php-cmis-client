@@ -111,7 +111,7 @@ interface ObjectFactoryInterface
      */
     public function convertProperties(
         array $properties,
-        ObjectTypeInterface $type = null,
+        ?ObjectTypeInterface $type = null,
         array $secondaryTypes = [],
         array $updatabilityFilter = []
     );
@@ -250,6 +250,6 @@ interface ObjectFactoryInterface
         $queryName = '',
         $displayName = '',
         $description = '',
-        TypeMutabilityInterface $typeMutability = null
+        ?TypeMutabilityInterface $typeMutability = null
     );
 }

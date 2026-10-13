@@ -34,7 +34,7 @@ class MultiFilingService extends AbstractBrowserBindingService implements MultiF
         $objectId,
         $folderId,
         $allVersions = true,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     )
     {
         $url = $this->getObjectUrl($repositoryId, $objectId);
@@ -63,7 +63,7 @@ class MultiFilingService extends AbstractBrowserBindingService implements MultiF
         $repositoryId,
         $objectId,
         $folderId = null,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     )
     {
         $url = $this->getObjectUrl($repositoryId, $objectId);

@@ -33,7 +33,7 @@ class RepositoryService extends AbstractBrowserBindingService implements Reposit
      * @param ExtensionDataInterface|null $extension
      * @return TypeDefinitionInterface
      */
-    public function createType($repositoryId, TypeDefinitionInterface $type, ExtensionDataInterface $extension = null)
+    public function createType($repositoryId, TypeDefinitionInterface $type, ?ExtensionDataInterface $extension = null)
     {
         $url = $this->getRepositoryUrl($repositoryId);
 
@@ -54,7 +54,7 @@ class RepositoryService extends AbstractBrowserBindingService implements Reposit
      * @param string $typeId The typeId of an object-type specified in the repository.
      * @param ExtensionDataInterface|null $extension
      */
-    public function deleteType($repositoryId, $typeId, ExtensionDataInterface $extension = null)
+    public function deleteType($repositoryId, $typeId, ?ExtensionDataInterface $extension = null)
     {
         $url = $this->getRepositoryUrl($repositoryId);
 
@@ -77,7 +77,7 @@ class RepositoryService extends AbstractBrowserBindingService implements Reposit
      * @throws CmisObjectNotFoundException
      * @return RepositoryInfoInterface
      */
-    public function getRepositoryInfo($repositoryId, ExtensionDataInterface $extension = null)
+    public function getRepositoryInfo($repositoryId, ?ExtensionDataInterface $extension = null)
     {
         foreach ($this->getRepositoriesInternal($repositoryId) as $repositoryInfo) {
             if ($repositoryInfo->getId() === $repositoryId) {
@@ -95,7 +95,7 @@ class RepositoryService extends AbstractBrowserBindingService implements Reposit
      * @param ExtensionDataInterface|null $extension
      * @return RepositoryInfoInterface[]
      */
-    public function getRepositoryInfos(ExtensionDataInterface $extension = null)
+    public function getRepositoryInfos(?ExtensionDataInterface $extension = null)
     {
         return $this->getRepositoriesInternal();
     }
@@ -121,7 +121,7 @@ class RepositoryService extends AbstractBrowserBindingService implements Reposit
         $includePropertyDefinitions = false,
         $maxItems = null,
         $skipCount = 0,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     ) {
         $url = $this->getRepositoryUrl($repositoryId, Constants::SELECTOR_TYPE_CHILDREN);
         $url = Modifier::from($url)
@@ -161,7 +161,7 @@ class RepositoryService extends AbstractBrowserBindingService implements Reposit
     public function getTypeDefinition(
         $repositoryId,
         $typeId,
-        ExtensionDataInterface $extension = null,
+        ?ExtensionDataInterface $extension = null,
         $useCache = true
     ) {
         $cache = null;
@@ -202,7 +202,7 @@ class RepositoryService extends AbstractBrowserBindingService implements Reposit
         $typeId = null,
         $depth = null,
         $includePropertyDefinitions = false,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     ) {
         $url = $this->getRepositoryUrl($repositoryId, Constants::SELECTOR_TYPE_DESCENDANTS);
         $url = Modifier::from($url)
@@ -237,7 +237,7 @@ class RepositoryService extends AbstractBrowserBindingService implements Reposit
      * @param ExtensionDataInterface|null $extension
      * @return TypeDefinitionInterface the updated type
      */
-    public function updateType($repositoryId, TypeDefinitionInterface $type, ExtensionDataInterface $extension = null)
+    public function updateType($repositoryId, TypeDefinitionInterface $type, ?ExtensionDataInterface $extension = null)
     {
         $url = $this->getRepositoryUrl($repositoryId);
 

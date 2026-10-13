@@ -56,11 +56,11 @@ interface NavigationServiceInterface
         $filter = null,
         $orderBy = null,
         $includeAllowableActions = false,
-        IncludeRelationships $includeRelationships = null,
+        ?IncludeRelationships $includeRelationships = null,
         $renditionFilter = Constants::RENDITION_NONE,
         $maxItems = null,
         $skipCount = 0,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -94,12 +94,12 @@ interface NavigationServiceInterface
         $filter = null,
         $orderBy = null,
         $includeAllowableActions = false,
-        IncludeRelationships $includeRelationships = null,
+        ?IncludeRelationships $includeRelationships = null,
         $renditionFilter = Constants::RENDITION_NONE,
         $includePathSegment = false,
         $maxItems = null,
         $skipCount = 0,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -127,10 +127,10 @@ interface NavigationServiceInterface
         $depth,
         $filter = null,
         $includeAllowableActions = false,
-        IncludeRelationships $includeRelationships = null,
+        ?IncludeRelationships $includeRelationships = null,
         $renditionFilter = Constants::RENDITION_NONE,
         $includePathSegment = false,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -147,7 +147,7 @@ interface NavigationServiceInterface
         $repositoryId,
         $folderId,
         $filter = null,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -175,10 +175,10 @@ interface NavigationServiceInterface
         $depth,
         $filter = null,
         $includeAllowableActions = false,
-        IncludeRelationships $includeRelationships = null,
+        ?IncludeRelationships $includeRelationships = null,
         $renditionFilter = Constants::RENDITION_NONE,
         $includePathSegment = false,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 
     /**
@@ -204,9 +204,9 @@ interface NavigationServiceInterface
         $objectId,
         $filter = null,
         $includeAllowableActions = false,
-        IncludeRelationships $includeRelationships = null,
+        ?IncludeRelationships $includeRelationships = null,
         $renditionFilter = Constants::RENDITION_NONE,
         $includeRelativePathSegment = false,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     );
 }

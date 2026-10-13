@@ -103,13 +103,13 @@ interface DocumentInterface extends FileableCmisObjectInterface, DocumentPropert
      *     was set to <code>null</code>
      */
     public function copy(
-        ObjectIdInterface $targetFolderId = null,
+        ?ObjectIdInterface $targetFolderId = null,
         array $properties = [],
-        VersioningState $versioningState = null,
+        ?VersioningState $versioningState = null,
         array $policies = [],
         array $addAces = [],
         array $removeAces = [],
-        OperationContextInterface $context = null
+        ?OperationContextInterface $context = null
     );
 
     /**
@@ -135,7 +135,7 @@ interface DocumentInterface extends FileableCmisObjectInterface, DocumentPropert
      * @param OperationContextInterface|null $context
      * @return DocumentInterface[]
      */
-    public function getAllVersions(OperationContextInterface $context = null);
+    public function getAllVersions(?OperationContextInterface $context = null);
 
     /**
      * Returns the content URL of the document or a rendition if the binding
@@ -173,7 +173,7 @@ interface DocumentInterface extends FileableCmisObjectInterface, DocumentPropert
      * @param OperationContextInterface|null $context
      * @return DocumentInterface the latest document object
      */
-    public function getObjectOfLatestVersion($major, OperationContextInterface $context = null);
+    public function getObjectOfLatestVersion($major, ?OperationContextInterface $context = null);
 
     /**
      * Sets a new content stream for the document. If the repository created a new version,

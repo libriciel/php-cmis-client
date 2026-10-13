@@ -1,3 +1,5 @@
+name: php-cmis-client
+
 services:
   app:
     build: .

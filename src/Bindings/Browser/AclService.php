@@ -34,10 +34,10 @@ class AclService extends AbstractBrowserBindingService implements AclServiceInte
     public function applyAcl(
         $repositoryId,
         $objectId,
-        AclInterface $addAces = null,
-        AclInterface $removeAces = null,
-        AclPropagation $aclPropagation = null,
-        ExtensionDataInterface $extension = null
+        ?AclInterface $addAces = null,
+        ?AclInterface $removeAces = null,
+        ?AclPropagation $aclPropagation = null,
+        ?ExtensionDataInterface $extension = null
     ) {
         // TODO: Implement applyAcl() method.
     }
@@ -60,7 +60,7 @@ class AclService extends AbstractBrowserBindingService implements AclServiceInte
         $repositoryId,
         $objectId,
         $onlyBasicPermissions = true,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     ) {
         // TODO: Implement getAcl() method.
     }

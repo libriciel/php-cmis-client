@@ -27,7 +27,7 @@ interface QueryStatementInterface
      * @param OperationContextInterface|null $context the operation context to use
      * @return QueryResultInterface[]
      */
-    public function query($searchAllVersions, OperationContextInterface $context = null);
+    public function query($searchAllVersions, ?OperationContextInterface $context = null);
 
     /**
      * Sets the designated parameter to the given boolean.

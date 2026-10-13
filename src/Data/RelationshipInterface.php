@@ -24,7 +24,7 @@ interface RelationshipInterface extends CmisObjectInterface, RelationshipPropert
      * @param OperationContextInterface|null $context
      * @return CmisObjectInterface|null If the source object ID is invalid, <code>null</code> will be returned.
      */
-    public function getSource(OperationContextInterface $context = null);
+    public function getSource(?OperationContextInterface $context = null);
 
     /**
      * Gets the target object using the given OperationContext.
@@ -32,5 +32,5 @@ interface RelationshipInterface extends CmisObjectInterface, RelationshipPropert
      * @param OperationContextInterface|null $context
      * @return CmisObjectInterface If the target object ID is invalid, <code>null</code> will be returned.
      */
-    public function getTarget(OperationContextInterface $context = null);
+    public function getTarget(?OperationContextInterface $context = null);
 }

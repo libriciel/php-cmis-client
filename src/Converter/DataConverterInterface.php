@@ -196,7 +196,7 @@ interface DataConverterInterface
      * @param array|null $data
      * @return RepositoryInfoInterface
      */
-    public function convertRepositoryInfo(array $data = null);
+    public function convertRepositoryInfo(?array $data = null);
 
     /**
      * Convert given input data to a RepositoryCapabilities object
@@ -204,7 +204,7 @@ interface DataConverterInterface
      * @param array|null $data
      * @return RepositoryCapabilitiesInterface
      */
-    public function convertRepositoryCapabilities(array $data = null);
+    public function convertRepositoryCapabilities(?array $data = null);
 
     /**
      * Convert given input data to a AclCapabilities object
@@ -212,7 +212,7 @@ interface DataConverterInterface
      * @param array|null $data
      * @return AclCapabilitiesInterface
      */
-    public function convertAclCapabilities(array $data = null);
+    public function convertAclCapabilities(?array $data = null);
 
     /**
      * Convert given input data to a TypeDefinition object
@@ -220,7 +220,7 @@ interface DataConverterInterface
      * @param array|null $data
      * @return TypeDefinitionInterface
      */
-    public function convertTypeDefinition(array $data = null);
+    public function convertTypeDefinition(?array $data = null);
 
     /**
      * Convert given input data to a PropertyDefinition object
@@ -228,7 +228,7 @@ interface DataConverterInterface
      * @param array|null $data
      * @return PropertyDefinitionInterface
      */
-    public function convertPropertyDefinition(array $data = null);
+    public function convertPropertyDefinition(?array $data = null);
 
     /**
      * Convert given input data to a TypeChildren object
@@ -236,7 +236,7 @@ interface DataConverterInterface
      * @param array|null $data
      * @return TypeDefinitionListInterface
      */
-    public function convertTypeChildren(array $data = null);
+    public function convertTypeChildren(?array $data = null);
 
     /**
      * Convert given input data to a TypeDescendants object
@@ -244,7 +244,7 @@ interface DataConverterInterface
      * @param array|null $data
      * @return TypeDefinitionContainerInterface[]
      */
-    public function convertTypeDescendants(array $data = null);
+    public function convertTypeDescendants(?array $data = null);
 
     /**
      * Convert given input data to a ObjectData object
@@ -252,7 +252,7 @@ interface DataConverterInterface
      * @param array|null $data
      * @return ObjectDataInterface
      */
-    public function convertObject(array $data = null);
+    public function convertObject(?array $data = null);
 
     /**
      * Convert given input data to a ObjectData object
@@ -260,7 +260,7 @@ interface DataConverterInterface
      * @param array|null $data
      * @return ObjectDataInterface[]
      */
-    public function convertObjects(array $data = null);
+    public function convertObjects(?array $data = null);
 
     /**
      * Convert given input data to a Acl object
@@ -269,7 +269,7 @@ interface DataConverterInterface
      * @param boolean $isExact
      * @return AclInterface
      */
-    public function convertAcl(array $data = null, $isExact = false);
+    public function convertAcl(?array $data = null, $isExact = false);
 
     /**
      * Convert given input data to a PolicyIdList object
@@ -277,7 +277,7 @@ interface DataConverterInterface
      * @param array|null $data
      * @return PolicyIdList
      */
-    public function convertPolicyIdList(array $data = null);
+    public function convertPolicyIdList(?array $data = null);
 
     /**
      * Convert given input data to a Properties object
@@ -286,7 +286,7 @@ interface DataConverterInterface
      * @param array $extensions
      * @return PropertiesInterface
      */
-    public function convertProperties(array $data = null, $extensions = []);
+    public function convertProperties(?array $data = null, $extensions = []);
 
     /**
      * Convert given input data to a AllowableActions object
@@ -294,7 +294,7 @@ interface DataConverterInterface
      * @param array|null $data
      * @return AllowableActionsInterface
      */
-    public function convertAllowableActions(array $data = null);
+    public function convertAllowableActions(?array $data = null);
 
     /**
      * Convert given input data to a SuccinctProperties object
@@ -302,7 +302,7 @@ interface DataConverterInterface
      * @param array|null $data
      * @return PropertiesInterface
      */
-    public function convertSuccinctProperties(array $data = null);
+    public function convertSuccinctProperties(?array $data = null);
 
     /**
      * Convert given input data to a RenditionData object
@@ -310,7 +310,7 @@ interface DataConverterInterface
      * @param array|null $data
      * @return RenditionDataInterface
      */
-    public function convertRendition(array $data = null);
+    public function convertRendition(?array $data = null);
 
     /**
      * Convert given input data to a list of RenditionData objects
@@ -318,7 +318,7 @@ interface DataConverterInterface
      * @param array|null $data
      * @return RenditionDataInterface[]
      */
-    public function convertRenditions(array $data = null);
+    public function convertRenditions(?array $data = null);
 
     /**
      * Convert given input data to a ObjectInFolderList object
@@ -326,7 +326,7 @@ interface DataConverterInterface
      * @param array|null $data
      * @return ObjectInFolderListInterface
      */
-    public function convertObjectInFolderList(array $data = null);
+    public function convertObjectInFolderList(?array $data = null);
 
     /**
      * Convert given input data to a ObjectInFolder object
@@ -334,7 +334,7 @@ interface DataConverterInterface
      * @param array|null $data
      * @return ObjectInFolderData|null
      */
-    public function convertObjectInFolder(array $data = null);
+    public function convertObjectInFolder(?array $data = null);
 
     /**
      * Convert given input data to an Extension object
@@ -343,7 +343,7 @@ interface DataConverterInterface
      * @param array $cmisKeys
      * @return CmisExtensionElementInterface[]
      */
-    public function convertExtension(array $data = null, array $cmisKeys = []);
+    public function convertExtension(?array $data = null, array $cmisKeys = []);
 
     /**
      * Convert given input data to an ExtensionFeature object
@@ -351,5 +351,5 @@ interface DataConverterInterface
      * @param array|null $data
      * @return ExtensionFeatureInterface[]
      */
-    public function convertExtensionFeatures(array $data = null);
+    public function convertExtensionFeatures(?array $data = null);
 }

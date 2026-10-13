@@ -43,7 +43,7 @@ class NavigationServiceTest extends AbstractBrowserBindingServiceTestCase
         $filter = null,
         $orderBy = null,
         $includeAllowableActions = false,
-        IncludeRelationships $includeRelationships = null,
+        ?IncludeRelationships $includeRelationships = null,
         $renditionFilter = Constants::RENDITION_NONE,
         $includePathSegment = false,
         $maxItems = null,
@@ -150,7 +150,7 @@ class NavigationServiceTest extends AbstractBrowserBindingServiceTestCase
         $filter = null,
         $orderBy = null,
         $includeAllowableActions = false,
-        IncludeRelationships $includeRelationships = null,
+        ?IncludeRelationships $includeRelationships = null,
         $renditionFilter = Constants::RENDITION_NONE,
         $maxItems = null,
         $skipCount = 0
@@ -235,7 +235,7 @@ class NavigationServiceTest extends AbstractBrowserBindingServiceTestCase
         $depth,
         $filter = null,
         $includeAllowableActions = false,
-        IncludeRelationships $includeRelationships = null,
+        ?IncludeRelationships $includeRelationships = null,
         $renditionFilter = Constants::RENDITION_NONE,
         $includePathSegment = false
     ) {
@@ -383,7 +383,7 @@ class NavigationServiceTest extends AbstractBrowserBindingServiceTestCase
         $depth,
         $filter = null,
         $includeAllowableActions = false,
-        IncludeRelationships $includeRelationships = null,
+        ?IncludeRelationships $includeRelationships = null,
         $renditionFilter = Constants::RENDITION_NONE,
         $includePathSegment = false
     ) {
@@ -462,7 +462,7 @@ class NavigationServiceTest extends AbstractBrowserBindingServiceTestCase
         $objectId,
         $filter = null,
         $includeAllowableActions = false,
-        IncludeRelationships $includeRelationships = null,
+        ?IncludeRelationships $includeRelationships = null,
         $renditionFilter = Constants::RENDITION_NONE,
         $includeRelativePathSegment = false
     ) {

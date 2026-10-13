@@ -297,7 +297,7 @@ abstract class AbstractBrowserBindingService implements LinkAccessInterface
      * @param null|\Exception $exception
      * @return CmisBaseException
      */
-    protected function convertStatusCode($code, $message, \Exception $exception = null)
+    protected function convertStatusCode($code, $message, ?\Exception $exception = null)
     {
         $messageData = json_decode($message, true);
 
@@ -702,7 +702,7 @@ abstract class AbstractBrowserBindingService implements LinkAccessInterface
      * @param Url $url
      * @param AclInterface|null $addAces A list of ACEs
      */
-    protected function appendAddAcesToUrl(Url $url, AclInterface $addAces = null)
+    protected function appendAddAcesToUrl(Url $url, ?AclInterface $addAces = null)
     {
         if ($addAces !== null) {
             $url->getQuery()->modify(
@@ -721,7 +721,7 @@ abstract class AbstractBrowserBindingService implements LinkAccessInterface
      * @param Url $url
      * @param AclInterface|null $removeAces A list of ACEs
      */
-    protected function appendRemoveAcesToUrl(Url $url, AclInterface $removeAces = null)
+    protected function appendRemoveAcesToUrl(Url $url, ?AclInterface $removeAces = null)
     {
         if ($removeAces !== null) {
             $url->getQuery()->modify(

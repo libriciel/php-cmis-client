@@ -52,13 +52,13 @@ class RelationshipService extends AbstractBrowserBindingService implements Relat
         $repositoryId,
         $objectId,
         $includeSubRelationshipTypes = false,
-        RelationshipDirection $relationshipDirection = null,
+        ?RelationshipDirection $relationshipDirection = null,
         $typeId = null,
         $filter = null,
         $includeAllowableActions = false,
         $maxItems = null,
         $skipCount = 0,
-        ExtensionDataInterface $extension = null
+        ?ExtensionDataInterface $extension = null
     ) {
         $url = $this->getObjectUrl($repositoryId, $objectId, Constants::SELECTOR_RELATIONSHIPS);
         $query = $url->getQuery();
