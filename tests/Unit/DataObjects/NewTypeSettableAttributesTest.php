@@ -11,12 +11,15 @@ namespace Dkd\PhpCmis\Test\Unit\DataObjects;
  */
 
 use Dkd\PhpCmis\DataObjects\NewTypeSettableAttributes;
+use Dkd\PhpCmis\Test\Unit\CapturesUserNoticesTrait;
 
 /**
  * Class NewTypeSettableAttributesTest
  */
 class NewTypeSettableAttributesTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
+    use CapturesUserNoticesTrait;
+
     /**
      * @var NewTypeSettableAttributes
      */
@@ -101,10 +104,8 @@ class NewTypeSettableAttributesTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCa
     public function testPropertySetterCastsValueToBoolean($propertyName)
     {
         $setterName = 'set' . ucfirst($propertyName);
-        try {
-            $this->newTypeSettableAttributes->$setterName(1);
-        } catch (\PHPUnit\Framework\Error\Notice $exception) {
-        }
+        $notices = $this->captureUserNotices(fn () => $this->newTypeSettableAttributes->$setterName(1));
+        $this->assertCount(1, $notices);
         $this->assertAttributeInternalType('boolean', $propertyName, $this->newTypeSettableAttributes);
     }
 

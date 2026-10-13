@@ -12,7 +12,7 @@ namespace Dkd\PhpCmis\Test\Unit\DataObjects;
 
 use Dkd\PhpCmis\DataObjects\AccessControlEntry;
 use Dkd\PhpCmis\PrincipalInterface;
-use PHPUnit\Framework\Error\Notice;
+use Dkd\PhpCmis\Test\Unit\CapturesUserNoticesTrait;
 use PHPUnit_Framework_MockObject_MockObject;
 
 /**
@@ -20,6 +20,7 @@ use PHPUnit_Framework_MockObject_MockObject;
  */
 class AccessControlEntryTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
+    use CapturesUserNoticesTrait;
 
     /**
      * @var AccessControlEntry
@@ -101,8 +102,8 @@ class AccessControlEntryTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 
     public function testSetIsDirectCastsValueToBoolean()
     {
-        $this->expectException(Notice::class);
-        $this->ace->setIsDirect(1);
+        $notices = $this->captureUserNotices(fn () => $this->ace->setIsDirect(1));
+        $this->assertCount(1, $notices);
         $this->assertAttributeSame(true, 'isDirect', $this->ace);
     }
 

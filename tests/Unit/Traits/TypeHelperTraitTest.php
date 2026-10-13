@@ -10,15 +10,16 @@ namespace Dkd\PhpCmis\Test\Unit\DataObjects;
  * file that was distributed with this source code.
  */
 
+use Dkd\PhpCmis\Test\Unit\CapturesUserNoticesTrait;
 use Dkd\PhpCmis\Test\Unit\ReflectionHelperTrait;
 use Dkd\PhpCmis\Traits\TypeHelperTrait;
-use PHPUnit\Framework\Error\Notice;
 
 /**
  * Class TypeHelperTraitTest
  */
 class TypeHelperTraitTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
+    use CapturesUserNoticesTrait;
     use ReflectionHelperTrait;
 
     const CLASS_TO_TEST = 'DkdPhpCmisTypeHelperMockTrait';
@@ -182,11 +183,12 @@ class TypeHelperTraitTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
             return;
         }
 
-        if ($errorNoticeMessageExpected) {
-            $this->expectException(Notice::class);
-        }
         $method = $this->getMethod(self::CLASS_TO_TEST, 'castValueToSimpleType');
-        $result = $method->invokeArgs($this->typeHelperTrait, [$expectedType, $value]);
+        $result = null;
+        $notices = $this->captureUserNotices(function () use ($method, $expectedType, $value, &$result) {
+            $result = $method->invokeArgs($this->typeHelperTrait, [$expectedType, $value]);
+        });
+        $this->assertCount($errorNoticeMessageExpected ? 1 : 0, $notices);
         $this->assertSame($expectedValue, $result);
     }
 

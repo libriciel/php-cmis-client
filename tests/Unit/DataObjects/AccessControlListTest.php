@@ -12,13 +12,15 @@ namespace Dkd\PhpCmis\Test\Unit\DataObjects;
 
 use Dkd\PhpCmis\DataObjects\AccessControlEntry;
 use Dkd\PhpCmis\DataObjects\AccessControlList;
-use PHPUnit\Framework\Error\Notice;
+use Dkd\PhpCmis\Test\Unit\CapturesUserNoticesTrait;
 
 /**
  * Class AccessControlListTest
  */
 class AccessControlListTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 {
+    use CapturesUserNoticesTrait;
+
     /**
      * @var AccessControlList
      */
@@ -78,8 +80,8 @@ class AccessControlListTest extends \Dkd\PhpCmis\Test\Unit\PhpCmisTestCase
 
     public function testSetIsExactCastsValueToBoolean()
     {
-        $this->expectException(Notice::class);
-        $this->acl->setIsExact(1);
+        $notices = $this->captureUserNotices(fn () => $this->acl->setIsExact(1));
+        $this->assertCount(1, $notices);
         $this->assertAttributeSame(true, 'isExact', $this->acl);
     }
 
