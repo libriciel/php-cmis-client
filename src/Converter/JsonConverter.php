@@ -131,7 +131,7 @@ class JsonConverter extends AbstractDataConverter
 
         foreach ($data as $key => $value) {
             try {
-                if ((boolean) $value === true) {
+                if ((bool) $value === true) {
                     $actions[] = Action::cast($key);
                 }
             } catch (InvalidEnumerationValueException $exception) {
@@ -405,7 +405,7 @@ class JsonConverter extends AbstractDataConverter
                 $ace = new AccessControlEntry($principal, $permissions);
 
                 if (isset($aceData[JSONConstants::JSON_ACE_IS_DIRECT])) {
-                    $ace->setIsDirect((boolean) ($aceData[JSONConstants::JSON_ACE_IS_DIRECT] ?? false));
+                    $ace->setIsDirect((bool) ($aceData[JSONConstants::JSON_ACE_IS_DIRECT] ?? false));
                 }
 
                 $ace->setExtensions($this->convertExtension($aceData, JSONConstants::getAceKeys()));
@@ -785,7 +785,7 @@ class JsonConverter extends AbstractDataConverter
         $object = new ObjectData();
         $acl = $this->convertAcl(
             $data[JSONConstants::JSON_OBJECT_ACL] ?? [],
-            (boolean) ($data[JSONConstants::JSON_OBJECT_EXACT_ACL] ?? false)
+            (bool) ($data[JSONConstants::JSON_OBJECT_EXACT_ACL] ?? false)
         );
         if ($acl !== null) {
             $object->setAcl($acl);
@@ -815,7 +815,7 @@ class JsonConverter extends AbstractDataConverter
             $object->setChangeEventInfo($changeEventInfo);
         }
 
-        $object->setIsExactAcl((boolean) ($data[JSONConstants::JSON_OBJECT_EXACT_ACL] ?? false));
+        $object->setIsExactAcl((bool) ($data[JSONConstants::JSON_OBJECT_EXACT_ACL] ?? false));
         $object->setPolicyIds($this->convertPolicyIdList($data[JSONConstants::JSON_OBJECT_POLICY_IDS] ?? null));
 
         /**
@@ -1021,13 +1021,13 @@ class JsonConverter extends AbstractDataConverter
         $rendition = new RenditionData();
 
         if (isset($data[JSONConstants::JSON_RENDITION_HEIGHT])) {
-            $rendition->setHeight((integer) $data[JSONConstants::JSON_RENDITION_HEIGHT]);
+            $rendition->setHeight((int) $data[JSONConstants::JSON_RENDITION_HEIGHT]);
         }
         if (isset($data[JSONConstants::JSON_RENDITION_KIND])) {
             $rendition->setKind((string) $data[JSONConstants::JSON_RENDITION_KIND]);
         }
         if (isset($data[JSONConstants::JSON_RENDITION_LENGTH])) {
-            $rendition->setLength((integer) $data[JSONConstants::JSON_RENDITION_LENGTH]);
+            $rendition->setLength((int) $data[JSONConstants::JSON_RENDITION_LENGTH]);
         }
         if (isset($data[JSONConstants::JSON_RENDITION_MIMETYPE])) {
             $rendition->setMimeType((string) $data[JSONConstants::JSON_RENDITION_MIMETYPE]);
@@ -1042,7 +1042,7 @@ class JsonConverter extends AbstractDataConverter
             $rendition->setTitle((string) $data[JSONConstants::JSON_RENDITION_TITLE]);
         }
         if (isset($data[JSONConstants::JSON_RENDITION_WIDTH])) {
-            $rendition->setWidth((integer) $data[JSONConstants::JSON_RENDITION_WIDTH]);
+            $rendition->setWidth((int) $data[JSONConstants::JSON_RENDITION_WIDTH]);
         }
 
         $rendition->setExtensions($this->convertExtension($data, JSONConstants::getRenditionKeys()));
@@ -1492,7 +1492,7 @@ class JsonConverter extends AbstractDataConverter
         }
 
         $result->setList($types);
-        $result->setHasMoreItems((boolean) ($data[JSONConstants::JSON_TYPESLIST_HAS_MORE_ITEMS] ?? false));
+        $result->setHasMoreItems((bool) ($data[JSONConstants::JSON_TYPESLIST_HAS_MORE_ITEMS] ?? false));
         $result->setNumItems($data[JSONConstants::JSON_TYPESLIST_NUM_ITEMS] ?? 0);
         $result->setExtensions($this->convertExtension($data, JSONConstants::getTypesListKeys()));
 
@@ -1554,8 +1554,8 @@ class JsonConverter extends AbstractDataConverter
         );
         $objectInFolderList = new ObjectInFolderList();
         $objectInFolderList->setObjects($objects);
-        $objectInFolderList->setHasMoreItems((boolean) ($data[JSONConstants::JSON_OBJECTINFOLDERLIST_HAS_MORE_ITEMS] ?? false));
-        $objectInFolderList->setNumItems((integer)($data[JSONConstants::JSON_OBJECTINFOLDERLIST_NUM_ITEMS] ?? count($objects)));
+        $objectInFolderList->setHasMoreItems((bool) ($data[JSONConstants::JSON_OBJECTINFOLDERLIST_HAS_MORE_ITEMS] ?? false));
+        $objectInFolderList->setNumItems((int)($data[JSONConstants::JSON_OBJECTINFOLDERLIST_NUM_ITEMS] ?? count($objects)));
         $objectInFolderList->setExtensions($this->convertExtension($data, JSONConstants::getObjectInFolderListKeys()));
 
         return $objectInFolderList;
@@ -1656,11 +1656,11 @@ class JsonConverter extends AbstractDataConverter
         $objectList->setObjects($objects);
 
         $objectList->setHasMoreItems(
-            (boolean) ($data[JSONConstants::JSON_OBJECTLIST_HAS_MORE_ITEMS] ?? false)
+            (bool) ($data[JSONConstants::JSON_OBJECTLIST_HAS_MORE_ITEMS] ?? false)
         );
 
         if (isset($data[JSONConstants::JSON_OBJECTLIST_NUM_ITEMS])) {
-            $objectList->setNumItems((integer) $data[JSONConstants::JSON_OBJECTLIST_NUM_ITEMS]);
+            $objectList->setNumItems((int) $data[JSONConstants::JSON_OBJECTLIST_NUM_ITEMS]);
         }
 
         $objectList->setExtensions($this->convertExtension($data, JSONConstants::getObjectListKeys()));
@@ -1692,10 +1692,10 @@ class JsonConverter extends AbstractDataConverter
         }
 
         $objectList->setObjects($objects);
-        $objectList->setHasMoreItems((boolean) ($data[JSONConstants::JSON_QUERYRESULTLIST_HAS_MORE_ITEMS] ?? false));
+        $objectList->setHasMoreItems((bool) ($data[JSONConstants::JSON_QUERYRESULTLIST_HAS_MORE_ITEMS] ?? false));
 
         if (isset($data[JSONConstants::JSON_QUERYRESULTLIST_NUM_ITEMS])) {
-            $objectList->setNumItems((integer) $data[JSONConstants::JSON_QUERYRESULTLIST_NUM_ITEMS]);
+            $objectList->setNumItems((int) $data[JSONConstants::JSON_QUERYRESULTLIST_NUM_ITEMS]);
         }
 
         $objectList->setExtensions($this->convertExtension($data, JSONConstants::getQueryResultListKeys()));

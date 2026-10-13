@@ -70,7 +70,7 @@ class RenditionData extends AbstractExtensionData implements RenditionDataInterf
      */
     public function setHeight($height)
     {
-        $this->height = (integer) $height;
+        $this->height = (int) $height;
     }
 
     /**
@@ -102,7 +102,7 @@ class RenditionData extends AbstractExtensionData implements RenditionDataInterf
      */
     public function setLength($length)
     {
-        $this->length = (integer) $length;
+        $this->length = (int) $length;
     }
 
     /**
@@ -182,6 +182,6 @@ class RenditionData extends AbstractExtensionData implements RenditionDataInterf
      */
     public function setWidth($width)
     {
-        $this->width = (integer) $width;
+        $this->width = (int) $width;
     }
 }

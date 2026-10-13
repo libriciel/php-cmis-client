@@ -27,7 +27,7 @@ class PropertyDecimal extends AbstractPropertyData implements MutablePropertyDec
         foreach ($values as $key => $value) {
             if (is_integer($value)) {
                 // cast integer values silenty to a double value.
-                $values[$key] = $value = (double) $value;
+                $values[$key] = $value = (float) $value;
             }
             $this->checkType('double', $value, true);
         }

@@ -7,7 +7,7 @@ if (!is_file(__DIR__ . '/conf/Configuration.php')) {
 }
 
 // Extracting arguments for example script
-$major = (boolean) isset($argv[1]) ? $argv[1] : false;
+$major = (bool) isset($argv[1]) ? $argv[1] : false;
 
 $httpInvoker = new \GuzzleHttp\Client(
 	[

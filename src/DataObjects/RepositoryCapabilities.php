@@ -156,7 +156,7 @@ class RepositoryCapabilities extends AbstractExtensionData implements Repository
      */
     public function setSupportsAllVersionsSearchable($supportsAllVersionsSearchable)
     {
-        $this->supportsAllVersionsSearchable = (boolean) $supportsAllVersionsSearchable;
+        $this->supportsAllVersionsSearchable = (bool) $supportsAllVersionsSearchable;
     }
 
     /**
@@ -220,7 +220,7 @@ class RepositoryCapabilities extends AbstractExtensionData implements Repository
      */
     public function setSupportsPwcSearchable($isPwcSearchable)
     {
-        $this->isPwcSearchable = (boolean) $isPwcSearchable;
+        $this->isPwcSearchable = (bool) $isPwcSearchable;
     }
 
     /**
@@ -236,7 +236,7 @@ class RepositoryCapabilities extends AbstractExtensionData implements Repository
      */
     public function setSupportsPwcUpdatable($isPwcUpdatable)
     {
-        $this->isPwcUpdatable = (boolean) $isPwcUpdatable;
+        $this->isPwcUpdatable = (bool) $isPwcUpdatable;
     }
 
     /**
@@ -332,7 +332,7 @@ class RepositoryCapabilities extends AbstractExtensionData implements Repository
      */
     public function setSupportsGetDescendants($supportsGetDescendants)
     {
-        $this->supportsGetDescendants = (boolean) $supportsGetDescendants;
+        $this->supportsGetDescendants = (bool) $supportsGetDescendants;
     }
 
     /**
@@ -348,7 +348,7 @@ class RepositoryCapabilities extends AbstractExtensionData implements Repository
      */
     public function setSupportsGetFolderTree($supportsGetFolderTree)
     {
-        $this->supportsGetFolderTree = (boolean) $supportsGetFolderTree;
+        $this->supportsGetFolderTree = (bool) $supportsGetFolderTree;
     }
 
     /**
@@ -364,7 +364,7 @@ class RepositoryCapabilities extends AbstractExtensionData implements Repository
      */
     public function setSupportsMultifiling($supportsMultifiling)
     {
-        $this->supportsMultifiling = (boolean) $supportsMultifiling;
+        $this->supportsMultifiling = (bool) $supportsMultifiling;
     }
 
     /**
@@ -380,7 +380,7 @@ class RepositoryCapabilities extends AbstractExtensionData implements Repository
      */
     public function setSupportsUnfiling($supportsUnfiling)
     {
-        $this->supportsUnfiling = (boolean) $supportsUnfiling;
+        $this->supportsUnfiling = (bool) $supportsUnfiling;
     }
 
     /**
@@ -396,6 +396,6 @@ class RepositoryCapabilities extends AbstractExtensionData implements Repository
      */
     public function setSupportsVersionSpecificFiling($supportsVersionSpecificFiling)
     {
-        $this->supportsVersionSpecificFiling = (boolean) $supportsVersionSpecificFiling;
+        $this->supportsVersionSpecificFiling = (bool) $supportsVersionSpecificFiling;
     }
 }

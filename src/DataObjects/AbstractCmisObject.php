@@ -139,7 +139,7 @@ abstract class AbstractCmisObject implements CmisObjectInterface
         $this->objectType = $objectType;
         $this->secondaryTypes = null;
         $this->creationContext = clone $context;
-        $this->refreshTimestamp = (integer) round(microtime(true) * 1000);
+        $this->refreshTimestamp = (int) round(microtime(true) * 1000);
 
         if ($objectData !== null) {
             $this->initializeObjectData($objectData);
@@ -377,7 +377,7 @@ abstract class AbstractCmisObject implements CmisObjectInterface
 
         $updatability = [];
         $updatability[] = Updatability::cast(Updatability::READWRITE);
-        if ((boolean) $this->getPropertyValue(PropertyIds::IS_VERSION_SERIES_CHECKED_OUT) === true) {
+        if ((bool) $this->getPropertyValue(PropertyIds::IS_VERSION_SERIES_CHECKED_OUT) === true) {
             $updatability[] = Updatability::cast(Updatability::WHENCHECKEDOUT);
         }
 
@@ -884,7 +884,7 @@ abstract class AbstractCmisObject implements CmisObjectInterface
      */
     public function refreshIfOld($durationInMillis = 0)
     {
-        if ($this->getRefreshTimestamp() < ((round(microtime(true) * 1000)) - (integer) $durationInMillis)) {
+        if ($this->getRefreshTimestamp() < ((round(microtime(true) * 1000)) - (int) $durationInMillis)) {
             $this->refresh();
         }
     }
